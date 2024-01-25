@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using autumn_berry_mixВ;
 using deKraken.Extensions;
 
-namespace autumn_berry_mix.EC
+namespace autumn_berries_mix.EC
 {
     public sealed class ComponentsMaster
     {
@@ -67,6 +68,9 @@ namespace autumn_berry_mix.EC
                 throw new NullReferenceException("Null component tried to add");
             
             _components.Add(typeof(TComponent), component);
+            
+            Resolver.Instance().InjectComponent(component);
+            
             component.Start(Owner);
 
             return component;
@@ -94,6 +98,8 @@ namespace autumn_berry_mix.EC
             _components[typeof(TComponent)].Dispose();
             
             _components[typeof(TComponent)] = component;
+            
+            Resolver.Instance().InjectComponent(component);
 
             component.Start(Owner);
         }

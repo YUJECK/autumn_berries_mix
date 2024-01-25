@@ -1,4 +1,4 @@
-namespace autumn_berry_mix.EC
+namespace autumn_berries_mix.EC
 {
     public abstract class Component
     {

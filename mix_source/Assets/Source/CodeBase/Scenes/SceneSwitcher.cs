@@ -1,7 +1,8 @@
 using System;
+using autumn_berry_mixВ;
 using Internal.Codebase.Infrastructure.Services.SceneLoader;    
 
-namespace autumn_berry_mix.Scenes
+namespace autumn_berries_mix.Scenes
 {
     public static class SceneSwitcher
     {
@@ -22,9 +23,12 @@ namespace autumn_berry_mix.Scenes
         private static void Complete<TScene>(TScene scene) 
             where TScene : Scene
         {
+            Resolver.Instance().InjectScene(scene);
+            
             scene.Load();
-         
+
             OnSceneLoaded?.Invoke(CurrentScene, scene);
+            
             CurrentScene = scene;
         }
 
