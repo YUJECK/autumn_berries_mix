@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace autumn_berries_mix.Grid
 {
-    public class GridTile : MonoBehaviour
+    public class GridTile : MonoBehaviour, IOnTileSelected
     {
         public virtual bool Empty => TileStuff == null;
         public virtual bool Walkable { get; protected set; } = true;
@@ -18,6 +18,9 @@ namespace autumn_berries_mix.Grid
         {
             GenerateOverlayObjects();
         }
+        
+        public virtual void OnSelected() { }
+        public virtual void OnDeselected() { }
 
         public GridTile Clear()
         {

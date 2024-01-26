@@ -5,7 +5,7 @@ using UnityEngine;
 namespace autumn_berries_mix.Grid
 {
     [Serializable]
-    public class Grid : MonoBehaviour
+    public class GameGrid : MonoBehaviour
     {
         private GridData GridData { get; set; }
 

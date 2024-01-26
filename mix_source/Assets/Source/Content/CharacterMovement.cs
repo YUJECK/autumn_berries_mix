@@ -39,14 +39,14 @@ namespace Source.Content
                 && _currentSelected.transform.position.y - ChainyPosition.y <= 1 &&  _currentSelected.transform.position.y - ChainyPosition.y >= -1
                 && _currentSelected.Empty && _currentSelected.Walkable)
             {
-                scene.Grid.SwapEntities((int)ChainyPosition.x, (int)ChainyPosition.y, (int)_currentSelected.transform.position.x, (int)_currentSelected.transform.position.y);
+                scene.GameGrid.SwapEntities((int)ChainyPosition.x, (int)ChainyPosition.y, (int)_currentSelected.transform.position.x, (int)_currentSelected.transform.position.y);
             }
         }
 
         public void Tick()
         {
             DrawArrows();
-            DrawSelection();
+            DrawSelection();    
         }
 
         private void DrawSelection()
@@ -58,7 +58,7 @@ namespace Source.Content
                 _currentSelected.RemoveOverlay();
             }
             
-            _currentSelected = scene.Grid.Get(Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y));
+            _currentSelected = scene.GameGrid.Get(Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y));
             
             if (_currentSelected != null)
             {
@@ -73,14 +73,14 @@ namespace Source.Content
                 Vector3 directionVector = DirectionToVector((Directions)i);
                 Vector3 truePosition = ChainyPosition + directionVector;
 
-                if (scene.Grid.Get((int)truePosition.x, (int)truePosition.y) == null)
+                if (scene.GameGrid.Get((int)truePosition.x, (int)truePosition.y) == null)
                 {
                     arrows[i].gameObject.SetActive(false);
                     continue;
                 }
                     
                 
-                if (scene.Grid.Get((int)truePosition.x, (int)truePosition.y).Walkable && scene.Grid.Get((int)truePosition.x, (int)truePosition.y).Empty)
+                if (scene.GameGrid.Get((int)truePosition.x, (int)truePosition.y).Walkable && scene.GameGrid.Get((int)truePosition.x, (int)truePosition.y).Empty)
                 {
                     arrows[i].transform.position = truePosition;
                     arrows[i].gameObject.SetActive(true);

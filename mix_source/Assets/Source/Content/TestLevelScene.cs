@@ -1,20 +1,22 @@
+using autumn_berries_mix;
+using autumn_berries_mix.Grid;
+using autumn_berries_mix.Grid.BasicProcessor;
 using autumn_berries_mix.Scenes;
 using Cinemachine;
 using Source.Content.Tiles;
 using UnityEngine;
 using Zenject;
 
-using Grid = autumn_berries_mix.Grid.Grid;
-
 namespace Source.Content
 {
     public sealed class TestLevelScene : Scene
     {
-        public Grid Grid { get; private set; }
+        public GameGrid GameGrid { get; private set; }
         public Chainy Chainy { get; private set; }
         public Camera main { get; private set; }
 
         private CharacterMovement _movement;
+        private TileSelector _tileSelector;
         private GameplayResources _resources;
 
         [Inject]
@@ -33,15 +35,17 @@ namespace Source.Content
         {
             main = Camera.main;
             
-            Grid = GameObject
-                .Instantiate<Grid>(Resources.Load<Grid>(AssetsHelper.TestGrid)); ;
+            GameGrid = GameObject
+                .Instantiate<GameGrid>(Resources.Load<GameGrid>(AssetsHelper.TestGrid)); ;
             
-            Chainy = Grid.PlaceEntityToEmptyFromPrefab(2, -1, GetChainyPrefab());
-
-            _movement = new CharacterMovement(this, _resources);
+            Chainy = GameGrid.PlaceEntityToEmptyFromPrefab(2, -1, GetChainyPrefab());
+            
+            _tileSelector = new TileSelector(GameGrid, _resources, new BorderDrawer(_resources));
             
             CinemachineVirtualCamera camera = GameObject.FindObjectOfType<CinemachineVirtualCamera>();
             camera.Follow = Chainy.transform;
+            
+            _tileSelector.Enable();
         }
 
         private Chainy GetChainyPrefab()
@@ -52,7 +56,7 @@ namespace Source.Content
 
         public override void Tick()
         {
-            _movement.Tick();
+            _tileSelector.Tick();
         }
 
         public override void Dispose() { }

@@ -24,12 +24,13 @@ namespace autumn_berries_mix.Scenes
             where TScene : Scene
         {
             Resolver.Instance().InjectScene(scene);
-            
-            scene.Load();
 
-            OnSceneLoaded?.Invoke(CurrentScene, scene);
+            Scene prevScene = CurrentScene;
             
             CurrentScene = scene;
+            scene.Load();
+
+            OnSceneLoaded?.Invoke(prevScene, scene);
         }
 
         public static void Tick()

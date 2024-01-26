@@ -1,3 +1,4 @@
+using autumn_berries_mix.Source.CodeBase.ChainyActions;
 using UnityEngine;
 
 namespace autumn_berries_mix.EC
@@ -6,6 +7,12 @@ namespace autumn_berries_mix.EC
     {
         public ComponentsMaster Master { get; private set; }
 
+        public GameplayAction[] GetActionsPull;
+
+        public Vector3 Position3 => transform.position;
+        public Vector2 Position2 => new Vector2(transform.position.x, transform.position.y);
+        public Quaternion Rotation => transform.rotation;
+        
         protected void InitComponentsMaster()
             => Master = new ComponentsMaster(this);
 
