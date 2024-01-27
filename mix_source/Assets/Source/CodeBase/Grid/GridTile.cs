@@ -10,7 +10,8 @@ namespace autumn_berries_mix.Grid
         public virtual bool Empty => TileStuff == null;
         public virtual bool Walkable { get; protected set; } = true;
 
-        private readonly List<SpriteRenderer> overlays = new();
+        private readonly List<TileOverlay> overlaysPull = new();
+        private readonly Dictionary<string, TileOverlay> overlays = new();
 
         [field: ReadOnly, SerializeField] public Entity TileStuff { get; private set; }
 
@@ -27,7 +28,10 @@ namespace autumn_berries_mix.Grid
             if(TileStuff != null)
                 Destroy(TileStuff.gameObject);
 
-            RemoveOverlay();
+            foreach (var overlay in overlaysPull)
+            {
+                overlay.Disable();
+            }
             
             return this;
         }
@@ -52,24 +56,50 @@ namespace autumn_berries_mix.Grid
 
         protected void GenerateOverlayObjects()
         {
-            var overlayObject = new GameObject(gameObject.name + "Overlay");
-            overlays.Add(overlayObject.AddComponent<SpriteRenderer>());
-            overlayObject.transform.position = transform.position;
+            for (int i = 0; i < 4; i++)
+            {
+                var overlayObject = new GameObject(gameObject.name + "Overlay");
+                var spriteRenderer = overlayObject.AddComponent<SpriteRenderer>();
+                
+                overlaysPull.Add(new TileOverlay(spriteRenderer, this));
+            }
+        }
 
-            RemoveOverlay();
+        public TileOverlay GetEmpty()
+        {
+            foreach (var tileOverlay in overlaysPull)
+            {
+                if (!tileOverlay.Enabled)
+                    return tileOverlay;
+            }
+
+            return null;
         }
         
-        public GridTile PushOverlay(Sprite sprite)
+        public GridTile PushOverlay(TileOverlayData data)
         {
-            overlays[0].color = Color.white;
-            overlays[0].sprite = sprite;
+            var overlay = GetEmpty();
             
+            if (overlays.TryAdd(data.Name, overlay))
+            {
+                overlay?.ApplyData(data);    
+            }
+
             return this;
         }
-        
-        public GridTile RemoveOverlay()
+
+        public GridTile RemoveOverlay(TileOverlayData data)
         {
-            overlays[0].color = Color.clear;
+            return RemoveOverlay(data.Name);
+        }
+
+        public GridTile RemoveOverlay(string key)
+        {
+            if (overlays.TryGetValue(key, out var tileOverlay))
+            {
+                tileOverlay.Disable();
+                overlays.Remove(key);
+            }
             
             return this;
         }

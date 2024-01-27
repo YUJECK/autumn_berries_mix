@@ -45,26 +45,9 @@ namespace Source.Content
 
         public void Tick()
         {
-            DrawArrows();
-            DrawSelection();    
+            DrawArrows();  
         }
-
-        private void DrawSelection()
-        {
-            Vector2 position = scene.GetCamera().ScreenToWorldPoint(Input.mousePosition);
-
-            if (_currentSelected != null)
-            {
-                _currentSelected.RemoveOverlay();
-            }
-            
-            _currentSelected = scene.GameGrid.Get(Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y));
-            
-            if (_currentSelected != null)
-            {
-                _currentSelected.PushOverlay(_resources.borderSprite);
-            }
-        }
+        
 
         private void DrawArrows()
         {

@@ -16,6 +16,9 @@ scopes = {
 	"last_search.8DF93126" = ""
 	"OpenInspectorPreview.8DF93126" = "0"
 	"currentGroup.8DF93126" = null
+	"last_search.45C55C1A" = ""
+	"OpenInspectorPreview.45C55C1A" = "0"
+	"currentGroup.45C55C1A" = "asset"
 }
 providers = {
 	performance = {

@@ -2,15 +2,18 @@ using autumn_berries_mix.EC;
 using autumn_berries_mix.Grid;
 using UnityEngine;
 
-public sealed class Chainy : Entity, IOnTileSelected
+namespace autumn_berries_mix.Units
 {
-    public void OnSelected()
+    public sealed class Chainy : Entity, IOnTileSelected
     {
-        Debug.Log("select");
-    }
+        public void OnSelected()
+        {
+            Debug.Log("select");
+        }
 
-    public void OnDeselected()
-    {
-        Debug.Log("deselect");
+        public void OnDeselected()
+        {
+            Debug.Log("deselect");
+        }
     }
 }

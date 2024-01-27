@@ -1,15 +1,12 @@
-using Zenject;
-
-namespace autumn_berries_mix.Source.CodeBase.ChainyActions
+namespace autumn_berries_mix.Units
 {
-    public class Movement : GameplayAction 
+    public class Movement : UnitAbility 
     {
-        [Inject]
-        private void Construct(Chainy chainy)
+        public Movement(Unit owner) : base(owner)
         {
             
         }
-        
+
         public override void Use()
         {
             
