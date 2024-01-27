@@ -10,13 +10,13 @@ namespace autumn_berries_mix.EC
         public UnitAbility[] GetActionsPull;
 
         public Vector3 Position3 => transform.position;
-        public Vector2 Position2 => new Vector2(transform.position.x, transform.position.y);
+        public Vector2Int Position2Int => new Vector2Int((int)transform.position.x, (int)transform.position.y);
         public Quaternion Rotation => transform.rotation;
         
         protected void InitComponentsMaster()
             => Master = new ComponentsMaster(this);
 
-        protected virtual void Awake()
+        public virtual void LevelLoaded()
             => InitComponentsMaster(); 
         
         protected virtual void OnEnable()

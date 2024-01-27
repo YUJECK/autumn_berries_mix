@@ -9,7 +9,7 @@ namespace autumn_berries_mix.Grid.Inputs
 
         public static event Action OnNodeSelected;
 
-        public static bool NodeSelected
+        public static bool TileChosen
             => Inputs.Gameplay.SelectNode.IsPressed();
 
         static InputsHandler()

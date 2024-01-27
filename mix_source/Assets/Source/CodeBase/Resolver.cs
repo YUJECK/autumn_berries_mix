@@ -1,4 +1,5 @@
 using autumn_berries_mix.Scenes;
+using autumn_berries_mix.Units;
 using UnityEngine;
 using Zenject;
 using Component = autumn_berries_mix.EC.Component;
@@ -29,6 +30,9 @@ namespace autumn_berry_mixВ
 
         public void InjectScene(Scene scene)
             => Inject(scene);
+        
+        public void InjectAbility(UnitAbility ability)
+            => Inject(ability);
 
         private void Inject(object obj)
         {

@@ -28,6 +28,8 @@ namespace autumn_berries_mix.Grid
     
         public GridTile Get(int x, int y)
             => GridData.Get(x, y);
+        public GridTile[] GetConnections(int x, int y)
+            => GridData.GetConnections(x, y);
 
         public TEntity PlaceEntityToEmptyFromPrefab<TEntity>(int x, int y, TEntity prefab)
             where TEntity : Entity

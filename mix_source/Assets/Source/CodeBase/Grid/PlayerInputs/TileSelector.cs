@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using autumn_berries_mix.Grid;
+using autumn_berries_mix.Grid.Inputs;
 using autumn_berries_mix.Scenes;
 using Source.Content;
 using UnityEngine;
@@ -25,9 +26,28 @@ namespace autumn_berries_mix
         {
             _grid = grid;
             _resources = resources;
+
+            foreach (var processor in processors)
+            {
+                PushProcessor(processor);
+            }
             
-            _processors.AddRange(processors);
             Disable();
+        }
+
+        public void PushProcessor(SelectedTileProcessor processor)
+        {
+            if(processor == null)
+                return;
+            
+            _processors.Add(processor);
+        }
+        public void RemoveProcessor(SelectedTileProcessor processor)
+        {
+            if(processor == null)
+                return;
+            
+            _processors.Remove(processor);
         }
 
         public void Enable()
@@ -44,6 +64,14 @@ namespace autumn_berries_mix
         public void Tick()
         {
             Select();
+
+            if (_currentSelected != null && InputsHandler.TileChosen)
+            {
+                for (int i = 0; i < _processors.Count; i++)
+                {
+                    _processors[i].ProcessSelectedTile(_currentSelected);
+                }
+            }
         }
 
         private void Select()
@@ -56,7 +84,10 @@ namespace autumn_berries_mix
             if (nextPosition != mousePosition)
             {
                 var nextSelected = _grid.Get(Mathf.RoundToInt(nextPosition.x), Mathf.RoundToInt(nextPosition.y));
-
+                
+                if(nextSelected == null)
+                    return;
+                
                 if (nextSelected != _currentSelected)
                 {
                     _currentSelected = nextSelected;
@@ -73,13 +104,12 @@ namespace autumn_berries_mix
                         callback.OnSelected();
                         _lastCallback = callback;
                     }
-                        
                 
                     if (_currentSelected != null)
                     {
                         for (int i = 0; i < _processors.Count; i++)
                         {
-                            _processors[i].ProcessTile(_currentSelected);
+                            _processors[i].ProcessPointedTile(_currentSelected);
                         }
                     }
                 }

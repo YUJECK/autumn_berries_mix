@@ -9,6 +9,7 @@ namespace autumn_berries_mix.Grid
     {
         public virtual bool Empty => TileStuff == null;
         public virtual bool Walkable { get; protected set; } = true;
+        public Vector2Int Position => new Vector2Int((int)transform.position.x, (int)transform.position.y);
 
         private readonly List<TileOverlay> overlaysPull = new();
         private readonly Dictionary<string, TileOverlay> overlays = new();

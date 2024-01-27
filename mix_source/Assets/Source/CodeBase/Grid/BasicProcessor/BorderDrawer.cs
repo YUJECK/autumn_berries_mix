@@ -17,7 +17,7 @@ namespace autumn_berries_mix.Grid.BasicProcessor
             borderData = new TileOverlayData("Selected Cell Border", _resources.borderSprite, Vector2.zero, 0);
         }
 
-        public override void ProcessTile(GridTile tile)
+        public override void ProcessPointedTile(GridTile tile)
         {
             if (_prev != null)
             {
@@ -29,6 +29,11 @@ namespace autumn_berries_mix.Grid.BasicProcessor
                 tile.PushOverlay(borderData);
                 _prev = tile;
             }
+        }
+
+        public override void ProcessSelectedTile(GridTile tile)
+        {
+            
         }
     }
 }

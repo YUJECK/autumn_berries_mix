@@ -20,7 +20,7 @@ namespace autumn_berries_mix
         
         private void Start()
         {
-            SceneSwitcher.SwitchTo(new TestLevelScene());
+            SceneSwitcher.SwitchTo(new RottenBerriesLevelScene());
         }
     }
 }

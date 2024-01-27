@@ -7,7 +7,7 @@ namespace Source.Content
 {
     public sealed class CharacterMovement 
     {
-        private readonly TestLevelScene scene;
+        private readonly RottenBerriesLevelScene scene;
         private readonly MovementArrow[] arrows = new MovementArrow[8];
 
         private Sprite borderSprite;
@@ -15,9 +15,9 @@ namespace Source.Content
 
         private GridTile _currentSelected;
 
-        public Vector3 ChainyPosition => scene.Chainy.transform.position;
+        public Vector3 ChainyPosition => new Vector3(0,0,0);
         
-        public CharacterMovement(TestLevelScene scene, GameplayResources resources)
+        public CharacterMovement(RottenBerriesLevelScene scene, GameplayResources resources)
         {
             _resources = resources;
             

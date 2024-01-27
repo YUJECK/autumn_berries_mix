@@ -4,6 +4,6 @@ namespace Source.Content.Tiles
 {
     public sealed class StaticDecorationEntity : Entity
     {
-        
+
     }
 }
