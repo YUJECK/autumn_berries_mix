@@ -61,7 +61,6 @@ namespace Source.Content
                     arrows[i].gameObject.SetActive(false);
                     continue;
                 }
-                    
                 
                 if (scene.GameGrid.Get((int)truePosition.x, (int)truePosition.y).Walkable && scene.GameGrid.Get((int)truePosition.x, (int)truePosition.y).Empty)
                 {

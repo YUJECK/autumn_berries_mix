@@ -76,6 +76,11 @@ namespace autumn_berries_mix.Grid
 
             return null;
         }
+
+        public TileOverlay GetOverlay(string key)
+        {
+            return overlays[key];
+        }
         
         public GridTile PushOverlay(TileOverlayData data)
         {

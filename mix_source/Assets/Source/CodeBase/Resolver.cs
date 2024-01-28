@@ -1,3 +1,5 @@
+using autumn_berries_mix;
+using autumn_berries_mix.Grid;
 using autumn_berries_mix.Scenes;
 using autumn_berries_mix.Units;
 using UnityEngine;
@@ -33,6 +35,9 @@ namespace autumn_berry_mixВ
         
         public void InjectAbility(UnitAbility ability)
             => Inject(ability);
+        
+        public void InjectTileProcessor(SelectedTileProcessor processor)
+            => Inject(processor);
 
         private void Inject(object obj)
         {

@@ -6,7 +6,7 @@ namespace autumn_berries_mix.Source.CodeBase.Scenes
 {
     public abstract class GameplayScene : Scene
     {
-        public abstract PlayerUnit SelectedPlayerUnit { get; protected set; }
+        public abstract PlayerUnit SelectedPlayerUnit { get; }
         public abstract PlayerUnit[] PlayerUnitsPull { get; }
         public abstract EnemyUnit[] EnemyUnitsPull { get; }
         public abstract GameGrid GameGrid { get; }

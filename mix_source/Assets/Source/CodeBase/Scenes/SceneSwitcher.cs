@@ -1,4 +1,5 @@
 using System;
+using autumn_berries_mix.Source.CodeBase.Scenes;
 using autumn_berry_mixВ;
 using Internal.Codebase.Infrastructure.Services.SceneLoader;    
 
@@ -12,6 +13,14 @@ namespace autumn_berries_mix.Scenes
 
         private static readonly AsyncSceneLoader Loader = new();
 
+        public static GameplayScene TryGetGameplayScene()
+        {
+            if(CurrentScene is GameplayScene gameplayScene)
+                return CurrentScene as GameplayScene;
+
+            throw new TypeAccessException("CURRENT SCENE NOT GAMEPLAY");
+        }
+        
         public static void SwitchTo<TScene>(TScene scene)
             where TScene : Scene
         {

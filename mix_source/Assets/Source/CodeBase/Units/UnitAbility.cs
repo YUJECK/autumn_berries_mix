@@ -1,5 +1,3 @@
-using autumn_berries_mix.EC;
-
 namespace autumn_berries_mix.Units
 {
     public abstract class UnitAbility
@@ -14,5 +12,6 @@ namespace autumn_berries_mix.Units
         }
 
         public abstract bool Use();
+        public virtual void Tick() {}
     }
 }

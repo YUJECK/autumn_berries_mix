@@ -22,10 +22,26 @@ namespace autumn_berries_mix.EC
         protected virtual void OnEnable()
             => InitComponentsMaster(); 
         
-        protected virtual void Update()
-            => Master.UpdateAll();
+        private void Update()
+        {
+            Master.UpdateAll();
+            OnUpdate();
+        }
+
+        protected virtual void OnUpdate()
+        {
+            
+        }
 
         protected virtual void OnDestroy()
-            => Master.DisposeAll();
+        {
+            Master.DisposeAll();
+            OnDestroyed();
+        }
+
+        protected virtual void OnDestroyed()
+        {
+            
+        }
     }
 }

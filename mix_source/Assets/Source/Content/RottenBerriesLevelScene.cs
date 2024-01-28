@@ -15,12 +15,13 @@ namespace Source.Content
         public override PlayerUnit[] PlayerUnitsPull => _playerUnitsPull.ToArray();
         public override EnemyUnit[] EnemyUnitsPull => _enemyUnitsPull.ToArray();
 
-        public override PlayerUnit SelectedPlayerUnit { get; protected set; }
+        public override PlayerUnit SelectedPlayerUnit => _playerUnitSelector.PlayerUnit;
         public override GameGrid GameGrid => Map.Grid;
         public GameplayMap Map { get; protected set; }
         
         private TileSelector _tileSelector;
         private GameplayResources _resources;
+        private PlayerUnitSelector _playerUnitSelector;
 
         private readonly List<PlayerUnit> _playerUnitsPull = new();
         private readonly List<EnemyUnit> _enemyUnitsPull = new();
@@ -39,25 +40,28 @@ namespace Source.Content
         public override Camera GetCamera()
             => _main;
 
-        public override void Tick()
-        {
-            _tileSelector.Tick();
-        }
-
         public override void Load()
         {
             Map = GameObject
                 .Instantiate(Resources.Load<GameplayMap>(AssetsHelper.GameplayMap)); 
             
             LoadMapData();
+
+            _playerUnitSelector = new PlayerUnitSelector();
             
             _tileSelector = new TileSelector(GameGrid, _resources, 
                     new BorderDrawer(_resources), 
-                                    new PlayerUnitsAbilitiesProcessor(this));
+                                    new PlayerUnitsAbilitiesProcessor(this),
+                                    _playerUnitSelector);
             
             _tileSelector.Enable();
             
             Map.FinishLoading();
+        }
+
+        public override void Tick()
+        {
+            _tileSelector?.Tick();
         }
 
         private void LoadMapData()

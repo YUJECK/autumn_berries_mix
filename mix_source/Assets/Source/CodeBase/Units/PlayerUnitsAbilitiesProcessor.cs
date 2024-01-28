@@ -20,36 +20,35 @@ namespace autumn_berries_mix.Units
 
         private void ProcessTileWithFlag(GridTile tile, bool flag)
         {
-            foreach (var unit in _scene.PlayerUnitsPull)
+            if(_scene.SelectedPlayerUnit == null)
+                return;
+            
+            if (_scene.SelectedPlayerUnit.SelectedNonTypedAbility is not PlayerAbility ability)
+                return;
+            
+            ability.OnTilePointed(tile, flag);
+
+            if (tile.Empty)
             {
-                foreach (var ability in unit.PlayerAbilitiesPull)
+                ability.OnEmptyTilePointed(tile, flag);
+            }
+
+            if (tile.TileStuff == null) return;
+            
+            ability.OnEntityPointed(tile.TileStuff, flag);
+
+            if (tile.TileStuff.TryGetComponent(out Unit unitOnTile))
+            {
+                ability.OnUnitPointed(unitOnTile, flag);
+
+                switch (unitOnTile)
                 {
-                    ability.OnTilePointed(tile, flag);
-
-                    if (tile.Empty)
-                    {
-                        ability.OnEmptyTilePointed(tile, flag);
-                    }
-
-                    if (tile.TileStuff != null)
-                    {
-                        ability.OnEntityPointed(tile.TileStuff, flag);
-
-                        if (tile.TileStuff.TryGetComponent(out Unit unitOnTile))
-                        {
-                            ability.OnUnitPointed(unitOnTile, flag);
-
-                            switch (unitOnTile)
-                            {
-                                case PlayerUnit playerUnit:
-                                    ability.OnPlayerUnitPointed(playerUnit, flag);
-                                    break;
-                                case EnemyUnit enemyUnit:
-                                    ability.OnEnemyUnitPointed(enemyUnit, flag);
-                                    break;
-                            }
-                        }
-                    }
+                    case PlayerUnit playerUnit:
+                        ability.OnPlayerUnitPointed(playerUnit, flag);
+                        break;
+                    case EnemyUnit enemyUnit:
+                        ability.OnEnemyUnitPointed(enemyUnit, flag);
+                        break;
                 }
             }
         }

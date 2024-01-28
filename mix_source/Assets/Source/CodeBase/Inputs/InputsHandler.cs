@@ -1,4 +1,5 @@
 using System;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace autumn_berries_mix.Grid.Inputs
@@ -10,7 +11,7 @@ namespace autumn_berries_mix.Grid.Inputs
         public static event Action OnNodeSelected;
 
         public static bool TileChosen
-            => Inputs.Gameplay.SelectNode.IsPressed();
+            => Inputs.Gameplay.SelectNode.WasPerformedThisFrame() && !EventSystem.current.IsPointerOverGameObject();
 
         static InputsHandler()
         {

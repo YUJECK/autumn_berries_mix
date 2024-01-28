@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using autumn_berries_mix.Grid;
 using autumn_berries_mix.Grid.Inputs;
 using autumn_berries_mix.Scenes;
+using autumn_berry_mixВ;
 using Source.Content;
 using UnityEngine;
 using Zenject;
@@ -40,6 +41,7 @@ namespace autumn_berries_mix
             if(processor == null)
                 return;
             
+            Resolver.Instance().InjectTileProcessor(processor);
             _processors.Add(processor);
         }
         public void RemoveProcessor(SelectedTileProcessor processor)

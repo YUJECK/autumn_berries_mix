@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bbaa54a4eafcf7941813d1c0450d5258
+guid: 692d7c60acc43934ab50b8e03cd1813f
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Arrow
+  - name: HealthBar
     originalName: 
-    pivot: {x: 0.5, y: -0.06666667}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 22
-      height: 30
-    spriteID: 867cbfc2af9af964ca49e76dbe236362
+      width: 72
+      height: 36
+    spriteID: 6e2f1dcea9d155c4dae024c7ed1c58fa
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -144,24 +144,24 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 321346949
-    name: Arrow
+    guid: -1756920691
+    name: HealthBar
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Arrow
+    - name: HealthBar
       frameIndex: 0
       cellRect:
-        x: 13
-        y: 2
-        width: 22
-        height: 30
-      spriteId: 867cbfc2af9af964ca49e76dbe236362
+        x: 0
+        y: 0
+        width: 72
+        height: 36
+      spriteId: 6e2f1dcea9d155c4dae024c7ed1c58fa
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 48, y: 48}
+  canvasSize: {x: 72, y: 36}

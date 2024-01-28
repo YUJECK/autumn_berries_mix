@@ -11,6 +11,7 @@ namespace autumn_berries_mix.Units
         }
         
         public virtual void OnAbilitySelected() {}
+        public virtual void OnAbilityDeselected() {}
         public virtual void OnEmptyTilePointed(GridTile tile, bool withClick) {}
         public virtual void OnTilePointed(GridTile tile, bool withClick) {}
         public virtual void OnEnemyUnitPointed(EnemyUnit enemyUnit, bool withClick) {}

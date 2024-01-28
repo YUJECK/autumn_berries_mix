@@ -7,7 +7,7 @@ namespace autumn_berries_mix.Grid
         private readonly SpriteRenderer _spriteRenderer;
         private readonly GridTile _owner;
         
-        private TileOverlayData _data;
+        public TileOverlayData Data { get; private set; }
 
         public bool Enabled => Transform.gameObject.activeSelf;
         private Transform Transform => _spriteRenderer.transform;
@@ -24,19 +24,19 @@ namespace autumn_berries_mix.Grid
 
         public virtual void ApplyData(TileOverlayData data)
         {
-            _data = data;
-            _spriteRenderer.sprite = _data.Sprite;
-            _spriteRenderer.sortingOrder = _data.OrderInLayer;
+            Data = data;
+            _spriteRenderer.sprite = Data.Sprite;
+            _spriteRenderer.sortingOrder = Data.OrderInLayer;
             
             Transform.position = _owner.transform.position;
-            Transform.position += _data.Offset;
-            Transform.rotation = Quaternion.Euler(0,0, _data.Rotation);
+            Transform.position += Data.Offset;
+            Transform.rotation = Quaternion.Euler(0,0, Data.Rotation);
 
             _spriteRenderer.gameObject.name = ParseOverlayName(data);
             
             Enable();
         }
-
+        
         public void Enable()
         {
             if(!_spriteRenderer.gameObject.activeSelf)
