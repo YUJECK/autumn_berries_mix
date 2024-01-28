@@ -1,5 +1,5 @@
-using System;
 using autumn_berries_mix.Units;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,12 +7,18 @@ namespace autumn_berries_mix
 {
     public class HealthBar : MonoBehaviour
     {
-        private Image healthBar;
+        [SerializeField] private Image healthBar;
+        [SerializeField] private TMP_Text label;
+        
         private UnitHealth connectedHealth;
 
-        public void Connect(UnitHealth health)
+        public void Connect(Unit unit)
         {
-            this.connectedHealth = health;
+            connectedHealth = unit.UnitHealth;
+            label.text = unit.UnitName;
+
+            connectedHealth = unit.UnitHealth;
+            
             UpdateHealthBar();
         }
 

@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace autumn_berries_mix.Units
 {
+    [RequireComponent(typeof(UnitHealth))]
     public sealed class Chainy : PlayerUnit
     {
         [SerializeField] private MovementAbilityConfig movementConfig;
@@ -21,7 +22,7 @@ namespace autumn_berries_mix.Units
 
         protected override void OnUnitAwake()
         {
-            
+            UnitHealth = GetComponent<UnitHealth>();
         }
 
         protected override void OnUpdate()

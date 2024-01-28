@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4093398428705858026}
   - component: {fileID: 6966971707807615108}
   - component: {fileID: 4716318792450669505}
+  - component: {fileID: 2256332666690025269}
   m_Layer: 0
   m_Name: Chainy
   m_TagString: Untagged
@@ -122,5 +123,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3348db1795564e5f4a3932747edcab41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <UnitName>k__BackingField: Chainy
   movementConfig: {fileID: 11400000, guid: 02867692851e8584eadb1c1732688f63, type: 2}
   attackConfig: {fileID: 11400000, guid: 21dedcb7b56a20546a7665b21346fe60, type: 2}
+--- !u!114 &2256332666690025269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3802552868183015541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10efbede65074361a1b7a306108fb409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <CurrentHealth>k__BackingField: 100
+  <MaximumHealth>k__BackingField: 100

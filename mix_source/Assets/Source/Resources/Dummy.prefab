@@ -100,6 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10efbede65074361a1b7a306108fb409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CurrentHealth>k__BackingField: 100
+  <MaximumHealth>k__BackingField: 100
 --- !u!114 &7789195109834626085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,3 +114,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a0abdb5a7569641b6233273b93f0f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <UnitName>k__BackingField: Dummy

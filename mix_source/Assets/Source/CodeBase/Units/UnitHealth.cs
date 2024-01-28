@@ -5,8 +5,8 @@ namespace autumn_berries_mix.Units
 {
     public class UnitHealth : MonoBehaviour
     {
-        [field: SerializeField] public int CurrentHealth { get; private set; }
-        [field: SerializeField] public int MaximumHealth { get; private set; }
+        [field: SerializeField] public int CurrentHealth { get; private set; } = 100;
+        [field: SerializeField] public int MaximumHealth { get; private set; } = 100;
 
         public Action<int, int> OnHealthChanged; //current/maximum
 

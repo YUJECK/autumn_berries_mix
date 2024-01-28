@@ -25,6 +25,7 @@ namespace autumn_berries_mix.Scenes
             where TScene : Scene
         {
             CurrentScene?.Dispose();
+            CurrentScene = scene;
             
             Loader.LoadScene(scene.GetSceneName(), () => Complete(scene));
         }
@@ -35,8 +36,7 @@ namespace autumn_berries_mix.Scenes
             Resolver.Instance().InjectScene(scene);
 
             Scene prevScene = CurrentScene;
-            
-            CurrentScene = scene;
+
             scene.Load();
 
             OnSceneLoaded?.Invoke(prevScene, scene);

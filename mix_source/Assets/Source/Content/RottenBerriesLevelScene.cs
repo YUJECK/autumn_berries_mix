@@ -57,6 +57,8 @@ namespace Source.Content
             _tileSelector.Enable();
             
             Map.FinishLoading();
+            
+            InvokeOnConfiguringFinished();
         }
 
         public override void Tick()

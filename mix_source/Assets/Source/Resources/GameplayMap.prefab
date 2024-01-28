@@ -28,7 +28,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3201991511914123761}
   m_Father: {fileID: 601659854572455142}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &338976543171554332
@@ -971,7 +972,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 7.0555553
+  orthographic size: 4.236111
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1175,7 +1176,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3201991511914123761}
   - {fileID: 3313609464021245106}
   - {fileID: 8310596445722710217}
   - {fileID: 6648182888180952425}
@@ -12362,11 +12362,11 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 601659854572455142}
+    m_TransformParent: {fileID: 8310596445722710217}
     m_Modifications:
     - target: {fileID: 110014571241325782, guid: 1361df5c7d13f084889f9dc58e180a82, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.918974
+      value: 6.9189744
       objectReference: {fileID: 0}
     - target: {fileID: 110014571241325782, guid: 1361df5c7d13f084889f9dc58e180a82, type: 3}
       propertyPath: m_LocalPosition.y
