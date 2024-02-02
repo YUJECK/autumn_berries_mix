@@ -3,7 +3,7 @@ using autumn_berries_mix.Grid;
 using autumn_berries_mix.Units;
 using UnityEngine;
 
-namespace autumn_berries_mix.Source.CodeBase
+namespace autumn_berries_mix.PrefabTags.CodeBase
 {
     public class GameplayMap : MonoBehaviour
     {

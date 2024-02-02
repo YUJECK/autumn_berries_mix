@@ -6,9 +6,11 @@ namespace autumn_berries_mix.Units
     {
         public UnitAbility SelectedAbility { get; protected set; }
         public override UnitAbility[] NonTypedAbilitiesPull => abilitiesPull.ToArray();
-        public PlayerAbility[] PlayerAbilitiesPull => abilitiesPull.ToArray();
+        public EnemyAbility[] EnemyAbilitiesPull => abilitiesPull.ToArray();
 
-        private readonly List<PlayerAbility> abilitiesPull = new();
-        
+        protected readonly List<EnemyAbility> abilitiesPull = new();
+
+        public abstract void OnUnitTurn();
+
     }
 }

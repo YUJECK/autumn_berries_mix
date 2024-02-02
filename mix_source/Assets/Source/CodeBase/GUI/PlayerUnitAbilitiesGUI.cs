@@ -1,13 +1,12 @@
-using System;
 using System.Collections.Generic;
 using autumn_berries_mix.Units;
 using UnityEngine;
 
-namespace autumn_berries_mix.Source.CodeBase.GUI
+namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
 {
     public sealed class PlayerUnitAbilitiesGUI : MonoBehaviour
     {
-        private readonly List<AbilityButton> _buttons = new List<AbilityButton>();
+        private readonly List<AbilityButton> _buttons = new();
 
         private PlayerUnit current;
         
@@ -17,6 +16,8 @@ namespace autumn_berries_mix.Source.CodeBase.GUI
             {
                 current = null;
                 DisableAll();
+                
+                return;
             }
             
             current = unit;

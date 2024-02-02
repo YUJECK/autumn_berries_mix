@@ -1,7 +1,7 @@
 using autumn_berries_mix.Scenes;
 using Zenject;
 
-namespace autumn_berries_mix.Source.CodeBase.Scenes
+namespace autumn_berries_mix.PrefabTags.CodeBase.Scenes
 {
     public sealed class SceneSwitcherInstaller : MonoInstaller
     {

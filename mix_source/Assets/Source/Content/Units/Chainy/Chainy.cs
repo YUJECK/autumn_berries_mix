@@ -19,7 +19,7 @@ namespace autumn_berries_mix.Units
             attackConfig.data.Grid = SceneSwitcher.TryGetGameplayScene().GameGrid;
             AbilitiesPull.Add(new ChainsawAttack(this, attackConfig.data));
         }
-
+        
         protected override void OnUnitAwake()
         {
             UnitHealth = GetComponent<UnitHealth>();

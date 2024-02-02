@@ -1,10 +1,10 @@
 using autumn_berries_mix.Scenes;
-using autumn_berries_mix.Source.CodeBase.Scenes;
+using autumn_berries_mix.PrefabTags.CodeBase.Scenes;
 using autumn_berries_mix.Units;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace autumn_berries_mix.Source.CodeBase.GUI
+namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
 {
     [RequireComponent(typeof(Button))]
     [RequireComponent(typeof(Image))]

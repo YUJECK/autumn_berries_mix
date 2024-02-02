@@ -17,11 +17,7 @@ namespace autumn_berries_mix.Units
         {
             _typedData = data;
         }
-
-        public override bool Use()
-        {
-            return false;
-        }
+        
 
         private void DrawMoveArrows()
         {
@@ -35,7 +31,7 @@ namespace autumn_berries_mix.Units
                 float angle = Mathf.Atan2(tile.Position.y - Owner.Position2Int.y, tile.Position.x - Owner.Position2Int.x) 
                     * Mathf.Rad2Deg - 90;
                 
-                tile.PushOverlay(new TileOverlayData(OverlayKey, _typedData.arrowSprite, Vector2.zero, angle));
+                tile.Overlay.PushOverlay(new TileOverlayData(OverlayKey, _typedData.arrowSprite, Vector2.zero, angle));
                 _currentOverlayPull.Add(tile);
             }
         }
@@ -44,7 +40,7 @@ namespace autumn_berries_mix.Units
         {
             foreach (var tile in _currentOverlayPull)
             {
-                tile.RemoveOverlay(OverlayKey);
+                tile.Overlay.RemoveOverlay(OverlayKey);
             }
 
             _currentOverlayPull.Clear();
@@ -62,6 +58,7 @@ namespace autumn_berries_mix.Units
                             .SwapEntities(Owner.Position2Int.x, Owner.Position2Int.y, tile.Position.x, tile.Position.y);
                     
                         DrawMoveArrows();    
+                        Owner.OnUsedAbility(this);
                     }
                 }    
             }

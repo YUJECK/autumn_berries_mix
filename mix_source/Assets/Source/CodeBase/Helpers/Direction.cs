@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace autumn_berries_mix.Source.CodeBase.Helpers
+namespace autumn_berries_mix.Helpers
 { 
     public sealed class Direction
     {

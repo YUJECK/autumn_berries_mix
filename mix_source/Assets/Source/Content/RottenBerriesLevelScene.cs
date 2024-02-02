@@ -2,8 +2,9 @@ using System.Collections.Generic;
 using autumn_berries_mix;
 using autumn_berries_mix.Grid;
 using autumn_berries_mix.Grid.BasicProcessor;
-using autumn_berries_mix.Source.CodeBase;
-using autumn_berries_mix.Source.CodeBase.Scenes;
+using autumn_berries_mix.PrefabTags.CodeBase;
+using autumn_berries_mix.PrefabTags.CodeBase.Scenes;
+using autumn_berries_mix.Turns;
 using autumn_berries_mix.Units;
 using UnityEngine;
 using Zenject;
@@ -42,28 +43,57 @@ namespace Source.Content
 
         public override void Load()
         {
-            Map = GameObject
-                .Instantiate(Resources.Load<GameplayMap>(AssetsHelper.GameplayMap)); 
-            
-            LoadMapData();
+            CreateMap();
 
-            _playerUnitSelector = new PlayerUnitSelector();
+            CreateTurnController();
             
-            _tileSelector = new TileSelector(GameGrid, _resources, 
-                    new BorderDrawer(_resources), 
-                                    new PlayerUnitsAbilitiesProcessor(this),
-                                    _playerUnitSelector);
+            CreateTileSelectorAndProcessors();
             
-            _tileSelector.Enable();
-            
-            Map.FinishLoading();
-            
-            InvokeOnConfiguringFinished();
+            Finish();
         }
 
         public override void Tick()
         {
             _tileSelector?.Tick();
+        }
+
+        public override void Dispose() { }
+
+        private void Finish()
+        {
+            Map.FinishLoading();
+            InvokeOnConfiguringFinished();
+            TurnController.SwitchToNext();
+            _tileSelector.Enable();
+        }
+
+        private void CreateTileSelectorAndProcessors()
+        {
+            _playerUnitSelector = new PlayerUnitSelector();
+
+            var playerUnitsAbilitiesProcessor = new PlayerUnitsAbilitiesProcessor(this);
+            _tileSelector = new TileSelector(GameGrid, _resources, 
+                new BorderDrawer(_resources), 
+                playerUnitsAbilitiesProcessor,
+                _playerUnitSelector);
+            
+            _playerUnitSelector.OnPlayerUnitSelected += Callbacks.SelectPlayerUnit;
+
+            TurnController.RegisterAddiction(playerUnitsAbilitiesProcessor);
+            TurnController.RegisterAddiction(_playerUnitSelector);
+        }
+
+        private void CreateTurnController()
+        {
+            TurnController = new TurnController(this, new PlayerTurn(), new EnemyTurn());
+        }
+
+        private void CreateMap()
+        {
+            Map = GameObject
+                .Instantiate(Resources.Load<GameplayMap>(AssetsHelper.GameplayMap));
+
+            LoadMapData();
         }
 
         private void LoadMapData()
@@ -73,7 +103,5 @@ namespace Source.Content
             _enemyUnitsPull.AddRange(Map.LoadEnemyUnits());
             _main = Map.LoadCamera();
         }
-
-        public override void Dispose() { }
     }
 }

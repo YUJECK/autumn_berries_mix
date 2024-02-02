@@ -17,5 +17,11 @@ namespace autumn_berries_mix
         {
             UnitHealth = GetComponent<UnitHealth>();
         }
+
+        public override void OnUnitTurn()
+        {
+            
+            OnUsedAbility(null);
+        }
     }
 }

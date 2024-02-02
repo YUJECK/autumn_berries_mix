@@ -1,5 +1,5 @@
 using System;
-using autumn_berries_mix.Source.CodeBase.Scenes;
+using autumn_berries_mix.PrefabTags.CodeBase.Scenes;
 using autumn_berry_mixВ;
 using Internal.Codebase.Infrastructure.Services.SceneLoader;    
 

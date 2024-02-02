@@ -1,4 +1,4 @@
-using autumn_berries_mix.Source.CodeBase.GUI;
+using autumn_berries_mix.PrefabTags.CodeBase.GUI;
 using autumn_berry_mixВ;
 using UnityEngine;
 using Zenject;

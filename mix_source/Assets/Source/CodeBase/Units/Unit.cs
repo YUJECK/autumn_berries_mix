@@ -1,3 +1,4 @@
+using System;
 using autumn_berries_mix.EC;
 using UnityEngine;
 
@@ -6,12 +7,14 @@ namespace autumn_berries_mix.Units
     public abstract class Unit : Entity
     {
         [field: SerializeField] public string UnitName { get; protected set; }
+
+        public event Action<UnitAbility> UsedAbility; 
         
         public abstract UnitAbility[] NonTypedAbilitiesPull { get; }
         public abstract UnitHealth UnitHealth { get; protected set; }
         
         protected abstract void ConfigureAbilities();
-        protected abstract void OnUnitAwake();
+        protected virtual void OnUnitAwake() {}
 
         protected void UpdateAbilities()
         {
@@ -27,6 +30,11 @@ namespace autumn_berries_mix.Units
             
             ConfigureAbilities();
             OnUnitAwake();
+        }
+
+        public virtual void OnUsedAbility(UnitAbility ability)
+        {
+            UsedAbility?.Invoke(ability);
         }
     }
 }

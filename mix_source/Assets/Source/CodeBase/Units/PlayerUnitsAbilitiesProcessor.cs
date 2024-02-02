@@ -1,9 +1,10 @@
 using autumn_berries_mix.Grid;
-using autumn_berries_mix.Source.CodeBase.Scenes;
+using autumn_berries_mix.PrefabTags.CodeBase.Scenes;
+using autumn_berries_mix.Turns;
 
 namespace autumn_berries_mix.Units
 {
-    public class PlayerUnitsAbilitiesProcessor : SelectedTileProcessor
+    public class PlayerUnitsAbilitiesProcessor : SelectedTileProcessor, ITurnAddicted
     {
         private GameplayScene _scene;
 
@@ -51,6 +52,19 @@ namespace autumn_berries_mix.Units
                         break;
                 }
             }
+        }
+
+        public void OnPlayerTurn(PlayerTurn turn)
+        {
+            
+        }
+
+        public void OnEnemyTurn(EnemyTurn turn)
+        {
+            if(_scene.SelectedPlayerUnit == null)
+                return;
+                
+            _scene.SelectedPlayerUnit.SelectedAbility.OnAbilityDeselected();
         }
     }
 }

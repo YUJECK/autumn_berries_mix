@@ -1,8 +1,9 @@
+using autumn_berries_mix.Helpers;
 using UnityEngine;
 
 namespace autumn_berries_mix.Units
 {
-    [CreateAssetMenu(menuName = "AbilitiesConfigs/ChainsawAttackConfig")]
+    [CreateAssetMenu(menuName = AssetMenuHelper.Abilities + nameof(ChainsawAttackConfig))]
     public class ChainsawAttackConfig : AbilityConfig
     {
         public ChainsawAttackData data;

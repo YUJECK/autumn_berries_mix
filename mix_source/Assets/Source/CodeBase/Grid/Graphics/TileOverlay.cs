@@ -25,7 +25,6 @@ namespace autumn_berries_mix.Grid
         public virtual void ApplyData(TileOverlayData data)
         {
             Data = data;
-            _spriteRenderer.sprite = Data.Sprite;
             _spriteRenderer.sortingOrder = Data.OrderInLayer;
             
             Transform.position = _owner.transform.position;

@@ -96,14 +96,14 @@ namespace autumn_berries_mix
                     
                     if (_lastCallback != null)
                     {
-                        _lastCallback.OnDeselected();
+                        _lastCallback.OnUnpointed();
                         _lastCallback = null;
                     }
 
                     if (_currentSelected.TileStuff != null &&
                         _currentSelected.TileStuff.TryGetComponent(out IOnTileSelected callback))
                     {
-                        callback.OnSelected();
+                        callback.OnPointed();
                         _lastCallback = callback;
                     }
                 
