@@ -7,6 +7,6 @@ namespace Source.Content
     public sealed class GameplayResources : ScriptableObject
     {
         public Sprite borderSprite;
-        public MovementArrow MovementArrowPrefab;
+        public Sprite lockedBorderSprite;
     }
 }

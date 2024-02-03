@@ -5,14 +5,14 @@ using UnityEngine;
 
 namespace autumn_berries_mix.Units
 {
-    public class Movement : PlayerAbility
+    public class PlayerMovement : PlayerAbility
     {
         private readonly MovementAbilityData _typedData;
         private readonly List<GridTile> _currentOverlayPull = new();
 
         private const string OverlayKey = "MoveArrow";
         
-        public Movement(Unit owner, MovementAbilityData data) 
+        public PlayerMovement(Unit owner, MovementAbilityData data) 
             : base(owner, data)
         {
             _typedData = data;
@@ -31,7 +31,7 @@ namespace autumn_berries_mix.Units
                 float angle = Mathf.Atan2(tile.Position.y - Owner.Position2Int.y, tile.Position.x - Owner.Position2Int.x) 
                     * Mathf.Rad2Deg - 90;
                 
-                tile.Overlay.PushOverlay(new TileOverlayData(OverlayKey, _typedData.arrowSprite, Vector2.zero, angle));
+                tile.Overlay.PushPrefabOverlay(new PrefabTileOverlayData(_typedData.ArrowPrefab, OverlayKey, Vector2.zero, angle));
                 _currentOverlayPull.Add(tile);
             }
         }
@@ -40,7 +40,7 @@ namespace autumn_berries_mix.Units
         {
             foreach (var tile in _currentOverlayPull)
             {
-                tile.Overlay.RemoveOverlay(OverlayKey);
+                tile.Overlay.RemovePrefabOverlay(OverlayKey);
             }
 
             _currentOverlayPull.Clear();

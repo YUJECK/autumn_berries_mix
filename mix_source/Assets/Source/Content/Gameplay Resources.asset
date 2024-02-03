@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Gameplay Resources
   m_EditorClassIdentifier: 
   borderSprite: {fileID: 21300000, guid: 99a7b2400a7cfbf46b340a71345de811, type: 3}
-  MovementArrowPrefab: {fileID: 6468861691388924733, guid: 5f877296a44d2874191cbdf564c03011, type: 3}
+  lockedBorderSprite: {fileID: 21300000, guid: 2737085be94a4e84b94b9ee3349101ea, type: 3}

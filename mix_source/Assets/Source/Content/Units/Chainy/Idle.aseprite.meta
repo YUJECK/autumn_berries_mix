@@ -123,15 +123,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Idle
     originalName: 
-    pivot: {x: 0.5074627, y: 0}
+    pivot: {x: 0.5070422, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 67
-      height: 28
+      width: 71
+      height: 30
     spriteID: 07f72930132a8d4a49af7c9cb5a9883d
     spriteBone: []
     spriteOutline: []
@@ -140,7 +140,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 2, y: 0}
+    uvTransform: {x: 4, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -154,9 +154,9 @@ ScriptedImporter:
       frameIndex: 0
       cellRect:
         x: 0
-        y: -4
-        width: 72
-        height: 36
+        y: 0
+        width: 71
+        height: 30
       spriteId: 07f72930132a8d4a49af7c9cb5a9883d
     linkedCells: []
     parentIndex: -1

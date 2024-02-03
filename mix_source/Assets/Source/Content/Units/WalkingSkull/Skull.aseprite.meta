@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 57e1afcf30158e04885fa5d347fefefb
+guid: 964aa78484bec11459635bc0c4b16f32
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Clowny
+  - name: Skull
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.47826084, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 36
-      height: 36
-    spriteID: 248d94206c703444aaf9097d6f0e480f
+      width: 23
+      height: 33
+    spriteID: 3f6fd940403e7cc459fe3af7201b4e94
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -141,23 +141,51 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: Skull_Frame_1
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 35
+      y: 4
+      width: 22
+      height: 31
+    spriteID: 6e2c8c3650702fd4684e108989a80a75
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 35, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 334743522
-    name: Clowny
+    guid: 1520891557
+    name: Skull
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Clowny
+    - name: Skull_Frame_0
       frameIndex: 0
       cellRect:
-        x: 0
+        x: 7
         y: 0
-        width: 36
-        height: 36
-      spriteId: 248d94206c703444aaf9097d6f0e480f
+        width: 23
+        height: 33
+      spriteId: 3f6fd940403e7cc459fe3af7201b4e94
+    - name: Skull_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 7
+        y: 0
+        width: 22
+        height: 31
+      spriteId: 6e2c8c3650702fd4684e108989a80a75
     linkedCells: []
     parentIndex: -1
   platformSettings: []

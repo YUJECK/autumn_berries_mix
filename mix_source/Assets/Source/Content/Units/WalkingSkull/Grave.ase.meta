@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 57e1afcf30158e04885fa5d347fefefb
+guid: 0564d159654f4464fb370f8b3b88ff47
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Clowny
+  - name: Grave
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.52173907, y: -0.0625}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 36
-      height: 36
-    spriteID: 248d94206c703444aaf9097d6f0e480f
+      width: 23
+      height: 32
+    spriteID: 299467fd326fcf048906fce89b33289e
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -144,20 +144,20 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 334743522
-    name: Clowny
+    guid: -1644365457
+    name: Grave
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Clowny
+    - name: Grave
       frameIndex: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 36
-        height: 36
-      spriteId: 248d94206c703444aaf9097d6f0e480f
+        x: 6
+        y: 2
+        width: 23
+        height: 32
+      spriteId: 299467fd326fcf048906fce89b33289e
     linkedCells: []
     parentIndex: -1
   platformSettings: []

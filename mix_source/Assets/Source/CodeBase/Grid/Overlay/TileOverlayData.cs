@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace autumn_berries_mix.Grid
 {
-    public sealed class TileOverlayData
+    public class TileOverlayData
     {
         public readonly string Name;
         public Vector3 Offset;

@@ -11,8 +11,8 @@ namespace autumn_berries_mix
 {
     public class TileSelector : ITickable
     {
-        private GridTile _currentSelected;
-        private IOnTileSelected _lastCallback;
+        private GridTile _currentCell;
+        private IOnTileSelected _currentCallback;
         
         private Scene currentScene;
         private Vector2 mousePosition;
@@ -20,7 +20,7 @@ namespace autumn_berries_mix
         private readonly GameGrid _grid;
         private readonly GameplayResources _resources;
 
-        private readonly List<SelectedTileProcessor> _processors = new List<SelectedTileProcessor>();
+        private readonly List<SelectedTileProcessor> _processors = new();
         private bool disabled;
 
         public TileSelector(GameGrid grid, GameplayResources resources, params SelectedTileProcessor[] processors)
@@ -44,6 +44,7 @@ namespace autumn_berries_mix
             Resolver.Instance().InjectTileProcessor(processor);
             _processors.Add(processor);
         }
+        
         public void RemoveProcessor(SelectedTileProcessor processor)
         {
             if(processor == null)
@@ -67,11 +68,11 @@ namespace autumn_berries_mix
         {
             Select();
 
-            if (_currentSelected != null && InputsHandler.TileChosen)
+            if (_currentCell != null && InputsHandler.TileChosen)
             {
                 for (int i = 0; i < _processors.Count; i++)
                 {
-                    _processors[i].ProcessSelectedTile(_currentSelected);
+                    _processors[i].ProcessSelectedTile(_currentCell);
                 }
             }
         }
@@ -81,43 +82,86 @@ namespace autumn_berries_mix
             if (disabled)
                 return;
             
-            Vector2 nextPosition = currentScene.GetCamera().ScreenToWorldPoint(Input.mousePosition);
+            Vector2 nextPosition = GetMousePosition();
 
-            if (nextPosition != mousePosition)
+            if (HasMouseMoved(nextPosition))
             {
-                var nextSelected = _grid.Get(Mathf.RoundToInt(nextPosition.x), Mathf.RoundToInt(nextPosition.y));
+                var nextSelected = GetPointedCell(nextPosition);
                 
                 if(nextSelected == null)
                     return;
                 
-                if (nextSelected != _currentSelected)
+                if (IsPointingToNewCell(nextSelected))
                 {
-                    _currentSelected = nextSelected;
+                    UnpointCurrentCell();
                     
-                    if (_lastCallback != null)
-                    {
-                        _lastCallback.OnUnpointed();
-                        _lastCallback = null;
-                    }
+                    _currentCell = nextSelected;
 
-                    if (_currentSelected.TileStuff != null &&
-                        _currentSelected.TileStuff.TryGetComponent(out IOnTileSelected callback))
-                    {
-                        callback.OnPointed();
-                        _lastCallback = callback;
-                    }
+                    PointCurrentCell();
                 
-                    if (_currentSelected != null)
-                    {
-                        for (int i = 0; i < _processors.Count; i++)
-                        {
-                            _processors[i].ProcessPointedTile(_currentSelected);
-                        }
-                    }
+                    ProcessCurrentCell();
                 }
             }
 
             mousePosition = nextPosition;
+        }
+
+        private Vector3 GetMousePosition()
+        {
+            return currentScene.GetCamera().ScreenToWorldPoint(Input.mousePosition);
+        }
+
+        private void ProcessCurrentCell()
+        {
+            if (_currentCell != null)
+            {
+                for (int i = 0; i < _processors.Count; i++)
+                {
+                    _processors[i].ProcessPointedTile(_currentCell);
+                }
+            }
+        }
+
+        private void PointCurrentCell()
+        {
+            _currentCell.OnPointed();
+            
+            if (_currentCell.TileStuff != null &&
+                _currentCell.TileStuff.TryGetComponent(out IOnTileSelected callback))
+            {
+                callback.OnPointed();
+                _currentCallback = callback;
+            }
+        }
+
+        private void UnpointCurrentCell()
+        {
+            if (_currentCell != null)
+            {
+                _currentCell.OnUnpointed();
+                _currentCell = null;
+            }
+
+            if (_currentCallback != null)
+            {
+                _currentCallback.OnUnpointed();
+                _currentCallback = null;
+            }
+        }
+
+        private bool IsPointingToNewCell(GridTile nextSelected)
+        {
+            return nextSelected != _currentCell;
+        }
+
+        private GridTile GetPointedCell(Vector2 nextPosition)
+        {
+            return _grid.Get(Mathf.RoundToInt(nextPosition.x), Mathf.RoundToInt(nextPosition.y));
+        }
+
+        private bool HasMouseMoved(Vector2 nextPosition)
+        {
+            return nextPosition != mousePosition;
         }
     }
 }

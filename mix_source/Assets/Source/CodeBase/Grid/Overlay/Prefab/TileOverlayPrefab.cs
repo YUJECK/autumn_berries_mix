@@ -3,14 +3,23 @@ using UnityEngine;
 
 namespace autumn_berries_mix.Grid
 {
-    public class TileOverlayPrefab : Entity
+    public class TileOverlayPrefab : Entity, IOnTileSelected
     {
         public SpriteRenderer SpriteRenderer { get; private set; }
-        public TileOverlayData Data { get; private set; }
 
         private void Awake()
         {
             SpriteRenderer = GetComponent<SpriteRenderer>();
+        }
+
+        public virtual void OnPointed()
+        {
+            
+        }
+
+        public virtual void OnUnpointed()
+        {
+            
         }
     }
 }

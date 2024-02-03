@@ -16,5 +16,4 @@ MonoBehaviour:
     Name: Movement
     Icon: {fileID: 21300000, guid: 49c7c2ddb09606a4988de52582ae7fe0, type: 3}
     Grid: {fileID: 0}
-    arrowSprite: {fileID: 21300000, guid: 3fb8d5a044be0b442ae1b5ef0a6e5f38, type: 3}
-  arrowSprite: {fileID: 21300000, guid: 3fb8d5a044be0b442ae1b5ef0a6e5f38, type: 3}
+    ArrowPrefab: {fileID: 6468861691388924733, guid: 5f877296a44d2874191cbdf564c03011, type: 3}
