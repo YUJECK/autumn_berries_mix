@@ -4,6 +4,7 @@ using autumn_berries_mix.Grid;
 using autumn_berries_mix.Grid.BasicProcessor;
 using autumn_berries_mix.PrefabTags.CodeBase;
 using autumn_berries_mix.PrefabTags.CodeBase.Scenes;
+using autumn_berries_mix.Sounds;
 using autumn_berries_mix.Turns;
 using autumn_berries_mix.Units;
 using UnityEngine;
@@ -65,6 +66,8 @@ namespace Source.Content
             InvokeOnConfiguringFinished();
             TurnController.SwitchToNext();
             _tileSelector.Enable();
+            
+            AudioPlayer.Play("MainTheme");
         }
 
         private void CreateTileSelectorAndProcessors()

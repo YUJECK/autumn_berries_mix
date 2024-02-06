@@ -12,7 +12,7 @@ namespace autumn_berries_mix.Units
         }
         public override void OnUnitPointed(Unit unit, bool withClick)
         {
-            if (Data.Grid.GetConnections(Owner.Position2Int.x, Owner.Position2Int.y).Contains(Data.Grid.Get(unit.Position2Int.x, unit.Position2Int.y)))
+            if (Owner.Grid.GetConnections(Owner.Position2Int.x, Owner.Position2Int.y).Contains(Owner.Grid.Get(unit.Position2Int.x, unit.Position2Int.y)))
             {
                 if (withClick)
                 {

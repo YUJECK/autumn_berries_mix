@@ -1,5 +1,6 @@
 using System;
 using autumn_berries_mix.EC;
+using autumn_berries_mix.Grid;
 using UnityEngine;
 
 namespace autumn_berries_mix.Units
@@ -15,7 +16,7 @@ namespace autumn_berries_mix.Units
         
         protected abstract void ConfigureAbilities();
         protected virtual void OnUnitAwake() {}
-
+        
         protected void UpdateAbilities()
         {
             foreach (var ability in NonTypedAbilitiesPull)

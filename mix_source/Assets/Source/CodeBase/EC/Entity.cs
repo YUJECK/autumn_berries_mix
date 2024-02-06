@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using autumn_berries_mix.Units;
+using autumn_berries_mix.Grid;
 using UnityEngine;
 
 namespace autumn_berries_mix.EC
@@ -8,12 +8,17 @@ namespace autumn_berries_mix.EC
     public abstract class Entity : MonoBehaviour
     {
         public ComponentsMaster Master { get; private set; }
-
-        public UnitAbility[] GetActionsPull;
+        public GameGrid Grid { get; private set; }
 
         public Vector3 Position3 => transform.position;
         public Vector2Int Position2Int => new Vector2Int((int)transform.position.x, (int)transform.position.y);
         public Quaternion Rotation => transform.rotation;
+
+        public void InitGrid(GameGrid grid)
+        {
+            if (Grid == null)
+                Grid = grid;
+        }
         
         protected void InitComponentsMaster()
             => Master = new ComponentsMaster(this);

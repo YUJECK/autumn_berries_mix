@@ -6,12 +6,14 @@ namespace autumn_berries_mix.Grid
 {
     public class GridData
     {
-        private readonly Dictionary<Vector2Int, GridTile> _tiles;
+        private readonly Dictionary<Vector2Int, GridTile> _tiles = new();
+        private readonly List<Entity> _entities = new();
         private Dictionary<Vector2Int, List<GridTile>> _connections;
-    
+        
+        public Entity[] Entities => _entities.ToArray();
+        
         public GridData(GridTile[] tiles, Entity[] entities)
         {
-            _tiles = new Dictionary<Vector2Int, GridTile>();
             CreateFrom(tiles, entities);
         }
 
@@ -34,7 +36,7 @@ namespace autumn_berries_mix.Grid
         {
             Vector2Int position = new Vector2Int(x, y);
 
-            return _connections[new Vector2Int(x, y)].ToArray();
+            return _connections[position].ToArray();
         }
 
         public void Edit(int x, int y, GridTile tile)
@@ -46,10 +48,13 @@ namespace autumn_berries_mix.Grid
             
             if (_tiles.TryGetValue(position, out var prevTile))
             {
-                foreach (var connectedTile in _connections[position])
+                if (_connections != null)
                 {
-                    _connections[connectedTile.Position].Remove(prevTile);
-                    _connections[connectedTile.Position].Add(tile);
+                    foreach (var connectedTile in _connections[position])
+                    {
+                        _connections[connectedTile.Position].Remove(prevTile);
+                        _connections[connectedTile.Position].Add(tile);
+                    }    
                 }
                 
                 GameObject.Destroy(prevTile.gameObject);
@@ -95,6 +100,7 @@ namespace autumn_berries_mix.Grid
                 if (Get(x, y) != null)
                 {
                     Get(x, y).Place(entities[i]);
+                    _entities.Add(entities[i]);
                 }
                 else
                 {

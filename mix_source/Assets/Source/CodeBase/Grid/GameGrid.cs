@@ -14,6 +14,11 @@ namespace autumn_berries_mix.Grid
             if (GridData == null)
             {
                 GridData = new GridData(GetChildrenTiles(), GetChildrenEntities());
+
+                foreach (var entity in GridData.Entities)
+                {
+                    entity.InitGrid(this);
+                }
             }
         }
 
@@ -59,6 +64,9 @@ namespace autumn_berries_mix.Grid
 
         public void SwapEntities(int x1, int y1, int x2, int y2)
         {
+            if(x1 == x2 && y1 == y2)
+                return;
+            
             Entity first = GridData.Get(x1, y1).TileStuff;
             
             GridData.Get(x1, y1).Place(GridData.Get(x2, y2).TileStuff);

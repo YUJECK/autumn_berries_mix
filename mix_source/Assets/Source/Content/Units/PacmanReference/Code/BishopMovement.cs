@@ -1,3 +1,4 @@
+using System;
 using autumn_berries_mix.Units;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -13,16 +14,44 @@ namespace autumn_berries_mix
             _typedData = data;
         }
 
-        public async void Move(Vector2Int direction)
+        public async void Move(Vector2Int direction, Action onStarted = null, Action onFinished = null)
         {
-            Vector2Int startPosition = Owner.Position2Int;
+            onStarted?.Invoke();
             
-            for (int i = 0; i < _typedData.range; i++)
+            Vector2Int startPosition = Owner.Position2Int;
+            bool reverse = false;
+            
+            while(Owner.gameObject.activeSelf)
             {
                 int movedX = Owner.Position2Int.x + direction.x;
                 int movedY = Owner.Position2Int.y + direction.y;
 
-                if (!Data.Grid.Get(movedX, movedY).Empty) break;
+                var shotCell = Owner.Grid.Get(movedX, movedY);
+                var nextCell = Owner.Grid.Get(movedX + direction.x, movedY + direction.y);
+
+                PlayerUnit unitToHit = null;
+                
+                if(shotCell == null)
+                    return;
+                
+                if (!shotCell.Empty)
+                {
+                    if (shotCell.TileStuff is PlayerUnit playerUnit)
+                    {
+                        unitToHit = playerUnit;
+
+                        if (!nextCell.Empty && shotCell.TileStuff is not PlayerUnit)
+                            reverse = true;
+                    }
+                    else
+                    {            
+                        Owner.Grid.SwapEntities(startPosition.x, startPosition.y, Owner.Position2Int.x, Owner.Position2Int.y);
+                        Owner.OnUsedAbility(this);
+            
+                        onFinished?.Invoke();
+                        return;
+                    }
+                }
                 
                 while (Owner.transform.position != new Vector3(movedX, movedY, 0))
                 {
@@ -30,11 +59,25 @@ namespace autumn_berries_mix
                         new Vector3(movedX, movedY, 0), _typedData.speed * Time.deltaTime);
                     
                     await UniTask.WaitForFixedUpdate();
+
+                    if (unitToHit != null)
+                    {
+                        unitToHit.UnitHealth.Hit(_typedData.damage);
+                        unitToHit = null;
+                    }
+
+                    if (reverse)
+                    {
+                        Move(direction * -1, onStarted, onFinished);
+                        return;
+                    }
                 }
             }
             
-            Data.Grid.SwapEntities(startPosition.x, startPosition.y, Owner.Position2Int.x, Owner.Position2Int.y);
+            Owner.Grid.SwapEntities(startPosition.x, startPosition.y, Owner.Position2Int.x, Owner.Position2Int.y);
             Owner.OnUsedAbility(this);
+            
+            onFinished?.Invoke();
         }
     }
 }

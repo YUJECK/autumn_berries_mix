@@ -23,7 +23,7 @@ namespace autumn_berries_mix.Units
         {
             ClearArrows();
 
-            foreach (var tile in _typedData.Grid.GetConnections(Owner.Position2Int.x, Owner.Position2Int.y))
+            foreach (var tile in Owner.Grid.GetConnections(Owner.Position2Int.x, Owner.Position2Int.y))
             {
                 if(!tile.Empty || !tile.Walkable)
                     continue;
@@ -50,11 +50,11 @@ namespace autumn_berries_mix.Units
         {
             if (tile.Empty && tile.Walkable)
             {
-                if (_typedData.Grid.GetConnections(Owner.Position2Int.x, Owner.Position2Int.y).Contains(tile))
+                if (Owner.Grid.GetConnections(Owner.Position2Int.x, Owner.Position2Int.y).Contains(tile))
                 {
                     if (withClick)
                     {
-                        _typedData.Grid
+                        Owner.Grid
                             .SwapEntities(Owner.Position2Int.x, Owner.Position2Int.y, tile.Position.x, tile.Position.y);
                     
                         DrawMoveArrows();    

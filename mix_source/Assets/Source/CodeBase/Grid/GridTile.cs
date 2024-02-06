@@ -7,7 +7,7 @@ namespace autumn_berries_mix.Grid
     public class GridTile : MonoBehaviour, IOnTileSelected
     {
         public virtual bool Empty => TileStuff == null;
-        public virtual bool Walkable { get; protected set; } = true;
+        public virtual bool Walkable => Empty;
         public Vector2Int Position => new Vector2Int((int)transform.position.x, (int)transform.position.y);
 
         public TileOverlayController Overlay { get; private set; }

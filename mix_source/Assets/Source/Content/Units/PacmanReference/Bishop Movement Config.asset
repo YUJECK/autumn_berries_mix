@@ -15,6 +15,6 @@ MonoBehaviour:
   Data:
     Name: BishopMovement
     Icon: {fileID: 0}
-    Grid: {fileID: 0}
     range: 3
     speed: 5
+    damage: 10

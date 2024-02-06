@@ -13,10 +13,7 @@ namespace autumn_berries_mix.Units
 
         protected override void ConfigureAbilities()
         {
-            movementConfig.Data.Grid = attackConfig.data.Grid = SceneSwitcher.TryGetGameplayScene().GameGrid;
             AbilitiesPull.Add(new PlayerMovement(this, movementConfig.Data));
-            
-            attackConfig.data.Grid = SceneSwitcher.TryGetGameplayScene().GameGrid;
             AbilitiesPull.Add(new ChainsawAttack(this, attackConfig.data));
         }
         

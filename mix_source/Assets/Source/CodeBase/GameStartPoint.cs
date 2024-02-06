@@ -1,4 +1,5 @@
 using autumn_berries_mix.Scenes;
+using autumn_berries_mix.Sounds;
 using autumn_berry_mixВ;
 using Source.Content;
 using UnityEngine;
@@ -8,6 +9,7 @@ namespace autumn_berries_mix
 {
     public sealed class GameStartPoint: MonoBehaviour
     {
+        public AudioPlayerPreset globalPreset;
         private DiContainer _container;
 
         [Inject]
@@ -20,6 +22,7 @@ namespace autumn_berries_mix
         
         private void Start()
         {
+            AudioPlayer.CreateGlobalFromPreset(globalPreset);
             SceneSwitcher.SwitchTo(new RottenBerriesLevelScene());
         }
     }

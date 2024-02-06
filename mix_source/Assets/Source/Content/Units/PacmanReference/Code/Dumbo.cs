@@ -1,6 +1,7 @@
 using autumn_berries_mix.PrefabTags.CodeBase.Scenes;
 using autumn_berries_mix.Scenes;
 using autumn_berries_mix.Units;
+using autumn_berries_mix;
 using UnityEngine;
 
 namespace autumn_berries_mix
@@ -8,30 +9,30 @@ namespace autumn_berries_mix
     public sealed class Dumbo : EnemyUnit
     {
         [SerializeField] private BishopMovementConfig bishopMovementConfig;
+        [SerializeField] private AbilityData stepData;
+        
         private GameplayScene _scene;
+        private Pathfinder _pathfinder;
 
         public override UnitHealth UnitHealth { get; protected set; }
         
         protected override void ConfigureAbilities()
         {
             _scene = SceneSwitcher.TryGetGameplayScene();
-            bishopMovementConfig.Data.Grid = _scene.GameGrid;
-            abilitiesPull.Add(new BishopMovement(this, bishopMovementConfig.Data));
+            _pathfinder = new Pathfinder(Grid);
+            
+           PushAbility(new BishopMovement(this, bishopMovementConfig.Data));
+           PushAbility(new StepMovement(this, stepData));
         }
 
         public override void OnUnitTurn()
         {
-            (abilitiesPull[0] as BishopMovement).Move(GetDirection());
+            GetAbility<BishopMovement>().Move(GetFistStepToPlayer());
         }
-
-        private Vector2Int GetDirection()
+        
+        private Vector2Int GetFistStepToPlayer()
         {
-            Vector2Int direction = _scene.FindNearestPlayerUnit(this).Position2Int - Position2Int;
-
-            direction.x = Mathf.Clamp(direction.x, -1, 1);
-            direction.y = Mathf.Clamp(direction.y, -1, 1);
-
-            return direction;
+            return _pathfinder.FindPath(Position2Int, _scene.FindNearestPlayerUnit(this).Position2Int)[0] - Position2Int;
         }
     }
 }

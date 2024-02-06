@@ -8,5 +8,6 @@ namespace autumn_berries_mix
     {
         public int range;
         public float speed;
+        public int damage;
     }
 }
