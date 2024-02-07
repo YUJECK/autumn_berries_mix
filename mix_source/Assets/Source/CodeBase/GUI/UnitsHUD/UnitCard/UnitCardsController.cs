@@ -30,14 +30,13 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
 
         private void OnUnitSelected(PlayerUnit unit)
         {
-            if (unit == null && lastSelected != null)
+            if(unit == null)
+                return;
+            
+            if (lastSelected != null)
             {
                 lastSelected.Deselect();
-                return;
             }
-            
-            if(_currentScene.SelectedPlayerUnit != null)
-                unitToCard[_currentScene.SelectedPlayerUnit].Deselect();
             
             unitToCard[unit].Select();
             lastSelected = unitToCard[unit];

@@ -8,14 +8,14 @@ namespace autumn_berries_mix.Units
 {
     public class PlayerUnitSelector : SelectedTileProcessor, ITurnAddicted
     {
-        private PlayerUnitAbilitiesGUI _gui;
+        private UnitAbilitiesGUIController _guiController;
         public PlayerUnit PlayerUnit { get; private set; }
 
         public event Action<PlayerUnit> OnPlayerUnitSelected; 
 
         [Inject]
-        private void Construct(PlayerUnitAbilitiesGUI gui)
-            => _gui = gui;
+        private void Construct(UnitAbilitiesGUIController guiController)
+            => _guiController = guiController;
 
         public void OnPlayerTurn(PlayerTurn turn) => Enable();
         public void OnEnemyTurn(EnemyTurn turn) => Disable();
@@ -29,7 +29,7 @@ namespace autumn_berries_mix.Units
 
             PlayerUnit = null;
             OnPlayerUnitSelected?.Invoke(null);
-            _gui.OnUnitSelected(null);
+            _guiController.OnUnitSelected(null);
         }
 
         public override void ProcessPointedTile(GridTile tile) { }
@@ -43,7 +43,7 @@ namespace autumn_berries_mix.Units
             {
                 PlayerUnit = playerUnit;
                 
-                _gui.OnUnitSelected(PlayerUnit);
+                _guiController.OnUnitSelected(PlayerUnit);
                 OnPlayerUnitSelected?.Invoke(playerUnit);
             }
             // else

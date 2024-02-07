@@ -1,5 +1,3 @@
-using autumn_berries_mix.Scenes;
-using autumn_berries_mix.PrefabTags.CodeBase.Scenes;
 using autumn_berries_mix.Units;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,10 +8,11 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
     [RequireComponent(typeof(Image))]
     public class AbilityButton : MonoBehaviour
     {
-        private PlayerAbility _currentAbility;
+        private UnitAbility _currentAbility;
         
         private Image _abilityIcon;
         private Button _button;
+        private UnitAbilitiesGUIController _controller;
 
         private void Start()
         {
@@ -28,30 +27,31 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
         {
             gameObject.SetActive(false);   
         }
-        
+
         public void Enable()
         {
             gameObject.SetActive(true);
         }
-        
-        public void UpdateAbilityData(PlayerAbility connectedAbility)
+
+        public void UpdateAbilityData(UnitAbility connectedAbility, UnitAbilitiesGUIController controller)
         {
+            _controller = controller;
+            
             _currentAbility = connectedAbility;
 
-            _abilityIcon.sprite = connectedAbility.Data.Icon;
+            _abilityIcon.sprite = connectedAbility.Data.DefaultIcon;
             gameObject.name = connectedAbility.Data.Name;
         }
-        
+
         public void SelectAbility()
         {
-            if(_currentAbility == null)
-                return;
+            _controller.SelectAbility(_currentAbility, this);
+            _abilityIcon.sprite = _currentAbility.Data.SelectedIcon;
+        }
 
-            PlayerUnit unit = _currentAbility.Owner as PlayerUnit; 
-            unit.SelectedAbility?.OnAbilityDeselected();
-            
-            unit .SelectedNonTypedAbility = _currentAbility;
-            _currentAbility.OnAbilitySelected();
+        public void DeselectAbility()
+        {
+            _abilityIcon.sprite = _currentAbility.Data.DefaultIcon;
         }
     }
 }

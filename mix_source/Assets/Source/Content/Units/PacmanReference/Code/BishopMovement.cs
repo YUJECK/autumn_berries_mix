@@ -40,9 +40,10 @@ namespace autumn_berries_mix
                     {
                         unitToHit = playerUnit;
 
-                        if (!nextCell.Empty && shotCell.TileStuff is not PlayerUnit)
+                        if (!nextCell.Empty && nextCell.TileStuff is not PlayerUnit)
                             reverse = true;
                     }
+                    
                     else
                     {            
                         Owner.Grid.SwapEntities(startPosition.x, startPosition.y, Owner.Position2Int.x, Owner.Position2Int.y);

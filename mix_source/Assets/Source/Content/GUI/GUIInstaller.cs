@@ -12,17 +12,17 @@ namespace autumn_berries_mix
             var instance = SpawnGUI();
             
             Container
-                .Bind<PlayerUnitAbilitiesGUI>()
+                .Bind<UnitAbilitiesGUIController>()
                 .FromInstance(instance)
                 .AsSingle();
             
             Container.Inject(Resolver.Instance());
         }
 
-        private PlayerUnitAbilitiesGUI SpawnGUI()
+        private UnitAbilitiesGUIController SpawnGUI()
         {
             var prefab = Resources.Load<GameObject>("GUI");
-            return Container.InstantiatePrefab(prefab, Vector2.zero, Quaternion.identity, null).GetComponentInChildren<PlayerUnitAbilitiesGUI>();
+            return Container.InstantiatePrefab(prefab, Vector2.zero, Quaternion.identity, null).GetComponentInChildren<UnitAbilitiesGUIController>();
         }
     }
 }

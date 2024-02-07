@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb8b09b7609e4778ba1177e907e293b3, type: 3}
+  m_Name: Gameplay Resources
+  m_EditorClassIdentifier: 
+  borderSprite: {fileID: 21300000, guid: 99a7b2400a7cfbf46b340a71345de811, type: 3}
+  lockedBorderSprite: {fileID: 21300000, guid: 2737085be94a4e84b94b9ee3349101ea, type: 3}

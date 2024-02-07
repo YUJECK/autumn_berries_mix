@@ -124,3 +124,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <UnitName>k__BackingField: Dumbo
   bishopMovementConfig: {fileID: 11400000, guid: bf6aed26c7be8ff41add3bea890cd6b7, type: 2}
+  stepData:
+    Name: 
+    Icon: {fileID: 0}

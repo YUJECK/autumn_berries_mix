@@ -2,6 +2,7 @@ using autumn_berries_mix.PrefabTags.CodeBase.Scenes;
 using autumn_berries_mix.Scenes;
 using autumn_berries_mix.Units;
 using autumn_berries_mix;
+using autumn_berries_mix.Sounds;
 using UnityEngine;
 
 namespace autumn_berries_mix
@@ -27,9 +28,21 @@ namespace autumn_berries_mix
 
         public override void OnUnitTurn()
         {
-            GetAbility<BishopMovement>().Move(GetFistStepToPlayer());
+            GetAbility<BishopMovement>().Move(GetFistStepToPlayer(), PlayMove, StopMove);
         }
-        
+
+        private void StopMove()
+        {
+            GetComponent<Animator>().SetBool("Moving", false);
+            AudioPlayer.Stop("GhostMove");
+        }
+
+        private void PlayMove()
+        {
+            GetComponent<Animator>().SetBool("Moving", true);
+            AudioPlayer.Play("GhostMove");
+        }
+
         private Vector2Int GetFistStepToPlayer()
         {
             return _pathfinder.FindPath(Position2Int, _scene.FindNearestPlayerUnit(this).Position2Int)[0] - Position2Int;
