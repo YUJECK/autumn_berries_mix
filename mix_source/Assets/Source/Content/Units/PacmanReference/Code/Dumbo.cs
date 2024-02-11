@@ -10,7 +10,6 @@ namespace autumn_berries_mix
     public sealed class Dumbo : EnemyUnit
     {
         [SerializeField] private BishopMovementConfig bishopMovementConfig;
-        [SerializeField] private AbilityData stepData;
         
         private GameplayScene _scene;
         private Pathfinder _pathfinder;
@@ -19,16 +18,20 @@ namespace autumn_berries_mix
         
         protected override void ConfigureAbilities()
         {
+            bishopMovementConfig = Instantiate(bishopMovementConfig);
+            
             _scene = SceneSwitcher.TryGetGameplayScene();
             _pathfinder = new Pathfinder(Grid);
             
+            UnitHealth = GetComponent<UnitHealth>();
+            
            PushAbility(new BishopMovement(this, bishopMovementConfig.Data));
-           PushAbility(new StepMovement(this, stepData));
         }
 
         public override void OnUnitTurn()
         {
-            GetAbility<BishopMovement>().Move(GetFistStepToPlayer(), PlayMove, StopMove);
+            GetAbility<BishopMovement>()
+                .Move(GetFistStepToPlayer(), PlayMove, StopMove);
         }
 
         private void StopMove()

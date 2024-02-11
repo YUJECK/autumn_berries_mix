@@ -6,6 +6,8 @@ namespace autumn_berries_mix.Grid
 {
     public class GridData
     {
+        public int TilesCount => _tiles.Count;
+        
         private readonly Dictionary<Vector2Int, GridTile> _tiles = new();
         private readonly List<Entity> _entities = new();
         private Dictionary<Vector2Int, List<GridTile>> _connections;

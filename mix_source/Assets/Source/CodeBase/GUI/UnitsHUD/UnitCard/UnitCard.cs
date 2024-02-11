@@ -8,7 +8,12 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI.UnitsHUD.UnitCard
     public class UnitCard : MonoBehaviour
     {
         [SerializeField] private TMP_Text unitLabel;
-        [SerializeField] private Image selectedPin;
+        
+        [SerializeField] private Sprite defaultSprite;
+        [SerializeField] private Sprite currentSprite;
+        [SerializeField] private Sprite deadSprite;
+        
+        [SerializeField] private Image image;
 
         private Unit connectedUnit;
         
@@ -35,11 +40,11 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI.UnitsHUD.UnitCard
 
         public void Select()
         {
-            selectedPin.gameObject.SetActive(true);
+            image.sprite = currentSprite;
         }
         public void Deselect()
         {
-            selectedPin.gameObject.SetActive(false);
+            image.sprite = defaultSprite;
         }
     }
 }

@@ -16,8 +16,10 @@ namespace autumn_berries_mix.Units
             {
                 if (withClick)
                 {
+                    _typedData.Animator.PlayAttack();
                     unit.UnitHealth.Hit(_typedData.Damage);                  
-                    unit.OnUsedAbility(this);
+                   
+                    Owner.OnUsedAbility(this);
                 }
             }    
         }

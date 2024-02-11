@@ -1,4 +1,6 @@
 using System;
+using autumn_berries_mix.CallbackSystem.Signals;
+using autumn_berries_mix.Gameplay.Signals;
 using autumn_berries_mix.Grid;
 using autumn_berries_mix.PrefabTags.CodeBase.GUI;
 using autumn_berries_mix.Turns;
@@ -6,7 +8,7 @@ using Zenject;
 
 namespace autumn_berries_mix.Units
 {
-    public class PlayerUnitSelector : SelectedTileProcessor, ITurnAddicted
+    public class UnitSelector : SelectedTileProcessor
     {
         private UnitAbilitiesGUIController _guiController;
         public PlayerUnit PlayerUnit { get; private set; }
@@ -16,9 +18,6 @@ namespace autumn_berries_mix.Units
         [Inject]
         private void Construct(UnitAbilitiesGUIController guiController)
             => _guiController = guiController;
-
-        public void OnPlayerTurn(PlayerTurn turn) => Enable();
-        public void OnEnemyTurn(EnemyTurn turn) => Disable();
 
         public override void Disable()
         {
@@ -38,19 +37,20 @@ namespace autumn_berries_mix.Units
         {
             if(tile.TileStuff == null || !Enabled)
                 return;
-            
-            if (tile.TileStuff.TryGetComponent(out PlayerUnit playerUnit))
+
+            if (tile.TileStuff.TryGetComponent(out Unit unit))
             {
-                PlayerUnit = playerUnit;
+                if (unit is PlayerUnit playerUnit)
+                {
+                    if(PlayerUnit != null) PlayerUnit.SelectedAbility?.OnAbilityDeselected();
+                    PlayerUnit = playerUnit;
+                    
+                    _guiController.OnUnitSelected(PlayerUnit);
+                    OnPlayerUnitSelected?.Invoke(playerUnit);
+                }
                 
-                _guiController.OnUnitSelected(PlayerUnit);
-                OnPlayerUnitSelected?.Invoke(playerUnit);
+                SignalManager.PushSignal(new UnitSelectedSignal(unit));
             }
-            // else
-            // {
-            //     PlayerUnit = null;
-            //     _gui.OnUnitSelected(null);
-            // }
         }
     }
 }

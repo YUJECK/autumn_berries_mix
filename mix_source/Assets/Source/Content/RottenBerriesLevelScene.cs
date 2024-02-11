@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using autumn_berries_mix;
+using autumn_berries_mix.Gameplay;
 using autumn_berries_mix.Grid;
 using autumn_berries_mix.Grid.BasicProcessor;
 using autumn_berries_mix.PrefabTags.CodeBase;
 using autumn_berries_mix.PrefabTags.CodeBase.Scenes;
+using autumn_berries_mix.Scenes;
 using autumn_berries_mix.Sounds;
 using autumn_berries_mix.Turns;
 using autumn_berries_mix.Units;
@@ -17,13 +19,16 @@ namespace Source.Content
         public override PlayerUnit[] PlayerUnitsPull => _playerUnitsPull.ToArray();
         public override EnemyUnit[] EnemyUnitsPull => _enemyUnitsPull.ToArray();
 
-        public override PlayerUnit SelectedPlayerUnit => _playerUnitSelector.PlayerUnit;
+        public override PlayerUnit SelectedPlayerUnit => _unitSelector.PlayerUnit;
         public override GameGrid GameGrid => Map.Grid;
+
+        public override GameObjectFabric Fabric { get; protected set; } = new GameObjectFabric();
+
         public GameplayMap Map { get; protected set; }
         
         private TileSelector _tileSelector;
         private GameplayResources _resources;
-        private PlayerUnitSelector _playerUnitSelector;
+        private UnitSelector _unitSelector;
 
         private readonly List<PlayerUnit> _playerUnitsPull = new();
         private readonly List<EnemyUnit> _enemyUnitsPull = new();
@@ -73,18 +78,18 @@ namespace Source.Content
 
         private void CreateTileSelectorAndProcessors()
         {
-            _playerUnitSelector = new PlayerUnitSelector();
+            _unitSelector = new UnitSelector();
 
             var playerUnitsAbilitiesProcessor = new PlayerUnitsAbilitiesProcessor(this);
             _tileSelector = new TileSelector(GameGrid, _resources, 
                 new BorderDrawer(_resources), 
                 playerUnitsAbilitiesProcessor,
-                _playerUnitSelector);
-            
-            _playerUnitSelector.OnPlayerUnitSelected += Callbacks.SelectPlayerUnit;
+                _unitSelector);
 
             TurnController.RegisterAddiction(playerUnitsAbilitiesProcessor);
-            TurnController.RegisterAddiction(_playerUnitSelector);
+            TurnController.RegisterAddiction(_tileSelector);
+            
+            GameplayProcessors.Add(new UnitHealthProcessor(this));
         }
 
         private void CreateTurnController()

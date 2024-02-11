@@ -1,6 +1,6 @@
 using System;
+using System.Collections.Generic;
 using autumn_berries_mix.Grid;
-using autumn_berries_mix.PrefabTags.CodeBase.Inputs;
 using autumn_berries_mix.Scenes;
 using autumn_berries_mix.Turns;
 using autumn_berries_mix.Units;
@@ -16,8 +16,7 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.Scenes
         public abstract GameGrid GameGrid { get; }
 
         public TurnController TurnController { get; protected set; }
-
-        public GameplayCallbacks Callbacks { get; private set; } = new GameplayCallbacks();
+        protected readonly List<GameplayProcessor> GameplayProcessors = new();
 
         public event Action OnConfiguringFinished;
 
@@ -39,6 +38,7 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.Scenes
         
         protected virtual void InvokeOnConfiguringFinished()
         {
+            GameplayProcessors.ForEach((processor) => processor.Start());
             OnConfiguringFinished?.Invoke();
         }
     }

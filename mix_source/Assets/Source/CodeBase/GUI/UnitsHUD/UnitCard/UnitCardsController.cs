@@ -1,21 +1,24 @@
 using System.Collections.Generic;
+using autumn_berries_mix.CallbackSystem.Signals;
+using autumn_berries_mix.Gameplay.Signals;
 using autumn_berries_mix.PrefabTags.CodeBase.GUI.UnitsHUD.UnitCard;
 using autumn_berries_mix.PrefabTags.CodeBase.Scenes;
 using autumn_berries_mix.Scenes;
+using autumn_berries_mix.Turns;
 using autumn_berries_mix.Units;
 using UnityEngine;
 
 namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
 {
-    public sealed class UnitCardsController : MonoBehaviour
+    public sealed class UnitCardsController : MonoBehaviour, ITurnAddicted
     {
         [SerializeField] private Transform playerHealthBarsContainer;
         [SerializeField] private Transform enemyHealthBarsContainer;
         
         private GameplayScene _currentScene;
 
-        private List<UnitCard> playerHealthBars;
-        private List<UnitCard> enemyHealthBars;
+        private List<UnitCard> playerCards;
+        private List<UnitCard> enemyCards;
         
         private readonly Dictionary<Unit, UnitCard> unitToCard = new();
 
@@ -25,45 +28,47 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
         {
             _currentScene = SceneSwitcher.TryGetGameplayScene();
 
-            _currentScene.OnConfiguringFinished += ConfigureBars;
+            _currentScene.OnConfiguringFinished += Initialize;
         }
 
-        private void OnUnitSelected(PlayerUnit unit)
+        private void Initialize()
         {
-            if(unit == null)
-                return;
+            LoadCards();
+            ConnectCardsToUnits();
             
+            _currentScene.TurnController.RegisterAddiction(this);
+            _currentScene.OnConfiguringFinished -= Initialize;
+            SignalManager.SubscribeOnSignal<UnitSelectedSignal>(OnUnitSelected);
+        }
+
+        private void Select(Unit unit)
+        {
             if (lastSelected != null)
             {
                 lastSelected.Deselect();
+            }
+            if (unit == null)
+            {
+                return;
             }
             
             unitToCard[unit].Select();
             lastSelected = unitToCard[unit];
         }
 
-        private void ConfigureBars()
+
+        private void ConnectCardsToUnits()
         {
-            _currentScene.Callbacks.OnPlayerUnitSelected += OnUnitSelected;
-            
-            LoadBars();
-            ConnectBarsToUnits();
-            
-            _currentScene.OnConfiguringFinished -= ConfigureBars;
+            Connect(_currentScene.PlayerUnitsPull, playerCards);
+            Connect(_currentScene.EnemyUnitsPull, enemyCards);
         }
 
-        private void ConnectBarsToUnits()
+        private void LoadCards()
         {
-            Connect(_currentScene.PlayerUnitsPull, playerHealthBars);
-            Connect(_currentScene.EnemyUnitsPull, enemyHealthBars);
+            playerCards = new List<UnitCard>(playerHealthBarsContainer.GetComponentsInChildren<UnitCard>());
+            enemyCards = new List<UnitCard>(enemyHealthBarsContainer.GetComponentsInChildren<UnitCard>());
         }
 
-        private void LoadBars()
-        {
-            playerHealthBars = new List<UnitCard>(playerHealthBarsContainer.GetComponentsInChildren<UnitCard>());
-            enemyHealthBars = new List<UnitCard>(enemyHealthBarsContainer.GetComponentsInChildren<UnitCard>());
-        }
-        
         private void Connect(Unit[] units, List<UnitCard> bars)
         {
             if (bars.Count < units.Length)
@@ -84,6 +89,21 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
                     bars[i].gameObject.SetActive(false);                    
                 }
             }
+        }
+
+        private void OnUnitSelected(UnitSelectedSignal signal)
+        {
+            Select(signal.Unit);
+        }
+
+        public void OnPlayerTurn(PlayerTurn turn)
+        {
+            Select(null);
+        }
+
+        public void OnEnemyTurn(EnemyTurn turn)
+        {
+            Select(turn.CurrentEnemy);
         }
     }
 }

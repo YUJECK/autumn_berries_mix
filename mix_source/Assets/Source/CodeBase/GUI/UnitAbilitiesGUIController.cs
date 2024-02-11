@@ -11,7 +11,12 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
         private AbilityButton lastSelectedButton;
 
         private Unit current;
-        
+
+        private void Start()
+        {
+            _buttons.AddRange(GetComponentsInChildren<AbilityButton>());
+        }
+
         public void OnUnitSelected(PlayerUnit unit)
         {
             if (unit == null)
@@ -71,11 +76,15 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
                 _buttons[i].UpdateAbilityData(current.NonTypedAbilitiesPull[i], this);
                 _buttons[i].Enable();
             }
-        }
 
-        private void Start()
-        {
-            _buttons.AddRange(GetComponentsInChildren<AbilityButton>());
+            if (current is PlayerUnit playerUnit && playerUnit.SelectedAbility != null)
+            {
+                foreach (var button in _buttons)
+                {
+                    if(button.CurrentAbility == playerUnit.SelectedAbility)
+                        button.SelectAbility();
+                }    
+            }
         }
     }
 }

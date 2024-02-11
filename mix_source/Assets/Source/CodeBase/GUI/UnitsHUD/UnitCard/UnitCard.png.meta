@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 510fe7c1f56149e4f8df6303b1e4b383
+guid: 3a1da1133e952d848a6036cb200cfe57
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -97,43 +97,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle_0
+      name: UnitCard_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 36
+        y: 72
+        width: 108
         height: 36
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 54d7a982679db8140800000000000000
-      internalID: 4723107735738678597
+      spriteID: 7cbfbf72058472847827b117d8685142
+      internalID: -1657685979
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_1
+      name: UnitCard_1
       rect:
         serializedVersion: 2
-        x: 36
-        y: 0
-        width: 36
+        x: 0
+        y: 36
+        width: 108
         height: 36
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e596485bbd7608990800000000000000
-      internalID: -7385789195546760866
+      spriteID: ac3ea99699cca0a43bc2d44954830497
+      internalID: -529394823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitCard_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 108
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed724ab71e7e0a243b2e195560e1ec88
+      internalID: -1259143762
       vertices: []
       indices: 
       edges: []
@@ -149,8 +170,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Idle_0: 4723107735738678597
-      Idle_1: -7385789195546760866
+      UnitCard_0: -1657685979
+      UnitCard_1: -529394823
+      UnitCard_2: -1259143762
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

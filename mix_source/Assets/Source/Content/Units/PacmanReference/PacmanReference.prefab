@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8555741774888245270}
   - component: {fileID: 8085371317665997002}
   - component: {fileID: 3461126331158882915}
+  - component: {fileID: 1209981344020996264}
   m_Layer: 0
   m_Name: PacmanReference
   m_TagString: Untagged
@@ -126,4 +127,21 @@ MonoBehaviour:
   bishopMovementConfig: {fileID: 11400000, guid: bf6aed26c7be8ff41add3bea890cd6b7, type: 2}
   stepData:
     Name: 
-    Icon: {fileID: 0}
+    DefaultIcon: {fileID: 0}
+    SelectedIcon: {fileID: 0}
+--- !u!114 &1209981344020996264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3422135078721450219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10efbede65074361a1b7a306108fb409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <CurrentHealth>k__BackingField: 100
+  <MaximumHealth>k__BackingField: 100
+  hitSound: GhostDamaged
+  healSound: 

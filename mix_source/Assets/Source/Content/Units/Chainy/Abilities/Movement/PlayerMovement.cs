@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using autumn_berries_mix.Grid;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace autumn_berries_mix.Units
@@ -11,6 +13,7 @@ namespace autumn_berries_mix.Units
         private readonly List<GridTile> _currentOverlayPull = new();
 
         private const string OverlayKey = "MoveArrow";
+        private bool _currentMoving;
         
         public PlayerMovement(Unit owner, MovementAbilityData data) 
             : base(owner, data)
@@ -52,16 +55,36 @@ namespace autumn_berries_mix.Units
             {
                 if (Owner.Grid.GetConnections(Owner.Position2Int.x, Owner.Position2Int.y).Contains(tile))
                 {
-                    if (withClick)
+                    if (withClick && !_currentMoving)
                     {
-                        Owner.Grid
-                            .SwapEntities(Owner.Position2Int.x, Owner.Position2Int.y, tile.Position.x, tile.Position.y);
-                    
-                        DrawMoveArrows();    
-                        Owner.OnUsedAbility(this);
+                        Move(tile.Position);
                     }
                 }    
             }
+        }
+
+        private async void Move(Vector2Int to, float speed = 8, Action onStarted = null, Action onFinished = null)
+        {
+            _typedData.Animator.PlayWalk();
+            Vector2Int startPosition = Owner.Position2Int;
+            
+            onStarted?.Invoke();
+            
+            while (Owner.transform.position != new Vector3(to.x, to.y, 0))
+            {
+                Owner.transform.position = Vector3.MoveTowards(Owner.transform.position,
+                    new Vector3(to.x, to.y, 0), speed * Time.deltaTime);
+
+                await UniTask.WaitForFixedUpdate();
+            }
+
+            Owner.Grid.ReplaceEntity(Owner, startPosition, Owner.Position2Int);
+            Owner.OnUsedAbility(this);
+            
+            DrawMoveArrows();
+
+            _typedData.Animator.StopWalk();
+            onFinished?.Invoke();
         }
         
         public override void OnAbilitySelected()

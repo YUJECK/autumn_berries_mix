@@ -33,3 +33,18 @@ MonoBehaviour:
     <Looped>k__BackingField: 0
     <Volume>k__BackingField: 1
     <Tags>k__BackingField: 
+  - <Name>k__BackingField: GrassWalk
+    <Clip>k__BackingField: {fileID: 8300000, guid: be68fc15674e8af448d9e8aa622a6504, type: 3}
+    <Looped>k__BackingField: 1
+    <Volume>k__BackingField: 1
+    <Tags>k__BackingField: 
+  - <Name>k__BackingField: Chainsaw
+    <Clip>k__BackingField: {fileID: 8300000, guid: 78c7d394493d900419e98f4eac318755, type: 3}
+    <Looped>k__BackingField: 0
+    <Volume>k__BackingField: 0.66
+    <Tags>k__BackingField: 
+  - <Name>k__BackingField: GhostDamaged
+    <Clip>k__BackingField: {fileID: 8300000, guid: d398b092497af8c4a83823af236241a4, type: 3}
+    <Looped>k__BackingField: 0
+    <Volume>k__BackingField: 0.66
+    <Tags>k__BackingField: 

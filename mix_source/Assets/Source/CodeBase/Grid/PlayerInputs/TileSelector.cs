@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using autumn_berries_mix.Grid;
 using autumn_berries_mix.Grid.Inputs;
 using autumn_berries_mix.Scenes;
+using autumn_berries_mix.Turns;
 using autumn_berry_mixВ;
 using Source.Content;
 using UnityEngine;
@@ -9,7 +10,7 @@ using Zenject;
 
 namespace autumn_berries_mix
 {
-    public class TileSelector : ITickable
+    public class TileSelector : ITickable, ITurnAddicted
     {
         private GridTile _currentCell;
         private IOnTileSelected _currentCallback;
@@ -56,18 +57,32 @@ namespace autumn_berries_mix
         public void Enable()
         {
             currentScene = SceneSwitcher.CurrentScene;
+            
             disabled = false;
+            
+            foreach (var processor in _processors)
+            {
+                processor.Enable();
+            }
         }   
 
         public void Disable()
         {
             disabled = true;
+
+            foreach (var processor in _processors)
+            {
+                processor.Disable();
+            }
         }
 
         public void Tick()
-        {
+        {   
+            if(disabled)
+                return;
+            
             Select();
-
+            
             if (_currentCell != null && InputsHandler.TileChosen)
             {
                 for (int i = 0; i < _processors.Count; i++)
@@ -79,9 +94,6 @@ namespace autumn_berries_mix
 
         private void Select()
         {
-            if (disabled)
-                return;
-            
             Vector2 nextPosition = GetMousePosition();
 
             if (HasMouseMoved(nextPosition))
@@ -162,6 +174,16 @@ namespace autumn_berries_mix
         private bool HasMouseMoved(Vector2 nextPosition)
         {
             return nextPosition != mousePosition;
+        }
+
+        public void OnPlayerTurn(PlayerTurn turn)
+        {
+            Enable();
+        }
+
+        public void OnEnemyTurn(EnemyTurn turn)
+        {
+            Disable();
         }
     }
 }

@@ -6,6 +6,7 @@ namespace autumn_berries_mix.Turns
 {
     public class EnemyTurn : Turn
     {
+        public EnemyUnit CurrentEnemy => CurrentScene.EnemyUnitsPull[currentEnemy];
         private int currentEnemy = 0;
 
         private Action onCompletedCached;

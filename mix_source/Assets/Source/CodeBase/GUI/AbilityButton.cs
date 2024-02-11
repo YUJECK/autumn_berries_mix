@@ -8,8 +8,8 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
     [RequireComponent(typeof(Image))]
     public class AbilityButton : MonoBehaviour
     {
-        private UnitAbility _currentAbility;
-        
+        public UnitAbility CurrentAbility { get; private set; }
+
         private Image _abilityIcon;
         private Button _button;
         private UnitAbilitiesGUIController _controller;
@@ -37,7 +37,7 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
         {
             _controller = controller;
             
-            _currentAbility = connectedAbility;
+            CurrentAbility = connectedAbility;
 
             _abilityIcon.sprite = connectedAbility.Data.DefaultIcon;
             gameObject.name = connectedAbility.Data.Name;
@@ -45,13 +45,13 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
 
         public void SelectAbility()
         {
-            _controller.SelectAbility(_currentAbility, this);
-            _abilityIcon.sprite = _currentAbility.Data.SelectedIcon;
+            _controller.SelectAbility(CurrentAbility, this);
+            _abilityIcon.sprite = CurrentAbility.Data.SelectedIcon;
         }
 
         public void DeselectAbility()
         {
-            _abilityIcon.sprite = _currentAbility.Data.DefaultIcon;
+            _abilityIcon.sprite = CurrentAbility.Data.DefaultIcon;
         }
     }
 }

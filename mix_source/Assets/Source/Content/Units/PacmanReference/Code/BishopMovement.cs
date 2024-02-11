@@ -1,4 +1,5 @@
 using System;
+using autumn_berries_mix.Grid;
 using autumn_berries_mix.Units;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -19,66 +20,64 @@ namespace autumn_berries_mix
             onStarted?.Invoke();
             
             Vector2Int startPosition = Owner.Position2Int;
-            bool reverse = false;
-            
-            while(Owner.gameObject.activeSelf)
-            {
-                int movedX = Owner.Position2Int.x + direction.x;
-                int movedY = Owner.Position2Int.y + direction.y;
 
-                var shotCell = Owner.Grid.Get(movedX, movedY);
-                var nextCell = Owner.Grid.Get(movedX + direction.x, movedY + direction.y);
+            for (int i = 0; i < Owner.Grid.TilesCount; i++)
+            {
+                Vector2Int movedPosition = Owner.Position2Int + direction;
+                
+                GridTile toTile = Owner.Grid.Get(movedPosition);
+                GridTile nextTile = Owner.Grid.Get(movedPosition + direction);
 
                 PlayerUnit unitToHit = null;
                 
-                if(shotCell == null)
-                    return;
+                if(toTile == null)
+                    Finish();
                 
-                if (!shotCell.Empty)
+                if (!toTile.Empty && toTile.TileStuff is PlayerUnit playerUnit)
                 {
-                    if (shotCell.TileStuff is PlayerUnit playerUnit)
-                    {
-                        unitToHit = playerUnit;
+                    unitToHit = playerUnit;
 
-                        if (!nextCell.Empty && nextCell.TileStuff is not PlayerUnit)
-                            reverse = true;
-                    }
-                    
-                    else
-                    {            
-                        Owner.Grid.SwapEntities(startPosition.x, startPosition.y, Owner.Position2Int.x, Owner.Position2Int.y);
-                        Owner.OnUsedAbility(this);
-            
-                        onFinished?.Invoke();
-                        return;
+                    if ((!nextTile.Empty && nextTile.TileStuff is not PlayerUnit) || !nextTile.Walkable)
+                    {
+                        direction *= -1;
+                        
+                        Owner.Grid.ReplaceEntity(Owner, startPosition, Owner.Position2Int);
+                        startPosition = Owner.Position2Int;
                     }
                 }
                 
-                while (Owner.transform.position != new Vector3(movedX, movedY, 0))
+                else if (!toTile.Empty || !toTile.Walkable)
+                {
+                    Finish();
+                    return;
+                }
+                
+                while (Owner.transform.position != new Vector3(movedPosition.x, movedPosition.y, 0))
                 {
                     Owner.transform.position = Vector3.MoveTowards(Owner.transform.position, 
-                        new Vector3(movedX, movedY, 0), _typedData.speed * Time.deltaTime);
+                        new Vector3(movedPosition.x, movedPosition.y, 0), _typedData.speed * Time.deltaTime);
                     
                     await UniTask.WaitForFixedUpdate();
-
-                    if (unitToHit != null)
-                    {
-                        unitToHit.UnitHealth.Hit(_typedData.damage);
-                        unitToHit = null;
-                    }
-
-                    if (reverse)
-                    {
-                        Move(direction * -1, onStarted, onFinished);
-                        return;
-                    }
                 }
+
+                if (unitToHit != null)
+                {
+                    unitToHit.UnitHealth.Hit(_typedData.damage);
+                    unitToHit = null;
+                }
+                    
             }
+
+            Finish();
+            return;
             
-            Owner.Grid.SwapEntities(startPosition.x, startPosition.y, Owner.Position2Int.x, Owner.Position2Int.y);
-            Owner.OnUsedAbility(this);
+            void Finish()
+            {                    
+                Owner.Grid.ReplaceEntity(Owner, startPosition, Owner.Position2Int);
+                Owner.OnUsedAbility(this);
             
-            onFinished?.Invoke();
+                onFinished?.Invoke();
+            }
         }
     }
 }

@@ -19,6 +19,7 @@ namespace autumn_berries_mix.Units
         
         protected void UpdateAbilities()
         {
+            
             foreach (var ability in NonTypedAbilitiesPull)
             {
                 ability.Tick();

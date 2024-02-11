@@ -7,6 +7,7 @@ namespace autumn_berries_mix.Grid
     [Serializable]
     public class GameGrid : MonoBehaviour
     {
+        public int TilesCount => GridData.TilesCount;
         private GridData GridData { get; set; }
 
         private void Awake()
@@ -31,8 +32,12 @@ namespace autumn_berries_mix.Grid
             return GridData.Get<TCell>(x, y);
         }
     
+        public GridTile Get(Vector2Int pos)
+            => GridData.Get(pos.x, pos.y);
+        
         public GridTile Get(int x, int y)
             => GridData.Get(x, y);
+        
         public GridTile[] GetConnections(int x, int y)
             => GridData.GetConnections(x, y);
 
@@ -73,6 +78,24 @@ namespace autumn_berries_mix.Grid
             GridData.Get(x2, y2).Place(first);
         }
 
+        public void ReplaceEntity(Entity entity, Vector2Int to)
+            => ReplaceEntity(entity, entity.Position2Int, to);
+
+        public void ReplaceEntity(Entity entity, Vector2Int from, Vector2Int to)
+        {
+            int x1 = from.x;
+            int y1 = from.y;
+
+            int x2 = to.x;
+            int y2 = to.y;
+            
+            if(!Get(x2, y2).Empty)
+                return;
+
+            GridData.Get(x2, y2).Place(entity);
+            GridData.Get(x1, y1).Place(null);
+        }
+        
         public void ClearTile(int x, int y)
         {
             if (!IsTileEmpty(x, y))

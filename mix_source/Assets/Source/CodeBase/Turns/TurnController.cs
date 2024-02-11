@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using autumn_berries_mix.PrefabTags.CodeBase.Scenes;
+using autumn_berries_mix.Units;
 
 namespace autumn_berries_mix.Turns
 {
@@ -13,13 +14,8 @@ namespace autumn_berries_mix.Turns
         private int currentTurn = -1;
 
         private readonly GameplayScene currentScene;
-        private readonly List<ITurnAddicted> _turnAddicted = new List<ITurnAddicted>(); 
+        private readonly List<ITurnAddicted> _turnAddicted = new List<ITurnAddicted>();
 
-        public void RegisterAddiction(ITurnAddicted addicted)
-        {
-            _turnAddicted.Add(addicted);
-        }
-        
         public TurnController(GameplayScene scene, params Turn[] turns)
         {
             this.turns.AddRange(turns);
@@ -30,6 +26,12 @@ namespace autumn_berries_mix.Turns
                 turn.Initialize(currentScene);
             }
         }
+
+        public void RegisterAddiction(ITurnAddicted addicted)
+        {
+            _turnAddicted.Add(addicted);
+        }
+
         public void SwitchToNext()
         {
             if(currentTurn > 0 && !CurrentTurn.Completed)
