@@ -1,7 +1,7 @@
 using autumn_berries_mix.PrefabTags.CodeBase.Scenes;
 using autumn_berries_mix.Scenes;
 using autumn_berries_mix.Units;
-using autumn_berries_mix;
+using autumn_berries_mix.Helpers;
 using autumn_berries_mix.Sounds;
 using UnityEngine;
 
@@ -15,17 +15,21 @@ namespace autumn_berries_mix
         private Pathfinder _pathfinder;
 
         public override UnitHealth UnitHealth { get; protected set; }
-        
+
+        protected override void ConfigureComponents()
+        {
+            UnitHealth = GetComponent<UnitHealth>();
+            _pathfinder = new Pathfinder(Grid);
+            Master.Add(new EntityFlipper());
+        }
+
         protected override void ConfigureAbilities()
         {
             bishopMovementConfig = Instantiate(bishopMovementConfig);
             
             _scene = SceneSwitcher.TryGetGameplayScene();
-            _pathfinder = new Pathfinder(Grid);
             
-            UnitHealth = GetComponent<UnitHealth>();
-            
-           PushAbility(new BishopMovement(this, bishopMovementConfig.Data));
+            PushAbility(new BishopMovement(this, bishopMovementConfig.Data));
         }
 
         public override void OnUnitTurn()

@@ -1,6 +1,5 @@
 using System;
 using autumn_berries_mix.EC;
-using autumn_berries_mix.Grid;
 using UnityEngine;
 
 namespace autumn_berries_mix.Units
@@ -19,14 +18,13 @@ namespace autumn_berries_mix.Units
         
         protected void UpdateAbilities()
         {
-            
             foreach (var ability in NonTypedAbilitiesPull)
             {
                 ability.Tick();
             }
         }
         
-        public override void LevelLoaded()
+        public sealed override void LevelLoaded()
         {
             base.LevelLoaded();
             

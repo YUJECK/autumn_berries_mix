@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using autumn_berries_mix.Grid;
+using autumn_berries_mix.Helpers;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -14,11 +15,14 @@ namespace autumn_berries_mix.Units
 
         private const string OverlayKey = "MoveArrow";
         private bool _currentMoving;
+
+        private EntityFlipper _flipper;
         
         public PlayerMovement(Unit owner, MovementAbilityData data) 
             : base(owner, data)
         {
             _typedData = data;
+            _flipper = Owner.Master.Get<EntityFlipper>();
         }
         
 
@@ -69,6 +73,7 @@ namespace autumn_berries_mix.Units
             Vector2Int startPosition = Owner.Position2Int;
             
             onStarted?.Invoke();
+            _flipper.FlipToDirection(to.x - startPosition.x);
             
             while (Owner.transform.position != new Vector3(to.x, to.y, 0))
             {
@@ -80,6 +85,7 @@ namespace autumn_berries_mix.Units
 
             Owner.Grid.ReplaceEntity(Owner, startPosition, Owner.Position2Int);
             Owner.OnUsedAbility(this);
+            
             
             DrawMoveArrows();
 

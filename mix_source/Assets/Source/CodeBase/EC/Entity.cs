@@ -19,16 +19,28 @@ namespace autumn_berries_mix.EC
             if (Grid == null)
                 Grid = grid;
         }
-        
-        protected void InitComponentsMaster()
+
+        private void InitComponentsMaster()
             => Master = new ComponentsMaster(this);
 
+        protected virtual void ConfigureComponents() { }
         public virtual void LevelLoaded()
-            => InitComponentsMaster(); 
-        
-        protected virtual void OnEnable()
-            => InitComponentsMaster(); 
-        
+        {
+            InitComponentsMaster();
+            ConfigureComponents();
+        }
+
+        protected void OnEnable()
+        {
+            if (Master != null)
+            {
+                return;
+            }
+            
+            InitComponentsMaster();
+            ConfigureComponents();
+        }
+
         private void Update()
         {
             Master.UpdateAll();

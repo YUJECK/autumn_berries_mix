@@ -1,3 +1,4 @@
+using autumn_berries_mix.Helpers;
 using UnityEngine;
 
 namespace autumn_berries_mix.Units
@@ -12,6 +13,11 @@ namespace autumn_berries_mix.Units
         private ChainyAnimator _animator;
         
         public override UnitHealth UnitHealth { get; protected set; }
+
+        protected override void ConfigureComponents()
+        {
+            Master.Add(new EntityFlipper());
+        }
 
         protected override void ConfigureAbilities()
         {

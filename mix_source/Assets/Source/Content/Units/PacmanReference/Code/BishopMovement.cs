@@ -3,16 +3,20 @@ using autumn_berries_mix.Units;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using System;
+using System.Threading.Tasks;
+using autumn_berries_mix.Helpers;
 
 namespace autumn_berries_mix
 {
     public sealed class BishopMovement : EnemyAbility
     {
         private readonly BishopMovementData _typedData;
+        private EntityFlipper _flipper;
 
         public BishopMovement(Unit owner, BishopMovementData data) : base(owner, data)
         {
             _typedData = data;
+            _flipper = Owner.Master.Get<EntityFlipper>();
         }
 
         public async void Move(Vector2Int direction, Action onStarted = null, Action onFinished = null)
@@ -51,13 +55,8 @@ namespace autumn_berries_mix
                     return;
                 }
                 
-                while (Owner.transform.position != new Vector3(movedPosition.x, movedPosition.y, 0))
-                {
-                    Owner.transform.position = Vector3.MoveTowards(Owner.transform.position, 
-                        new Vector3(movedPosition.x, movedPosition.y, 0), _typedData.speed * Time.deltaTime);
-                    
-                    await UniTask.WaitForFixedUpdate();
-                }
+                await MoveTo(movedPosition);
+                _flipper.FlipToDirection(direction.x);
 
                 if (unitToHit != null)
                 {
@@ -74,6 +73,17 @@ namespace autumn_berries_mix
                 Owner.OnUsedAbility(this);
             
                 onFinished?.Invoke();
+            }
+        }
+
+        private async Task MoveTo(Vector2Int movedPosition)
+        {
+            while (Owner.transform.position != new Vector3(movedPosition.x, movedPosition.y, 0))
+            {
+                Owner.transform.position = Vector3.MoveTowards(Owner.transform.position, 
+                    new Vector3(movedPosition.x, movedPosition.y, 0), _typedData.speed * Time.deltaTime);
+                    
+                await UniTask.WaitForFixedUpdate();
             }
         }
 
