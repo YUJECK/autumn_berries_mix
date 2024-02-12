@@ -1,8 +1,8 @@
-using System;
 using autumn_berries_mix.Grid;
 using autumn_berries_mix.Units;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using System;
 
 namespace autumn_berries_mix
 {
@@ -33,20 +33,19 @@ namespace autumn_berries_mix
                 if(toTile == null)
                     Finish();
                 
-                if (!toTile.Empty && toTile.TileStuff is PlayerUnit playerUnit)
+                if (IsPlayerUnit(toTile, out var playerUnit))
                 {
                     unitToHit = playerUnit;
 
                     if ((!nextTile.Empty && nextTile.TileStuff is not PlayerUnit) || !nextTile.Walkable)
                     {
                         direction *= -1;
-                        
+
                         Owner.Grid.ReplaceEntity(Owner, startPosition, Owner.Position2Int);
                         startPosition = Owner.Position2Int;
                     }
                 }
-                
-                else if (!toTile.Empty || !toTile.Walkable)
+                else if (!CanMoveToTile(toTile))
                 {
                     Finish();
                     return;
@@ -63,9 +62,7 @@ namespace autumn_berries_mix
                 if (unitToHit != null)
                 {
                     unitToHit.UnitHealth.Hit(_typedData.damage);
-                    unitToHit = null;
                 }
-                    
             }
 
             Finish();
@@ -79,5 +76,20 @@ namespace autumn_berries_mix
                 onFinished?.Invoke();
             }
         }
+
+        private static bool IsPlayerUnit(GridTile toTile, out PlayerUnit playerUnit)
+        {
+            playerUnit = null;
+            
+            if (!toTile.Empty && toTile.TileStuff is PlayerUnit unit)
+            {
+                playerUnit = unit;
+            }
+            
+            return playerUnit != null;
+        }
+
+        private bool CanMoveToTile(GridTile toTile)
+            => toTile.Empty || toTile.TileStuff == Owner && toTile.Walkable;
     }
 }
