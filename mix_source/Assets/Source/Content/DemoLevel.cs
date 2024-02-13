@@ -14,7 +14,7 @@ using Zenject;
 
 namespace Source.Content
 {
-    public sealed class RottenBerriesLevelScene : GameplayScene
+    public sealed class DemoLevel : GameplayScene
     {
         public override PlayerUnit[] PlayerUnitsPull => _playerUnitsPull.ToArray();
         public override EnemyUnit[] EnemyUnitsPull => _enemyUnitsPull.ToArray();

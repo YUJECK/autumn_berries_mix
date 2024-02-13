@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using autumn_berries_mix.Gameplay.Signals;
 using autumn_berries_mix.CallbackSystem.Signals;
 using autumn_berries_mix.Sounds;
@@ -14,7 +16,11 @@ namespace autumn_berries_mix.Units
         [field: SerializeField] public int MaximumHealth { get; private set; } = 100;
 
         [SerializeField] private string hitSound;
+        [SerializeField] private Color hitColor;
         [SerializeField] private string healSound;
+        [SerializeField] private Color healColor;
+
+        private Coroutine _coloringRoutine;
         
         public Unit Owner { get; private set; }
         
@@ -38,8 +44,20 @@ namespace autumn_berries_mix.Units
             
             if(hitSound != "")
                 AudioPlayer.Play(hitSound);
+            
+            if(_coloringRoutine != null)
+                StopCoroutine(_coloringRoutine);
+
+            _coloringRoutine = StartCoroutine(SetColor(hitColor));
         }
-        
+
+        private IEnumerator SetColor(Color color)
+        {
+            GetComponent<SpriteRenderer>().color = color;
+            yield return new WaitForSeconds(0.3f);
+            GetComponent<SpriteRenderer>().color = Color.white;
+        }
+
         public void Heal(int points)
         {
             CurrentHealth += points;
@@ -52,6 +70,11 @@ namespace autumn_berries_mix.Units
  
             if(healSound != "")
                 AudioPlayer.Play(healSound);
+            
+            if(_coloringRoutine != null)
+                StopCoroutine(_coloringRoutine);
+
+            _coloringRoutine = StartCoroutine(SetColor(healColor));
         }
 
         public void Die()

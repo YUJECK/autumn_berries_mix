@@ -125,10 +125,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <UnitName>k__BackingField: Dumbo
   bishopMovementConfig: {fileID: 11400000, guid: bf6aed26c7be8ff41add3bea890cd6b7, type: 2}
-  stepData:
-    Name: 
-    DefaultIcon: {fileID: 0}
-    SelectedIcon: {fileID: 0}
 --- !u!114 &1209981344020996264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,4 +140,6 @@ MonoBehaviour:
   <CurrentHealth>k__BackingField: 100
   <MaximumHealth>k__BackingField: 100
   hitSound: GhostDamaged
+  hitColor: {r: 0.9622642, g: 0.19517623, b: 0.34606835, a: 0}
   healSound: 
+  healColor: {r: 0.3832962, g: 0.8301887, b: 0.37201852, a: 1}

@@ -207,8 +207,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Chainy
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ad93e268b890cdc458f103946f5fa9bf, type: 2}
-  m_sharedMaterial: {fileID: 6138343388477846608, guid: ad93e268b890cdc458f103946f5fa9bf, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7f1117a14b054984aa5f8d788550244d, type: 2}
+  m_sharedMaterial: {fileID: 7073145007255127874, guid: 7f1117a14b054984aa5f8d788550244d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -270,7 +270,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 13.736572, y: 11.402495, z: 23.106512, w: 0.65615845}
+  m_margin: {x: 13.736572, y: 7.6053987, z: 23.106512, w: -7.083949}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

@@ -23,7 +23,7 @@ namespace autumn_berries_mix
         private void Start()
         {
             AudioPlayer.CreateGlobalFromPreset(globalPreset);
-            SceneSwitcher.SwitchTo(new RottenBerriesLevelScene());
+            SceneSwitcher.SwitchTo(new DemoLevel());
         }
     }
 }
