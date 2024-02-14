@@ -24,7 +24,7 @@ namespace autumn_berries_mix.PrefabTags.CodeBase
 
             foreach (var entity in entities)
             {
-                entity.LevelLoaded();
+                entity.LoadedToLevel();
             }
         }
         

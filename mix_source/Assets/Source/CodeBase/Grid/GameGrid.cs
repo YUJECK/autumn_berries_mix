@@ -86,6 +86,9 @@ namespace autumn_berries_mix.Grid
             int x1 = from.x;
             int y1 = from.y;
 
+            if(Get(x1, y1).TileStuff != entity)
+                return;
+            
             int x2 = to.x;
             int y2 = to.y;
             

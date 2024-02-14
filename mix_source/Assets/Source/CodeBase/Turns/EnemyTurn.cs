@@ -1,5 +1,6 @@
 using System;
 using autumn_berries_mix.Units;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace autumn_berries_mix.Turns
@@ -21,9 +22,12 @@ namespace autumn_berries_mix.Turns
             CurrentScene.EnemyUnitsPull[currentEnemy].OnUnitTurn();
         }
 
-        private void OnUsedAbility(UnitAbility ability)
+        private async void OnUsedAbility(UnitAbility ability)
         {
             CurrentScene.EnemyUnitsPull[currentEnemy].UsedAbility -= OnUsedAbility;
+
+            await UniTask.Delay(TimeSpan.FromSeconds(1));
+            
             Complete();
         }
 

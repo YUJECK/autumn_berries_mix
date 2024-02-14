@@ -37,6 +37,15 @@ namespace autumn_berries_mix
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CameraMove"",
+                    ""type"": ""Value"",
+                    ""id"": ""64b8060b-f72b-4023-b484-d7db56de9086"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -50,6 +59,61 @@ namespace autumn_berries_mix
                     ""action"": ""SelectNode"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""1ca9d768-8adf-4207-b6e1-c61c72d2b016"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraMove"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""46a9992a-f9ab-4b4c-b575-4cf06e825c7e"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""62f322f4-1a55-4605-af31-3c8c9fe4bb53"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""fbe18247-e9dc-4719-b5cf-2dffd6871c9a"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""b27e0561-25de-4a95-9f02-3180718209fe"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -59,6 +123,7 @@ namespace autumn_berries_mix
             // Gameplay
             m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
             m_Gameplay_SelectNode = m_Gameplay.FindAction("SelectNode", throwIfNotFound: true);
+            m_Gameplay_CameraMove = m_Gameplay.FindAction("CameraMove", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -121,11 +186,13 @@ namespace autumn_berries_mix
         private readonly InputActionMap m_Gameplay;
         private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
         private readonly InputAction m_Gameplay_SelectNode;
+        private readonly InputAction m_Gameplay_CameraMove;
         public struct GameplayActions
         {
             private @InputsMap m_Wrapper;
             public GameplayActions(@InputsMap wrapper) { m_Wrapper = wrapper; }
             public InputAction @SelectNode => m_Wrapper.m_Gameplay_SelectNode;
+            public InputAction @CameraMove => m_Wrapper.m_Gameplay_CameraMove;
             public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -138,6 +205,9 @@ namespace autumn_berries_mix
                 @SelectNode.started += instance.OnSelectNode;
                 @SelectNode.performed += instance.OnSelectNode;
                 @SelectNode.canceled += instance.OnSelectNode;
+                @CameraMove.started += instance.OnCameraMove;
+                @CameraMove.performed += instance.OnCameraMove;
+                @CameraMove.canceled += instance.OnCameraMove;
             }
 
             private void UnregisterCallbacks(IGameplayActions instance)
@@ -145,6 +215,9 @@ namespace autumn_berries_mix
                 @SelectNode.started -= instance.OnSelectNode;
                 @SelectNode.performed -= instance.OnSelectNode;
                 @SelectNode.canceled -= instance.OnSelectNode;
+                @CameraMove.started -= instance.OnCameraMove;
+                @CameraMove.performed -= instance.OnCameraMove;
+                @CameraMove.canceled -= instance.OnCameraMove;
             }
 
             public void RemoveCallbacks(IGameplayActions instance)
@@ -165,6 +238,7 @@ namespace autumn_berries_mix
         public interface IGameplayActions
         {
             void OnSelectNode(InputAction.CallbackContext context);
+            void OnCameraMove(InputAction.CallbackContext context);
         }
     }
 }

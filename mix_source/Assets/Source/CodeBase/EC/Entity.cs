@@ -24,7 +24,7 @@ namespace autumn_berries_mix.EC
             => Master = new ComponentsMaster(this);
 
         protected virtual void ConfigureComponents() { }
-        public virtual void LevelLoaded()
+        public virtual void LoadedToLevel()
         {
             InitComponentsMaster();
             ConfigureComponents();

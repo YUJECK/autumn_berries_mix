@@ -21,6 +21,38 @@ namespace Source.Content
 
         public override PlayerUnit SelectedPlayerUnit => _unitSelector.PlayerUnit;
         public override GameGrid GameGrid => Map.Grid;
+        
+        public override void AddUnit(Unit unit)
+        {
+            switch (unit)
+            {
+                case PlayerUnit playerUnit:
+                    _playerUnitsPull.Add(playerUnit);
+                    break;
+                case EnemyUnit enemyUnit:
+                    _enemyUnitsPull.Add(enemyUnit);
+                    break;
+            }
+            
+            unit.LoadedToLevel();
+        }
+
+        public override void RemoveUnit(Unit unit)
+        {
+            switch (unit)
+            {
+                case PlayerUnit playerUnit:
+                    _playerUnitsPull.Remove(playerUnit);
+                    
+                    if(playerUnit == SelectedPlayerUnit)
+                        SelectedPlayerUnit.SelectedAbility?.OnAbilityDeselected();
+                    
+                    break;
+                case EnemyUnit enemyUnit:
+                    _enemyUnitsPull.Remove(enemyUnit);
+                    break;
+            }
+        }
 
         public override GameObjectFabric Fabric { get; protected set; } = new GameObjectFabric();
 
@@ -40,7 +72,12 @@ namespace Source.Content
         {
             _resources = gameplayResources;
         }
-        
+
+        public DemoLevel()
+        {
+            Fabric = new GameplayFabric(this);
+        }
+
         public override string GetSceneName()
             => "TestLevel";
 

@@ -24,9 +24,9 @@ namespace autumn_berries_mix.Units
             }
         }
         
-        public sealed override void LevelLoaded()
+        public sealed override void LoadedToLevel()
         {
-            base.LevelLoaded();
+            base.LoadedToLevel();
             
             ConfigureAbilities();
             OnUnitAwake();

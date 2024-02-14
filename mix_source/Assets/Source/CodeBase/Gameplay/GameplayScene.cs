@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using autumn_berries_mix.Gameplay;
 using autumn_berries_mix.Grid;
 using autumn_berries_mix.Scenes;
 using autumn_berries_mix.Turns;
@@ -13,13 +14,19 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.Scenes
         public abstract PlayerUnit SelectedPlayerUnit { get; }
         public abstract PlayerUnit[] PlayerUnitsPull { get; }
         public abstract EnemyUnit[] EnemyUnitsPull { get; }
+        
         public abstract GameGrid GameGrid { get; }
+
+        public override GameObjectFabric Fabric { get; protected set; }
 
         public TurnController TurnController { get; protected set; }
         protected readonly List<GameplayProcessor> GameplayProcessors = new();
 
         public event Action OnConfiguringFinished;
 
+        public abstract void AddUnit(Unit unit);
+        public abstract void RemoveUnit(Unit unit);
+        
         public PlayerUnit FindNearestPlayerUnit(Unit to)
         {
             PlayerUnit nearest = PlayerUnitsPull[0];

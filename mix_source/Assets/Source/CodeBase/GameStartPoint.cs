@@ -1,3 +1,4 @@
+using autumn_berries_mix.Helpers;
 using autumn_berries_mix.Scenes;
 using autumn_berries_mix.Sounds;
 using autumn_berry_mixВ;
@@ -23,7 +24,7 @@ namespace autumn_berries_mix
         private void Start()
         {
             AudioPlayer.CreateGlobalFromPreset(globalPreset);
-            SceneSwitcher.SwitchTo(new DemoLevel());
+            SceneSwitcher.SwitchTo(new StupidScene("MainMenu"));
         }
     }
 }
