@@ -23,6 +23,21 @@ namespace autumn_berries_mix.Helpers
                 FlipToLeft();
         }
         
+        public void FlipTo(Transform transform)
+        {
+            Debug.Log(transform.gameObject.name);
+            Debug.Log(Owner.gameObject.name);
+            
+            if (transform.position.x > Owner.transform.position.x)
+            {
+                FlipToRight();   
+            }
+            else
+            {
+                FlipToLeft();
+            }
+        }
+        
         public void FlipToOpposite()
         {
             if(FaceToRight)

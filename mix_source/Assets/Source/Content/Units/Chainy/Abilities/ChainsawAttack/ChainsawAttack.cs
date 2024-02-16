@@ -1,4 +1,6 @@
 using System.Linq;
+using autumn_berries_mix.Helpers;
+using UnityEngine;
 
 namespace autumn_berries_mix.Units
 {
@@ -16,6 +18,7 @@ namespace autumn_berries_mix.Units
             {
                 if (withClick)
                 {
+                    Owner.Master.Get<EntityFlipper>().FlipTo(unit.transform);
                     _typedData.Animator.PlayAttack();
                     unit.UnitHealth.Hit(_typedData.Damage);                  
                    

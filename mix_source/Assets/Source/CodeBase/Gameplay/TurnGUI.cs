@@ -31,18 +31,13 @@ namespace autumn_berries_mix.Source.CodeBase.Gameplay
         private async void EnableCover(string label)
         {
             this.label.text = label;
+            await UniTask.Delay(150);
             
-            foreach (var element in turnCover)
-            {
-                element.SetActive(true);                
-            }
+            this.label.color = Color.yellow;
 
-            await UniTask.Delay(500);
+            await UniTask.Delay(200);
             
-            foreach (var element in turnCover)
-            {
-                element.SetActive(false);                
-            }
+            this.label.color = Color.white;
         }
 
         public void OnEnemyTurn(EnemyTurn turn)

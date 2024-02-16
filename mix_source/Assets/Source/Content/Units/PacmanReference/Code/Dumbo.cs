@@ -52,7 +52,7 @@ namespace autumn_berries_mix
 
         private Vector2Int GetFistStepToPlayer()
         {
-            return _pathfinder.FindPath(Position2Int, _scene.FindNearestPlayerUnit(this).Position2Int)[0] - Position2Int;
+            return _pathfinder.FindPath(Position2Int, _scene.FindNearestPlayerUnit(this).Position2Int) [0] - Position2Int;
         }
     }
 }

@@ -118,9 +118,9 @@ namespace autumn_berries_mix
                 if (currentPathNode.X == endPathNode.X && currentPathNode.Y == endPathNode.Y)
                     return RestorePath(currentPathNode);
 
-                List<PathNode> neibhourPoints = GetNeighbourPoints(currentPathNode, visitedPoints);
+                List<PathNode> neighbourPoints = GetNeighbourPoints(currentPathNode, visitedPoints);
 
-                foreach (PathNode point in neibhourPoints)
+                foreach (PathNode point in neighbourPoints)
                 {
                     point.SetCosts(currentPathNode.G + DefineGCost(currentPathNode, point), Heuristic(point, endPathNode));
                     point.SetPreviousPoint(currentPathNode);
