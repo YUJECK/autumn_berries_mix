@@ -24,6 +24,9 @@ namespace autumn_berries_mix
             onStarted?.Invoke();
             
             Vector2Int startPosition = Owner.Position2Int;
+            
+            const int reverseLimit = 5;
+            int currentReversed = 0;
 
             for (int i = 0; i < Owner.Grid.TilesCount; i++)
             {
@@ -41,12 +44,14 @@ namespace autumn_berries_mix
                 {
                     unitToHit = playerUnit;
 
-                    if ((!nextTile.Empty && nextTile.TileStuff is not PlayerUnit) || !nextTile.Walkable)
+                    if (((!nextTile.Empty && nextTile.TileStuff is not PlayerUnit) || !nextTile.Walkable) && currentReversed < reverseLimit)
                     {
                         direction *= -1;
 
                         Owner.Grid.ReplaceEntity(Owner, startPosition, Owner.Position2Int);
                         startPosition = Owner.Position2Int;
+                        
+                        currentReversed++;
                     }
                 }
                 else if (!CanMoveToTile(toTile))
@@ -56,6 +61,7 @@ namespace autumn_berries_mix
                 }
                 
                 await MoveTo(movedPosition);
+                
                 _flipper.FlipToDirection(direction.x);
 
                 if (unitToHit != null)
@@ -76,13 +82,13 @@ namespace autumn_berries_mix
             }
         }
 
-        private async Task MoveTo(Vector2Int movedPosition)
+        private async UniTask MoveTo(Vector2Int movedPosition)
         {
-            while (Owner.transform.position != new Vector3(movedPosition.x, movedPosition.y, 0))
+            while (Owner.Position2Int != movedPosition)
             {
                 Owner.transform.position = Vector3.MoveTowards(Owner.transform.position, 
                     new Vector3(movedPosition.x, movedPosition.y, 0), _typedData.speed * Time.deltaTime);
-                    
+                
                 await UniTask.WaitForFixedUpdate();
             }
         }

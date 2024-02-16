@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data:
     Name: Movement
+    Description: U can move in eight directions per tile
     DefaultIcon: {fileID: -1252049722, guid: 49c7c2ddb09606a4988de52582ae7fe0, type: 3}
     SelectedIcon: {fileID: -1733419498, guid: 49c7c2ddb09606a4988de52582ae7fe0, type: 3}
     ArrowPrefab: {fileID: 6468861691388924733, guid: 5f877296a44d2874191cbdf564c03011, type: 3}

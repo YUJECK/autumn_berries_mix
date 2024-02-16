@@ -20,6 +20,7 @@ namespace autumn_berries_mix
         {
             UnitHealth = GetComponent<UnitHealth>();
             _pathfinder = new Pathfinder(Grid);
+            
             Master.Add(new EntityFlipper());
         }
 

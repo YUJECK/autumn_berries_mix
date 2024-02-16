@@ -98,5 +98,10 @@ namespace autumn_berries_mix.Sounds
 #endif
             return 0;
         }
+
+        public static void StopAllNonCrossScene()
+        {
+            GlobalContainer.ForEach((audio) => audio.Source.Stop());
+        }
     }
 }

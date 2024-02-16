@@ -28,6 +28,16 @@ namespace autumn_berries_mix.Gameplay
                 signal.Unit.UnitHealth.Die();
                 Scene.Fabric.Destroy(signal.Unit.gameObject);
             }
+
+            if (Scene.PlayerUnitsPull.Length == 0)
+            {
+                Scene.ResultManager.Lose();
+            }
+            
+            if (Scene.EnemyUnitsPull.Length == 0)
+            {
+                Scene.ResultManager.Win();
+            }
         }
     }
 }

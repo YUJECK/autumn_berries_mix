@@ -14,9 +14,9 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: destructive_crab
   productName: autumn_berry_mix
-  defaultCursor: {fileID: 0}
+  defaultCursor: {fileID: 2800000, guid: 9c64a99a62ce1d242942684133f980d2, type: 3}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
+  m_SplashScreenBackgroundColor: {r: 0.024697397, g: 0.042142235, b: 0.14150941, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1
@@ -159,7 +159,8 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   androidMinAspectRatio: 1
-  applicationIdentifier: {}
+  applicationIdentifier:
+    Standalone: com.destructive-crab.autumn-berry-mix
   buildNumber:
     Bratwurst: 0
     Standalone: 0

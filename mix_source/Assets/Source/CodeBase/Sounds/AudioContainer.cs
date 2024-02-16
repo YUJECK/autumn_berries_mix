@@ -18,6 +18,11 @@ namespace autumn_berries_mix.Sounds
             CreateEmptyTagToAudio();
         }
 
+        public void ForEach(Action<AudioInstance> action)
+        {
+            _audios.ForEach(action);
+        }
+
         public void Push(AudioData data)
         {
             GameObject audioGameObject = new GameObject();

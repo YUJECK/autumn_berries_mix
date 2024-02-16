@@ -1,15 +1,18 @@
 using System.Collections.Generic;
 using autumn_berries_mix.Sounds;
 using autumn_berries_mix.Units;
+using TMPro;
 using UnityEngine;
 
 namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
 {
     public sealed class UnitAbilitiesGUIController : MonoBehaviour
     {
+        [SerializeField] private TMP_Text _infoText;
+        
         private readonly List<AbilityButton> _buttons = new();
         private AbilityButton lastSelectedButton;
-
+        
         private Unit current;
 
         private void Start()
@@ -33,8 +36,11 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
 
         public void SelectAbility(UnitAbility ability, AbilityButton abilityButton)
         {
-            if(ability == null || current == null)
+            if (ability == null || current == null)
+            {
+                _infoText.text = "";
                 return;
+            }
             
             if(lastSelectedButton != null)  
                 lastSelectedButton.DeselectAbility();
@@ -46,10 +52,8 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
                 playerUnit.SelectedNonTypedAbility = playerAbility;
                 playerAbility.OnAbilitySelected();
             }
-            else
-            {
-                //doing some info display
-            }
+
+            _infoText.text = ability.Data.Description;
             
             lastSelectedButton = abilityButton;
             AudioPlayer.Play("TileLocked");

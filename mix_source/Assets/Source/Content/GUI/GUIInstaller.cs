@@ -14,7 +14,7 @@ namespace autumn_berries_mix
             Container
                 .Bind<UnitAbilitiesGUIController>()
                 .FromInstance(instance)
-                .AsSingle();
+                .AsCached();
             
             Container.Inject(Resolver.Instance());
         }

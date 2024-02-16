@@ -100,7 +100,12 @@ namespace Source.Content
             _tileSelector?.Tick();
         }
 
-        public override void Dispose() { }
+        public override void Dispose()
+        {
+            
+            AudioPlayer.StopAllNonCrossScene();
+
+        }
 
         private void Finish()
         {

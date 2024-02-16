@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace autumn_berries_mix.Grid
 {
-    [Serializable]
     public class GameGrid : MonoBehaviour
     {
         public int TilesCount => GridData.TilesCount;

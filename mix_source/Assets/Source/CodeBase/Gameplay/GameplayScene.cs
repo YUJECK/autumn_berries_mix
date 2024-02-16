@@ -20,6 +20,8 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.Scenes
         public override GameObjectFabric Fabric { get; protected set; }
 
         public TurnController TurnController { get; protected set; }
+        public ResultManager ResultManager { get; protected set; } = new ResultManager();
+
         protected readonly List<GameplayProcessor> GameplayProcessors = new();
 
         public event Action OnConfiguringFinished;
