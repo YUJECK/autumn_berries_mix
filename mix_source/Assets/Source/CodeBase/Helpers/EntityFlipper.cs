@@ -25,9 +25,6 @@ namespace autumn_berries_mix.Helpers
         
         public void FlipTo(Transform transform)
         {
-            Debug.Log(transform.gameObject.name);
-            Debug.Log(Owner.gameObject.name);
-            
             if (transform.position.x > Owner.transform.position.x)
             {
                 FlipToRight();   

@@ -49,7 +49,7 @@ namespace autumn_berries_mix.EC
 
         protected virtual void OnUpdate() { }
 
-        protected virtual void OnDestroy()
+        protected void OnDestroy()
         {
             Master.DisposeAll();
             OnDestroyed();

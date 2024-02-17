@@ -44,8 +44,15 @@ namespace autumn_berries_mix
                 {
                     unitToHit = playerUnit;
 
-                    if (((!nextTile.Empty && nextTile.TileStuff is not PlayerUnit) || !nextTile.Walkable) && currentReversed < reverseLimit)
+                    if (((!nextTile.Empty && nextTile.TileStuff is not PlayerUnit) || !nextTile.Walkable) && currentReversed <= reverseLimit)
                     {
+                        if (currentReversed == reverseLimit)
+                        {
+                            Finish();
+                            return;
+                        }
+                        
+                        
                         direction *= -1;
 
                         Owner.Grid.ReplaceEntity(Owner, startPosition, Owner.Position2Int);

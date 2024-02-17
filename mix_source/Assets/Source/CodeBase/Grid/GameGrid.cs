@@ -1,5 +1,8 @@
 using System;
+using autumn_berries_mix.CallbackSystem.Signals;
 using autumn_berries_mix.EC;
+using autumn_berries_mix.Gameplay.Signals;
+using autumn_berries_mix.Units;
 using UnityEngine;
 
 namespace autumn_berries_mix.Grid
@@ -96,6 +99,9 @@ namespace autumn_berries_mix.Grid
 
             GridData.Get(x2, y2).Place(entity);
             GridData.Get(x1, y1).Place(null);
+            
+            if(entity is Unit unit)
+                SignalManager.PushSignal(new UnitMovedSignal(unit));
         }
         
         public void ClearTile(int x, int y)

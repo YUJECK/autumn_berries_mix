@@ -63,3 +63,8 @@ MonoBehaviour:
     <Looped>k__BackingField: 0
     <Volume>k__BackingField: 0.66
     <Tags>k__BackingField: 
+  - <Name>k__BackingField: GargoyleBite
+    <Clip>k__BackingField: {fileID: 8300000, guid: c9fcbd7d1eb52d0499c894dfefec729b, type: 3}
+    <Looped>k__BackingField: 0
+    <Volume>k__BackingField: 0.811
+    <Tags>k__BackingField: 

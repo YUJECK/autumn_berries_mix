@@ -13,7 +13,7 @@ namespace autumn_berries_mix.Units
         public abstract UnitAbility[] NonTypedAbilitiesPull { get; }
         public abstract UnitHealth UnitHealth { get; protected set; }
         
-        protected abstract void ConfigureAbilities();
+        protected virtual void ConfigureAbilities() { }
         protected virtual void OnUnitAwake() {}
         
         protected void UpdateAbilities()
