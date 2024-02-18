@@ -36,7 +36,7 @@ namespace autumn_berries_mix
         public override void OnUnitTurn()
         {
             GetAbility<BishopMovement>()
-                .Move(GetFistStepToPlayer(), PlayMove, StopMove);
+                .Move(GetMoveDirection(), PlayMove, StopMove);
         }
 
         private void StopMove()
@@ -51,7 +51,7 @@ namespace autumn_berries_mix
             AudioPlayer.Play("GhostMove");
         }
 
-        private Vector2Int GetFistStepToPlayer()
+        private Vector2Int GetMoveDirection()
         {
             return _pathfinder.FindPath(Position2Int, _scene.FindNearestPlayerUnit(this).Position2Int) [0] - Position2Int;
         }

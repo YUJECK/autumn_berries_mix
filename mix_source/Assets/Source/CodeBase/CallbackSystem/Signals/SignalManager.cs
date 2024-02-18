@@ -37,7 +37,10 @@ namespace autumn_berries_mix.CallbackSystem.Signals
         public static void UnsubscribeOnSignal(SignalSubscription subscription)
         {
             //TODO
-            Subscriptions[subscription.SubscriptionType].Remove(Subscriptions[subscription.SubscriptionType].Find((element) => element.Key == subscription));
+            Subscriptions
+                [subscription.SubscriptionType]
+                .Remove(Subscriptions[subscription.SubscriptionType]
+                .Find((element) => element.Key == subscription));
         }
     }
 }

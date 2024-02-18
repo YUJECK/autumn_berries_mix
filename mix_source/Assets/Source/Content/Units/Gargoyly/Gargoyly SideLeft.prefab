@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7377364981398480907}
   - component: {fileID: 6342136161816564318}
   m_Layer: 0
-  m_Name: Gargoyly
+  m_Name: Gargoyly SideLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -1695126234, guid: 4779ed03b6bff0644aaf5d40da7e3f1a, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -470804684, guid: d0271a112338ee642a3a6099cab9ddde, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,7 +98,7 @@ Animator:
   m_GameObject: {fileID: 4074818961899108036}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a00c4770fccbda6499415519d8bbf035, type: 2}
+  m_Controller: {fileID: 9100000, guid: 21c4a1493af89a74bb1d4dbbbb5d5858, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -122,5 +122,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 009a998b42c949629949a81fdf564e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: -1}
-  damage: 10
+  direction: {x: -1, y: 0}
+  damage: 1

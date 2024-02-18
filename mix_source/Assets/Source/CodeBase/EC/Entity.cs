@@ -51,7 +51,7 @@ namespace autumn_berries_mix.EC
 
         protected void OnDestroy()
         {
-            Master.DisposeAll();
+            Master?.DisposeAll();
             OnDestroyed();
         }
 

@@ -102,5 +102,10 @@ namespace autumn_berries_mix.Units
         {
             ClearArrows();
         }
+
+        public override void Dispose()
+        {
+            ClearArrows();
+        }
     }
 }

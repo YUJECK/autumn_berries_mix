@@ -23,7 +23,15 @@ namespace autumn_berries_mix.Units
                 ability.Tick();
             }
         }
-        
+
+        protected override void OnDestroyed()
+        {
+            foreach (var ability in NonTypedAbilitiesPull)
+            {
+                ability.Dispose();
+            }
+        }
+
         public sealed override void LoadedToLevel()
         {
             base.LoadedToLevel();

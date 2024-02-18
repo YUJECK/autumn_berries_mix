@@ -70,33 +70,28 @@ namespace autumn_berries_mix
         }
         
         private int Heuristic(PathNode first, PathNode second) => Mathf.Abs(first.X - second.X) + Mathf.Abs(first.Y - second.Y);
-        private bool CheckPointCollider(PathNode pathNode)
+        private bool CheckPointCollider(Vector2Int position)
         {
-            if (_grid.Get(pathNode.X, pathNode.Y).Walkable)
+            if (_grid.Get(position.x, position.y).Walkable && _grid.Get(position.x, position.y).Empty || _grid.IsPlayerUnit(position.x, position.y))
                 return true;
-            
-            else return false;
+
+            return false;
         }
         private List<PathNode> GetNeighbourPoints(PathNode pathNode, List<PathNode> ignoredPoints)
         {
             List<PathNode> neighbourPoints = new List<PathNode>();
+
+            GridTile[] pointsToCheck = _grid.GetConnections(pathNode.X, pathNode.Y);
             
-            List<PathNode> pointsToCheck = new List<PathNode>
+            foreach (GridTile nextPoint in pointsToCheck)
             {
-                new PathNode(pathNode.X, pathNode.Y + 1),
-                new PathNode(pathNode.X, pathNode.Y - 1),
-                new PathNode(pathNode.X + 1, pathNode.Y),
-                new PathNode(pathNode.X - 1, pathNode.Y),
-                new PathNode(pathNode.X + 1, pathNode.Y + 1),
-                new PathNode(pathNode.X - 1, pathNode.Y - 1),
-                new PathNode(pathNode.X + 1, pathNode.Y - 1),
-                new PathNode(pathNode.X - 1, pathNode.Y + 1)
-            };
-            
-            foreach (PathNode nextPoint in pointsToCheck)
-            {
-                if (CheckPointCollider(nextPoint) && !ignoredPoints.Contains(nextPoint))
-                    neighbourPoints.Add(nextPoint);
+                var node = new PathNode(nextPoint.Position.x, nextPoint.Position.y);
+                
+                if (CheckPointCollider(nextPoint.Position) && !ignoredPoints.Contains(node))
+                {
+                    
+                    neighbourPoints.Add(node);
+                }
             }
             
             return neighbourPoints;

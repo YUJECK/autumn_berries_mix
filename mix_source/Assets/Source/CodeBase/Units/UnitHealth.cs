@@ -12,8 +12,8 @@ namespace autumn_berries_mix.Units
     [RequireComponent(typeof(Unit))]
     public class UnitHealth : MonoBehaviour
     {
-        [field: SerializeField] public int CurrentHealth { get; private set; } = 100;
-        [field: SerializeField] public int MaximumHealth { get; private set; } = 100;
+        [field: SerializeField] public int CurrentHealth { get; private set; } = 15;
+        [field: SerializeField] public int MaximumHealth { get; private set; } = 15;
 
         [SerializeField] private string hitSound;
         [SerializeField] private Color hitColor;
@@ -37,16 +37,22 @@ namespace autumn_berries_mix.Units
             CurrentHealth -= points;
             
             if(CurrentHealth <= 0)
+            {
                 Debug.Log("DIED");
-            
+            }
+
             OnHealthChanged?.Invoke(CurrentHealth, MaximumHealth);
             SignalManager.PushSignal(new UnitDamagedSignal(Owner, points));
             
             if(hitSound != "")
+            {
                 AudioPlayer.Play(hitSound);
-            
+            }
+
             if(_coloringRoutine != null)
+            {
                 StopCoroutine(_coloringRoutine);
+            }
 
             _coloringRoutine = StartCoroutine(SetColor(hitColor));
         }

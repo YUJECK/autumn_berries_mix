@@ -24,9 +24,6 @@ namespace autumn_berries_mix
             onStarted?.Invoke();
             
             Vector2Int startPosition = Owner.Position2Int;
-            
-            const int reverseLimit = 5;
-            int currentReversed = 0;
 
             for (int i = 0; i < Owner.Grid.TilesCount; i++)
             {
@@ -43,23 +40,14 @@ namespace autumn_berries_mix
                 if (IsPlayerUnit(toTile, out var playerUnit))
                 {
                     unitToHit = playerUnit;
-
-                    if (((!nextTile.Empty && nextTile.TileStuff is not PlayerUnit) || !nextTile.Walkable) && currentReversed <= reverseLimit)
-                    {
-                        if (currentReversed == reverseLimit)
-                        {
-                            Finish();
-                            return;
-                        }
-                        
-                        
-                        direction *= -1;
-
-                        Owner.Grid.ReplaceEntity(Owner, startPosition, Owner.Position2Int);
-                        startPosition = Owner.Position2Int;
-                        
-                        currentReversed++;
-                    }
+                    //
+                    // if (((!nextTile.Empty && nextTile.TileStuff is not PlayerUnit) || !nextTile.Walkable))
+                    // {
+                    //     direction *= -1;
+                    //
+                    //     Owner.Grid.ReplaceEntity(Owner, startPosition, Owner.Position2Int);
+                    //     startPosition = Owner.Position2Int;
+                    // }
                 }
                 else if (!CanMoveToTile(toTile))
                 {
@@ -89,7 +77,7 @@ namespace autumn_berries_mix
             }
         }
 
-        private async UniTask MoveTo(Vector2Int movedPosition)
+        private async Task MoveTo(Vector2Int movedPosition)
         {
             while (Owner.Position2Int != movedPosition)
             {
@@ -114,5 +102,9 @@ namespace autumn_berries_mix
 
         private bool CanMoveToTile(GridTile toTile)
             => toTile.Empty || toTile.TileStuff == Owner && toTile.Walkable;
+
+        public override void Dispose()
+        {
+        }
     }
 }

@@ -12,5 +12,6 @@ namespace autumn_berries_mix.Units
         }
 
         public virtual void Tick() {}
+        public virtual void Dispose() {}
     }
 }

@@ -14,12 +14,20 @@ namespace autumn_berries_mix.Turns
         
         public override void Start(Action onCompleted)
         {
+            CheckCounter();
+            
             Completed = false;
             
             onCompletedCached = onCompleted;
             
             CurrentScene.EnemyUnitsPull[currentEnemy].UsedAbility += OnUsedAbility;
             CurrentScene.EnemyUnitsPull[currentEnemy].OnUnitTurn();
+        }
+
+        private void CheckCounter()
+        {
+            if (currentEnemy >= CurrentScene.EnemyUnitsPull.Length)
+                currentEnemy = 0;
         }
 
         private async void OnUsedAbility(UnitAbility ability)

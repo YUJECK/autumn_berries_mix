@@ -25,6 +25,9 @@ namespace autumn_berries_mix.Grid
             }
         }
 
+        public bool IsPlayerUnit(int x, int y)
+            => GridData.Get(x, y) != null && GridData.Get(x, y).TileStuff is PlayerUnit;
+
         public bool IsTileEmpty(int x, int y)
             => GridData.Get(x, y) != null && GridData.Get(x, y).Empty;
         

@@ -10,6 +10,7 @@ namespace autumn_berries_mix.CallbackSystem.Signals
         public TypedSignalSubscriber(Action<TSubscription> subscription)
         {
             _subscription = subscription;
+            SubscriptionType = typeof(TSubscription);
         }
 
         public override void InvokeSubscription(Signal nonTypedEvent)

@@ -17,4 +17,4 @@ MonoBehaviour:
     Description: U can attack one unit in range of one tile
     DefaultIcon: {fileID: 4723107735738678597, guid: 94e6293681a1fc548bf677856d651437, type: 3}
     SelectedIcon: {fileID: -7385789195546760866, guid: 94e6293681a1fc548bf677856d651437, type: 3}
-    Damage: 0
+    Damage: 1

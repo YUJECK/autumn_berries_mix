@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data:
     Name: BishopMovement
-    Icon: {fileID: 0}
+    Description: 
+    DefaultIcon: {fileID: 0}
+    SelectedIcon: {fileID: 0}
     range: 3
     speed: 5
-    damage: 10
+    damage: 2
