@@ -18,7 +18,7 @@ namespace autumn_berries_mix
             _typedData = data;
             _flipper = Owner.Master.Get<EntityFlipper>();
         }
-
+        
         public async void Move(Vector2Int direction, Action onStarted = null, Action onFinished = null)
         {
             onStarted?.Invoke();
@@ -28,6 +28,8 @@ namespace autumn_berries_mix
             for (int i = 0; i < Owner.Grid.TilesCount; i++)
             {
                 Vector2Int movedPosition = Owner.Position2Int + direction;
+                
+                Debug.Log(movedPosition);
                 
                 GridTile toTile = Owner.Grid.Get(movedPosition);
                 GridTile nextTile = Owner.Grid.Get(movedPosition + direction);
@@ -40,14 +42,14 @@ namespace autumn_berries_mix
                 if (IsPlayerUnit(toTile, out var playerUnit))
                 {
                     unitToHit = playerUnit;
-                    //
-                    // if (((!nextTile.Empty && nextTile.TileStuff is not PlayerUnit) || !nextTile.Walkable))
-                    // {
-                    //     direction *= -1;
-                    //
-                    //     Owner.Grid.ReplaceEntity(Owner, startPosition, Owner.Position2Int);
-                    //     startPosition = Owner.Position2Int;
-                    // }
+                    
+                    if (((!nextTile.Empty && nextTile.TileStuff is not PlayerUnit) || !nextTile.Walkable))
+                    {
+                        direction *= -1;
+                    
+                        Owner.Grid.ReplaceEntity(Owner, startPosition, Owner.Position2Int);
+                        startPosition = Owner.Position2Int;
+                    }
                 }
                 else if (!CanMoveToTile(toTile))
                 {
@@ -56,6 +58,8 @@ namespace autumn_berries_mix
                 }
                 
                 await MoveTo(movedPosition);
+                
+                Debug.Log("Moved");
                 
                 _flipper.FlipToDirection(direction.x);
 
@@ -70,6 +74,8 @@ namespace autumn_berries_mix
             
             void Finish()
             {                    
+                Debug.Log(Owner.Position2Int);
+                
                 Owner.Grid.ReplaceEntity(Owner, startPosition, Owner.Position2Int);
                 Owner.OnUsedAbility(this);
             
@@ -77,13 +83,13 @@ namespace autumn_berries_mix
             }
         }
 
-        private async Task MoveTo(Vector2Int movedPosition)
+        private async UniTask MoveTo(Vector2Int movedPosition)
         {
-            while (Owner.Position2Int != movedPosition)
+            while (Owner.transform.position != new Vector3(movedPosition.x, movedPosition.y, 0))
             {
                 Owner.transform.position = Vector3.MoveTowards(Owner.transform.position, 
                     new Vector3(movedPosition.x, movedPosition.y, 0), _typedData.speed * Time.deltaTime);
-                
+                    
                 await UniTask.WaitForFixedUpdate();
             }
         }
