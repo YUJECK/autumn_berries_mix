@@ -11,7 +11,7 @@ namespace autumn_berries_mix.EC
         public GameGrid Grid { get; private set; }
 
         public Vector3 Position3 => transform.position;
-        public Vector2Int Position2Int => new Vector2Int((int)transform.position.x, (int)transform.position.y);
+        public Vector2Int Position2Int => new Vector2Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
         public Quaternion Rotation => transform.rotation;
 
         public void InitGrid(GameGrid grid)

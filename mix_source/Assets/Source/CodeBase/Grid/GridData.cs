@@ -54,8 +54,8 @@ namespace autumn_berries_mix.Grid
                 {
                     foreach (var connectedTile in _connections[position])
                     {
-                        _connections[connectedTile.Position].Remove(prevTile);
-                        _connections[connectedTile.Position].Add(tile);
+                        _connections[connectedTile.Position2Int].Remove(prevTile);
+                        _connections[connectedTile.Position2Int].Add(tile);
                     }    
                 }
                 
@@ -75,8 +75,8 @@ namespace autumn_berries_mix.Grid
             //tiles
             for (int i = 0; i < tiles.Length; i++)
             {
-                int x = Mathf.RoundToInt(tiles[i].transform.position.x);
-                int y = Mathf.RoundToInt(tiles[i].transform.position.y);
+                int x = tiles[i].Position2Int.x;
+                int y = tiles[i].Position2Int.y;
 
                 if (minimum.x > x)
                     minimum.x = x;
@@ -96,8 +96,8 @@ namespace autumn_berries_mix.Grid
             //entities
             for (int i = 0; i < entities.Length; i++)
             {
-                int x = Mathf.RoundToInt(entities[i].transform.position.x);
-                int y = Mathf.RoundToInt(entities[i].transform.position.y);
+                int x = entities[i].Position2Int.x;
+                int y = entities[i].Position2Int.y;
 
                 if (Get(x, y) != null)
                 {

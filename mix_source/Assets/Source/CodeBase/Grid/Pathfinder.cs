@@ -85,9 +85,9 @@ namespace autumn_berries_mix
             
             foreach (GridTile nextPoint in pointsToCheck)
             {
-                var node = new PathNode(nextPoint.Position.x, nextPoint.Position.y);
+                var node = new PathNode(nextPoint.Position2Int.x, nextPoint.Position2Int.y);
                 
-                if (CheckPointCollider(nextPoint.Position) && !ignoredPoints.Contains(node))
+                if (CheckPointCollider(nextPoint.Position2Int) && !ignoredPoints.Contains(node))
                 {
                     
                     neighbourPoints.Add(node);

@@ -35,7 +35,7 @@ namespace autumn_berries_mix.Units
                 if(!tile.Empty || !tile.Walkable)
                     continue;
                 
-                float angle = Mathf.Atan2(tile.Position.y - Owner.Position2Int.y, tile.Position.x - Owner.Position2Int.x) 
+                float angle = Mathf.Atan2(tile.Position2Int.y - Owner.Position2Int.y, tile.Position2Int.x - Owner.Position2Int.x) 
                     * Mathf.Rad2Deg - 90;
                 
                 tile.Overlay.PushPrefabOverlay(new PrefabTileOverlayData(_typedData.ArrowPrefab, OverlayKey, Vector2.zero, angle));
@@ -61,7 +61,7 @@ namespace autumn_berries_mix.Units
                 {
                     if (withClick && !_currentMoving)
                     {
-                        Move(tile.Position);
+                        Move(tile.Position2Int);
                     }
                 }    
             }

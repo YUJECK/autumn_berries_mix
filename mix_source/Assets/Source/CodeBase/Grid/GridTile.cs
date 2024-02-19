@@ -9,7 +9,7 @@ namespace autumn_berries_mix.Grid
         public virtual bool Empty => TileStuff == null;
         public abstract bool Walkable { get; }
         
-        public Vector2Int Position => new Vector2Int((int)transform.position.x, (int)transform.position.y);
+        public Vector2Int Position2Int => new Vector2Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
 
         public TileOverlayController Overlay { get; private set; }
 
