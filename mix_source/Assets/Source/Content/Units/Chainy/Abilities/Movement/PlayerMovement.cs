@@ -86,7 +86,6 @@ namespace autumn_berries_mix.Units
             Owner.Grid.ReplaceEntity(Owner, startPosition, Owner.Position2Int);
             Owner.OnUsedAbility(this);
             
-            
             DrawMoveArrows();
 
             _typedData.Animator.StopWalk();

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using autumn_berries_mix.Grid;
 using autumn_berries_mix.Grid.Inputs;
@@ -12,6 +13,9 @@ namespace autumn_berries_mix
 {
     public class TileSelector : ITickable, ITurnAddicted
     {
+        public Action<GridTile> OnTilePointed;
+        public Action<GridTile> OnTileClicked;
+        
         private GridTile _currentCell;
         private IOnTileSelected _currentCallback;
         

@@ -89,7 +89,6 @@ namespace autumn_berries_mix
                 
                 if (CheckPointCollider(nextPoint.Position2Int) && !ignoredPoints.Contains(node))
                 {
-                    
                     neighbourPoints.Add(node);
                 }
             }

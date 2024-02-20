@@ -54,6 +54,7 @@ namespace autumn_berries_mix.Grid
                 {
                     foreach (var connectedTile in _connections[position])
                     {
+                        if (!_connections.ContainsKey(connectedTile.Position2Int)) continue;
                         _connections[connectedTile.Position2Int].Remove(prevTile);
                         _connections[connectedTile.Position2Int].Add(tile);
                     }    
@@ -128,27 +129,23 @@ namespace autumn_berries_mix.Grid
                 new Vector2Int(1, 0),
                 new Vector2Int(-1, 0)
             };
-                
-            for (int x = minimum.x; x < maximum.x; x++)
-            {
-                for (int y = minimum.y; y < maximum.y; y++)
-                {
-                    var position = new Vector2Int(x, y);
 
-                    if (!tiles.ContainsKey(position)) continue;
-                    
-                    for (int i = 0; i < offsets.Length; i++)
-                    {
-                        if (!tiles.ContainsKey(position + offsets[i])) continue;
+            foreach (var positionTilePair in tiles)
+            {
+                var tile = positionTilePair.Value;
+
+                for (int i = 0; i < offsets.Length; i++)
+                {
+                    if (!tiles.ContainsKey(tile.Position2Int + offsets[i])) continue;
                         
-                        if (graph.ContainsKey(position))
-                        {
-                            graph[position].Add(tiles[position + offsets[i]]);
-                            continue;
-                        }
-                        graph.Add(position, new List<GridTile>(){tiles[position + offsets[i]]});
+                    if (graph.TryGetValue(tile.Position2Int, out List<GridTile> connections))
+                    {
+                        connections.Add(tiles[tile.Position2Int + offsets[i]]);
+                        continue;
                     }
+                    graph.Add(tile.Position2Int, new List<GridTile>(){ tiles[tile.Position2Int + offsets[i]] });
                 }
+
             }
 
             return graph;

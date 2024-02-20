@@ -106,6 +106,12 @@ namespace autumn_berries_mix.Grid
             if(entity is Unit unit)
                 SignalManager.PushSignal(new UnitMovedSignal(unit));
         }
+
+        public void Edit(Vector2Int position, GridTile toTile)
+        {
+            GridData.Edit(position.x, position.y, toTile);
+        }
+        
         
         public void ClearTile(int x, int y)
         {
