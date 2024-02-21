@@ -30,7 +30,7 @@ namespace autumn_berries_mix
             
             _scene = SceneSwitcher.TryGetGameplayScene();
             
-            PushAbility(new BishopMovement(this, bishopMovementConfig.Data));
+            PushAbility(new BishopMovement(this, bishopMovementConfig.data));
         }
 
         public override void OnUnitTurn()

@@ -141,6 +141,6 @@ MonoBehaviour:
   <CurrentHealth>k__BackingField: 15
   <MaximumHealth>k__BackingField: 15
   hitSound: 
-  hitColor: {r: 0, g: 0, b: 0, a: 0}
+  hitColor: {r: 1, g: 1, b: 1, a: 0.39215687}
   healSound: 
-  healColor: {r: 0, g: 0, b: 0, a: 0}
+  healColor: {r: 0.60137516, g: 0.9622642, b: 0.46751517, a: 1}

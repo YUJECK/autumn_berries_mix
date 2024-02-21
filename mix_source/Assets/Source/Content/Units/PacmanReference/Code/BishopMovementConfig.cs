@@ -7,6 +7,6 @@ namespace autumn_berries_mix
     [CreateAssetMenu(menuName = AssetMenuHelper.Abilities + nameof(BishopMovementConfig))]
     public class BishopMovementConfig : AbilityConfig
     {
-        public BishopMovementData Data;
+        public BishopMovementData data;
     }
 }

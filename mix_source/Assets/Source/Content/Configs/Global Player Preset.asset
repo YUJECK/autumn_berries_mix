@@ -68,3 +68,8 @@ MonoBehaviour:
     <Looped>k__BackingField: 0
     <Volume>k__BackingField: 0.811
     <Tags>k__BackingField: 
+  - <Name>k__BackingField: HeadsmanAxe
+    <Clip>k__BackingField: {fileID: 8300000, guid: a4d60bd0a8967234885a8add481f6856, type: 3}
+    <Looped>k__BackingField: 0
+    <Volume>k__BackingField: 0.811
+    <Tags>k__BackingField: 

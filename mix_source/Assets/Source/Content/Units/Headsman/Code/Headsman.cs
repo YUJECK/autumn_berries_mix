@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using autumn_berries_mix.Grid;
 using autumn_berries_mix.Helpers;
+using autumn_berries_mix.PrefabTags.CodeBase.Scenes;
+using autumn_berries_mix.Scenes;
+using autumn_berries_mix.Sounds;
 using autumn_berries_mix.Units;
 using UnityEngine;
 
@@ -10,21 +13,33 @@ namespace autumn_berries_mix.Source.Content.Units.Headsman.Code
     public sealed class Headsman : EnemyUnit
     {
         [SerializeField] private AbilityData movementConfig;
-        [SerializeField] private AbilityData axeConfig;
+        [SerializeField] private AxeAttackConfig axeConfig;
         
         public int range = 2;
+        private GameplayScene _scene;
+        private Pathfinder _pathfinder;
         
         public override UnitHealth UnitHealth { get; protected set; }
 
+        public void PlayAxeSwoosh()
+        {
+            AudioPlayer.Play("HeadsmanAxe");
+        }
+        
         protected override void ConfigureComponents()
         {
+            _scene = SceneSwitcher.TryGetGameplayScene();
+            _pathfinder = new Pathfinder(Grid);
+            
             Master.Add(new EntityFlipper());
+            Master.Add(new HeadsmanAnimator());
+            
             UnitHealth = GetComponent<UnitHealth>();
         }
 
         protected override void ConfigureAbilities()
         {
-            PushAbility(new AxeAttack(this, axeConfig, range, 2));
+            PushAbility(new AxeAttack(this, axeConfig.AxeAttackData, range, 1));
             PushAbility(new StepMovement(this, movementConfig));
         }
 
@@ -38,7 +53,7 @@ namespace autumn_berries_mix.Source.Content.Units.Headsman.Code
             }
             else
             {
-                GetAbility<StepMovement>().Move(Position2Int + Vector2Int.right);
+                GetAbility<StepMovement>().Move(_pathfinder.FindPath(Position2Int, _scene.FindNearestPlayerUnit(this).Position2Int)[0]);
             }
         }
 

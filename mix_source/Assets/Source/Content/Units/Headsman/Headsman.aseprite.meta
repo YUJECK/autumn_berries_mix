@@ -123,15 +123,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Headsman
     originalName: 
-    pivot: {x: 0.4375, y: 0}
+    pivot: {x: 0.48571432, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 4
-      width: 32
-      height: 25
+      x: 117
+      y: 57
+      width: 35
+      height: 29
     spriteID: 660e0eb3813cdb0488a4767af1a0aea8
     spriteBone: []
     spriteOutline: []
@@ -140,7 +140,167 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
+    uvTransform: {x: 117, y: 57}
+  - name: Headsman_Frame_1
+    originalName: 
+    pivot: {x: 0.51428574, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 57
+      width: 35
+      height: 34
+    spriteID: ecc497c05fb8e054f98ec1150ad359d4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 57}
+  - name: Headsman_Frame_2
+    originalName: 
+    pivot: {x: 0.6666667, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 47
+      y: 57
+      width: 27
+      height: 44
+    spriteID: c479de4f79b04bd48921042052d9cdf8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 47, y: 57}
+  - name: Headsman_Frame_3
+    originalName: 
+    pivot: {x: 0.7037037, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 82
+      y: 57
+      width: 27
+      height: 44
+    spriteID: ddac2bba580286747b59ba54fe3bb0c8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 82, y: 57}
+  - name: Headsman_Frame_4
+    originalName: 
+    pivot: {x: 0.8, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 146
+      y: 4
+      width: 30
+      height: 41
+    spriteID: 9d2fbecdab3c95f4a945cbbd9a49a12e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 146, y: 4}
+  - name: Headsman_Frame_5
+    originalName: 
+    pivot: {x: 0.7741935, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 107
+      y: 4
+      width: 31
+      height: 45
+    spriteID: b60cd90ff5c279a4885880018f9d4774
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 107, y: 4}
+  - name: Headsman_Frame_6
+    originalName: 
+    pivot: {x: 0.47826087, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 46
+      height: 45
+    spriteID: a8fed9f97a168424381415d40c893f20
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: Headsman_Frame_7
+    originalName: 
+    pivot: {x: 0.41463417, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 58
+      y: 4
+      width: 41
+      height: 37
+    spriteID: 90fba879650998643978bc5f8ab9249f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 58, y: 4}
+  - name: Headsman_Frame_8
+    originalName: 
+    pivot: {x: 0.42500004, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 184
+      y: 4
+      width: 40
+      height: 30
+    spriteID: 7e788f554d40fa147bb19796e47450fb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 184, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -150,18 +310,82 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: Headsman
+    - name: Headsman_Frame_0
       frameIndex: 0
       cellRect:
-        x: 4
+        x: 7
         y: 0
-        width: 32
-        height: 25
+        width: 35
+        height: 29
       spriteId: 660e0eb3813cdb0488a4767af1a0aea8
+    - name: Headsman_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 6
+        y: 0
+        width: 35
+        height: 34
+      spriteId: ecc497c05fb8e054f98ec1150ad359d4
+    - name: Headsman_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 6
+        y: 0
+        width: 27
+        height: 44
+      spriteId: c479de4f79b04bd48921042052d9cdf8
+    - name: Headsman_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 5
+        y: 0
+        width: 27
+        height: 44
+      spriteId: ddac2bba580286747b59ba54fe3bb0c8
+    - name: Headsman_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 0
+        y: 0
+        width: 30
+        height: 41
+      spriteId: 9d2fbecdab3c95f4a945cbbd9a49a12e
+    - name: Headsman_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 0
+        y: 0
+        width: 31
+        height: 45
+      spriteId: b60cd90ff5c279a4885880018f9d4774
+    - name: Headsman_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 2
+        y: 0
+        width: 46
+        height: 45
+      spriteId: a8fed9f97a168424381415d40c893f20
+    - name: Headsman_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 7
+        y: 0
+        width: 41
+        height: 37
+      spriteId: 90fba879650998643978bc5f8ab9249f
+    - name: Headsman_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 7
+        y: 0
+        width: 40
+        height: 30
+      spriteId: 7e788f554d40fa147bb19796e47450fb
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 36, y: 36}
+  canvasSize: {x: 48, y: 48}
