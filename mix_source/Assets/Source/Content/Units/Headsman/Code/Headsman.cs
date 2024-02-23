@@ -53,8 +53,13 @@ namespace autumn_berries_mix.Source.Content.Units.Headsman.Code
             }
             else
             {
-                GetAbility<StepMovement>().Move(_pathfinder.FindPath(Position2Int, _scene.FindNearestPlayerUnit(this).Position2Int)[0]);
+                GetAbility<StepMovement>().Move(GetTileToMove(), 2, Master.Get<HeadsmanAnimator>().PlayWalk, Master.Get<HeadsmanAnimator>().StopWalk);
             }
+        }
+
+        private Vector2Int GetTileToMove()
+        {
+            return _pathfinder.FindPath(Position2Int, _scene.FindNearestPlayerUnit(this).Position2Int)[0];
         }
 
         private PlayerUnit CheckArea()

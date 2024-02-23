@@ -140,7 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <CurrentHealth>k__BackingField: 15
   <MaximumHealth>k__BackingField: 15
-  hitSound: 
+  hitSound: ChainyHit
   hitColor: {r: 1, g: 1, b: 1, a: 0.39215687}
   healSound: 
   healColor: {r: 0.60137516, g: 0.9622642, b: 0.46751517, a: 1}

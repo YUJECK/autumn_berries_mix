@@ -73,3 +73,8 @@ MonoBehaviour:
     <Looped>k__BackingField: 0
     <Volume>k__BackingField: 0.811
     <Tags>k__BackingField: 
+  - <Name>k__BackingField: ChainyHit
+    <Clip>k__BackingField: {fileID: 8300000, guid: d0d5860bbf5c7084b99e8be91fc04ade, type: 3}
+    <Looped>k__BackingField: 0
+    <Volume>k__BackingField: 1
+    <Tags>k__BackingField: 

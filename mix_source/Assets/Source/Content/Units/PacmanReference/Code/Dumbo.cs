@@ -50,6 +50,8 @@ namespace autumn_berries_mix
             GetComponent<Animator>().SetBool("Moving", true);
             AudioPlayer.Play("GhostMove");
         }
+        
+        
 
         private Vector2Int GetMoveDirection()
         {

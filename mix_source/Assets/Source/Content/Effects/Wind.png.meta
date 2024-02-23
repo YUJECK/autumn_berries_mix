@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 39c3c91aa409afa42b9278ec2f5833b2
+guid: 372799487cb603140b87ce0b56007229
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -46,8 +46,8 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 7
-  spritePivot: {x: 0.5, y: 0}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 36
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -97,295 +97,337 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Headsman_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 96
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9c644b34750097c4587b1ce3b6489b50
-      internalID: 1033393944
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Headsman_1
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 96
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 861d86df7e8297748bccae3f99e7aff4
-      internalID: -973226490
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Headsman_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 48
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 26a6d257a6c36a74da0953bb94aa4df2
-      internalID: -1832054256
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Headsman_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 48
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8fa40a618f5375140bd1f4916ab1f056
-      internalID: 908692918
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Headsman_4
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 48
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bf2a5dcc90e61254b8679bbaed529d21
-      internalID: 578258415
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Headsman_5
+      name: Wind_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c5963fa7cb5c38458caeb4167bb3b23
-      internalID: -359151844
+      spriteID: 5321c96c8413a5647a649973bcfd2ea0
+      internalID: -15408431
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Headsman_6
+      name: Wind_1
       rect:
         serializedVersion: 2
-        x: 48
+        x: 32
         y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c14f61f85d4b74c47baa91b8587ee5b3
-      internalID: -464704081
+      spriteID: 68596dac046dcd54b905f4d3f8e479b5
+      internalID: 235864262
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Headsman_7
+      name: Wind_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bace3e37aa27ab488a073f244fd3abf
+      internalID: -1325348132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wind_3
       rect:
         serializedVersion: 2
         x: 96
         y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a0867b0c3389714cb3486fe4983d1e2
-      internalID: -898537488
+      spriteID: b47f60f3c116f614786336c26bbde336
+      internalID: 502424006
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Headsman_8
+      name: Wind_4
       rect:
         serializedVersion: 2
-        x: 144
+        x: 128
         y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb694307f8db4c04fbe5803fbdfadcb5
-      internalID: 715355363
+      spriteID: ba442b8f68d14cd408fc9f8699f4fdad
+      internalID: -2074922104
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Headsman_9
+      name: Wind_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67b8c9b57b084544485fa17782960b33
+      internalID: -841317291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wind_6
       rect:
         serializedVersion: 2
         x: 192
         y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b02bcf1ca01dcd547be82768e128f988
-      internalID: -417344544
+      spriteID: f6b8e009e8f364e45980c004af951a29
+      internalID: 236365014
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Headsman_10
+      name: Wind_7
       rect:
         serializedVersion: 2
-        x: 240
+        x: 224
         y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc59c66ea8404c240979d03ada3015ee
-      internalID: -1285470324
+      spriteID: e2afcbfb63b0c1b418b874b184b589ba
+      internalID: -1761526747
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Headsman_11
+      name: Wind_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8941097bf641b44883add3a4f8a6003
+      internalID: 24770147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wind_9
       rect:
         serializedVersion: 2
         x: 288
         y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a413f302db0d9ee44a98223719bc2659
-      internalID: 2041915258
+      spriteID: 2a202faaa3e94ed4ebf0558c37fde14e
+      internalID: 488470997
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Headsman_12
+      name: Wind_10
       rect:
         serializedVersion: 2
-        x: 336
+        x: 320
         y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f32f80e11aa2f04289fc8c0a4f69755
-      internalID: 1042320169
+      spriteID: 4e478dda72a9bc140a1624e5c42cbcca
+      internalID: -1059256313
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Headsman_13
+      name: Wind_11
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c152cc3e9b686ab49b7fb82b9db5576f
+      internalID: 980270353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wind_12
       rect:
         serializedVersion: 2
         x: 384
         y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8802f386a90b924cb67c787dc6c52c9
-      internalID: 1190370750
+      spriteID: 0cecb71648d010545b2135ecf8872cca
+      internalID: 1648951490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wind_13
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98b015b5642f28846a23648ba7c295f8
+      internalID: -2036386809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wind_14
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 720738c3962ce8143846307fc9bef680
+      internalID: -1872963511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wind_15
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2166aec710d7ac745834b2f04db45932
+      internalID: 1033923126
       vertices: []
       indices: 
       edges: []
@@ -394,27 +436,29 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 23b87163940bf9e17a630cbce180c386
-    internalID: 1230773726
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Headsman_0: 1033393944
-      Headsman_1: -973226490
-      Headsman_10: -1285470324
-      Headsman_11: 2041915258
-      Headsman_12: 1042320169
-      Headsman_13: 1190370750
-      Headsman_2: -1832054256
-      Headsman_3: 908692918
-      Headsman_4: 578258415
-      Headsman_5: -359151844
-      Headsman_6: -464704081
-      Headsman_7: -898537488
-      Headsman_8: 715355363
-      Headsman_9: -417344544
+      Wind_0: -15408431
+      Wind_1: 235864262
+      Wind_10: -1059256313
+      Wind_11: 980270353
+      Wind_12: 1648951490
+      Wind_13: -2036386809
+      Wind_14: -1872963511
+      Wind_15: 1033923126
+      Wind_2: -1325348132
+      Wind_3: 502424006
+      Wind_4: -2074922104
+      Wind_5: -841317291
+      Wind_6: 236365014
+      Wind_7: -1761526747
+      Wind_8: 24770147
+      Wind_9: 488470997
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
