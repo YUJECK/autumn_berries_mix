@@ -54,6 +54,7 @@ namespace autumn_berries_mix.Source.Content.Units.Headsman.Code
             }
             
             Owner.OnUsedAbility(this);
+            Owner.FinishTurn();
         }
 
         private async void PushOverlay(GridTile tile)

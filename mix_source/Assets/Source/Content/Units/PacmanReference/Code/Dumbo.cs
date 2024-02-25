@@ -43,7 +43,7 @@ namespace autumn_berries_mix
             GetComponent<Animator>().SetBool("Moving", false);
             AudioPlayer.Stop("GhostMove");
             
-            OnUsedAbility(GetAbility<BishopMovement>());
+            FinishTurn();
         }
 
         private void PlayMove()

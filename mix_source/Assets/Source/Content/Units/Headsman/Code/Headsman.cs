@@ -62,6 +62,7 @@ namespace autumn_berries_mix.Source.Content.Units.Headsman.Code
         {
             Master.Get<HeadsmanAnimator>().StopWalk();
             OnUsedAbility(GetAbility<StepMovement>());
+            FinishTurn();
         }
 
         private Vector2Int GetTileToMove()

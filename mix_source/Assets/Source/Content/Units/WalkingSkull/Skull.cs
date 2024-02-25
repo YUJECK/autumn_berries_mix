@@ -9,11 +9,12 @@ namespace autumn_berries_mix.Source.Content.Units.WalkingSkull
     [RequireComponent(typeof(UnitHealth))]
     public sealed class Skull : EnemyUnit
     {
-        private AbilityData movementData;
+        [Header("Abilities Configs")]
+        [SerializeField] private AbilityData movementData;
+        [SerializeField] private AbilityData attackData;
+        
         private Pathfinder _pathfinder;
         private GameplayScene _scene;
-
-        private Animator _animator;
         
         public override UnitHealth UnitHealth { get; protected set; }
         
@@ -23,12 +24,13 @@ namespace autumn_berries_mix.Source.Content.Units.WalkingSkull
             Master.Add(new EntityFlipper());
             _pathfinder = new Pathfinder(Grid);
             _scene = SceneSwitcher.TryGetGameplayScene();
-            _animator = GetComponent<Animator>();
+            Master.Add(new SkullAnimator());
         }
 
         protected override void ConfigureAbilities()
         {
             PushAbility(new StepMovement(this, movementData));
+            PushAbility(new SkullAttack(this, movementData));
         }
 
         public override void OnUnitTurn()
@@ -37,24 +39,22 @@ namespace autumn_berries_mix.Source.Content.Units.WalkingSkull
             
             if(target == null)
             {
-                GetAbility<StepMovement>().Move(GetStep(), 4, PlayWalk, Finish);
+                GetAbility<StepMovement>().Move(GetStep(), 4, PlayWalk, FinishMove);
             }
             else
             {
                 Attack(target);
             }
-            
-            OnUsedAbility(GetAbility<StepMovement>());
         }
-
+        
         private void PlayWalk()
         {
-            _animator.Play("SkullWalk");
+            Master.Get<SkullAnimator>().PlayWalk();
         }
 
-        private void Finish()
+        private void FinishMove()
         {
-            _animator.Play("SkullIdle");
+            Master.Get<SkullAnimator>().StopWalk();
 
             Attack(CheckForPlayerUnit());
         }
@@ -63,10 +63,11 @@ namespace autumn_berries_mix.Source.Content.Units.WalkingSkull
         {
             if (unit == null)
             {
+                FinishTurn();
                 return;
             }
-
-            unit.UnitHealth.Hit(1);
+            
+            GetAbility<SkullAttack>().Attack(1, unit);
         }
 
         private PlayerUnit CheckForPlayerUnit()

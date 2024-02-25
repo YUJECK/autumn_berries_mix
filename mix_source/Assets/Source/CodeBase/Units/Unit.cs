@@ -10,12 +10,18 @@ namespace autumn_berries_mix.Units
         [field: SerializeField] public string UnitName { get; protected set; }
         
         public event Action<UnitAbility> UsedAbility; 
+        public event Action OnFinished; 
         
         public abstract UnitAbility[] NonTypedAbilitiesPull { get; }
         public abstract UnitHealth UnitHealth { get; protected set; }
         
         protected virtual void ConfigureAbilities() { }
         protected virtual void OnUnitAwake() {}
+
+        public void FinishTurn()
+        {
+            OnFinished?.Invoke();
+        }
         
         protected void UpdateAbilities()
         {

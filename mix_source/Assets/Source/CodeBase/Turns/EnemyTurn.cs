@@ -19,7 +19,7 @@ namespace autumn_berries_mix.Turns
             
             onCompletedCached = onCompleted;
             
-            CurrentScene.Units.EnemyUnitsPull[currentEnemy].UsedAbility += OnUsedAbility;
+            CurrentScene.Units.EnemyUnitsPull[currentEnemy].OnFinished += OnFinished;
             CurrentScene.Units.EnemyUnitsPull[currentEnemy].OnUnitTurn();
         }
 
@@ -29,9 +29,9 @@ namespace autumn_berries_mix.Turns
                 currentEnemy = 0;
         }
 
-        private async void OnUsedAbility(UnitAbility ability)
+        private async void OnFinished()
         {
-            CurrentScene.Units.EnemyUnitsPull[currentEnemy].UsedAbility -= OnUsedAbility;
+            CurrentScene.Units.EnemyUnitsPull[currentEnemy].OnFinished -= OnFinished;
 
             await UniTask.Delay(TimeSpan.FromSeconds(1));
             
