@@ -1,3 +1,4 @@
+using autumn_berries_mix.EC;
 using autumn_berries_mix.PrefabTags.CodeBase.Scenes;
 using autumn_berries_mix.Scenes;
 using autumn_berries_mix.Units;
@@ -7,7 +8,7 @@ namespace autumn_berries_mix.Gameplay
 {
     public class GameplayFabric : GameObjectFabric
     {
-        private GameplayScene _scene;
+        private readonly GameplayScene _scene;
 
         public GameplayFabric(GameplayScene scene)
         {
@@ -26,20 +27,30 @@ namespace autumn_berries_mix.Gameplay
 
         public override TObject Instantiate<TObject>(TObject original, Vector3 position, Quaternion rotation, Transform parent)
         {
-            var newObject = GameObject.Instantiate(original, position, rotation, parent);
-            
-            if(newObject.TryGetComponent(out Unit unit))
-                _scene.AddUnit(unit);
+            var newObject = base.Instantiate(original, position, rotation, parent);
 
+            if (newObject.TryGetComponent(out Entity entity))
+            {
+                entity.InitGrid(_scene.GameGrid);
+                
+                if (entity is Unit unit)
+                {
+                    _scene.Units.AddUnit(unit);
+                    unit.LoadedToLevel();    
+                }
+
+                _scene.GameGrid.Get(entity.Position2Int).Place(entity);
+            }
+            
             return newObject;
         }
 
         public override void Destroy(GameObject gameObject)
         {
             if(gameObject.TryGetComponent(out Unit unit))
-                _scene.RemoveUnit(unit);
+                _scene.Units.RemoveUnit(unit);
             
-            GameObject.Destroy(gameObject);
+            base.Destroy(gameObject);
         }
     }
 }

@@ -6,8 +6,9 @@ namespace autumn_berries_mix.Units
 {
     public abstract class Unit : Entity
     {
+        [field: Header("Info")]
         [field: SerializeField] public string UnitName { get; protected set; }
-
+        
         public event Action<UnitAbility> UsedAbility; 
         
         public abstract UnitAbility[] NonTypedAbilitiesPull { get; }

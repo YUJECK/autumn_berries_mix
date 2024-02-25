@@ -20,6 +20,7 @@ namespace autumn_berries_mix
         {
             UnitHealth = GetComponent<UnitHealth>();
             _pathfinder = new Pathfinder(Grid);
+            _scene = SceneSwitcher.TryGetGameplayScene();
             
             Master.Add(new EntityFlipper());
         }
@@ -27,8 +28,6 @@ namespace autumn_berries_mix
         protected override void ConfigureAbilities()
         {
             bishopMovementConfig = Instantiate(bishopMovementConfig);
-            
-            _scene = SceneSwitcher.TryGetGameplayScene();
             
             PushAbility(new BishopMovement(this, bishopMovementConfig.data));
         }
@@ -43,6 +42,8 @@ namespace autumn_berries_mix
         {
             GetComponent<Animator>().SetBool("Moving", false);
             AudioPlayer.Stop("GhostMove");
+            
+            OnUsedAbility(GetAbility<BishopMovement>());
         }
 
         private void PlayMove()
@@ -50,8 +51,6 @@ namespace autumn_berries_mix
             GetComponent<Animator>().SetBool("Moving", true);
             AudioPlayer.Play("GhostMove");
         }
-        
-        
 
         private Vector2Int GetMoveDirection()
         {

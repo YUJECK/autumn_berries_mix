@@ -32,7 +32,6 @@ namespace autumn_berries_mix
             }
 
             Owner.Grid.ReplaceEntity(Owner, startPosition, Owner.Position2Int);
-            Owner.OnUsedAbility(this);
             
             onFinished?.Invoke();
         }

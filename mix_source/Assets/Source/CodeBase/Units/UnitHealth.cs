@@ -1,20 +1,20 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using autumn_berries_mix.Gameplay.Signals;
 using autumn_berries_mix.CallbackSystem.Signals;
 using autumn_berries_mix.Sounds;
-using Source.Content;
 using UnityEngine;
 
 namespace autumn_berries_mix.Units
 {
     [RequireComponent(typeof(Unit))]
     public class UnitHealth : MonoBehaviour
-    {
+    {        
+        [field: Header("Main Stats")]
         [field: SerializeField] public int CurrentHealth { get; private set; } = 15;
         [field: SerializeField] public int MaximumHealth { get; private set; } = 15;
 
+        [Header("Special")]
         [SerializeField] private string hitSound;
         [SerializeField] private Color hitColor;
         [SerializeField] private string healSound;

@@ -40,7 +40,7 @@ namespace autumn_berries_mix.Turns
 
         private void SubscribeOnAbilitiesCallbacks()
         {
-            foreach (var unit in CurrentScene.PlayerUnitsPull)
+            foreach (var unit in CurrentScene.Units.PlayerUnitsPull)
             {
                 unit.UsedAbility += OnUnitUsedAbility;    
             }
@@ -48,7 +48,7 @@ namespace autumn_berries_mix.Turns
 
         private void UnsubscribeOnAbilitiesCallbacks()
         {
-            foreach (var unit in CurrentScene.PlayerUnitsPull)
+            foreach (var unit in CurrentScene.Units.PlayerUnitsPull)
             {
                 unit.UsedAbility -= OnUnitUsedAbility;    
             }

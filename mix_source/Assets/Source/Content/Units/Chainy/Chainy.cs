@@ -7,6 +7,7 @@ namespace autumn_berries_mix.Units
     [RequireComponent(typeof(Animator))]
     public sealed class Chainy : PlayerUnit
     {
+        [field: Header("")]
         [SerializeField] private MovementAbilityConfig movementConfig;
         [SerializeField] private ChainsawAttackConfig attackConfig;
 

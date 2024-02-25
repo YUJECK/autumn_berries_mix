@@ -27,6 +27,9 @@ namespace autumn_berries_mix.PrefabTags.CodeBase
                 entity.LoadedToLevel();
             }
         }
+
+        public Unit[] LoadUnits()
+            => playerUnitsContainer.GetComponentsInChildren<Unit>();
         
         public PlayerUnit[] LoadPlayerUnits()
             => playerUnitsContainer.GetComponentsInChildren<PlayerUnit>();

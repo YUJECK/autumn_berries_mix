@@ -16,44 +16,8 @@ namespace Source.Content
 {
     public sealed class DemoLevel : GameplayScene
     {
-        public override PlayerUnit[] PlayerUnitsPull => _playerUnitsPull.ToArray();
-        public override EnemyUnit[] EnemyUnitsPull => _enemyUnitsPull.ToArray();
-
         public override PlayerUnit SelectedPlayerUnit => _unitSelector.PlayerUnit;
         public override GameGrid GameGrid => Map.Grid;
-        
-        public override void AddUnit(Unit unit)
-        {
-            switch (unit)
-            {
-                case PlayerUnit playerUnit:
-                    _playerUnitsPull.Add(playerUnit);
-                    break;
-                case EnemyUnit enemyUnit:
-                    _enemyUnitsPull.Add(enemyUnit);
-                    break;
-            }
-            
-            unit.LoadedToLevel();
-        }
-
-        public override void RemoveUnit(Unit unit)
-        {
-            switch (unit)
-            {
-                case PlayerUnit playerUnit:
-                    _playerUnitsPull.Remove(playerUnit);
-                    
-                    if(playerUnit == SelectedPlayerUnit)
-                        SelectedPlayerUnit.SelectedAbility?.OnAbilityDeselected();
-                    
-                    break;
-                case EnemyUnit enemyUnit:
-                    _enemyUnitsPull.Remove(enemyUnit);
-                    break;
-            }
-        }
-
         public override GameObjectFabric Fabric { get; protected set; } = new GameObjectFabric();
 
         public GameplayMap Map { get; protected set; }
@@ -61,9 +25,6 @@ namespace Source.Content
         private TileSelector _tileSelector;
         private GameplayResources _resources;
         private UnitSelector _unitSelector;
-
-        private readonly List<PlayerUnit> _playerUnitsPull = new();
-        private readonly List<EnemyUnit> _enemyUnitsPull = new();
         
         private Camera _main;
 
@@ -150,8 +111,10 @@ namespace Source.Content
         private void LoadMapData()
         {
             Map.LoadGrid();
-            _playerUnitsPull.AddRange(Map.LoadPlayerUnits());
-            _enemyUnitsPull.AddRange(Map.LoadEnemyUnits());
+            
+            Units.AddUnits(Map.LoadPlayerUnits());
+            Units.AddUnits(Map.LoadEnemyUnits());
+            
             _main = Map.LoadCamera();
         }
     }

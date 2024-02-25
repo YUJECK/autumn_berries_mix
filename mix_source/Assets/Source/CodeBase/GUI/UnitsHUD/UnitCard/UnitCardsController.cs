@@ -33,12 +33,57 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
 
         private void Initialize()
         {
+            _currentScene.OnConfiguringFinished -= Initialize;
+            
+            
             LoadCards();
             ConnectCardsToUnits();
             
             _currentScene.TurnController.RegisterAddiction(this);
-            _currentScene.OnConfiguringFinished -= Initialize;
+            
             SignalManager.SubscribeOnSignal<UnitSelectedSignal>(OnUnitSelected);
+
+            SignalManager.SubscribeOnSignal<UnitSpawned>(OnUnitSpawned);
+            SignalManager.SubscribeOnSignal<UnitDead>(OnUnitDestroyed);
+        }
+
+        private void OnUnitSpawned(UnitSpawned data)
+        {
+            var card = GetEmptyFor(data.Unit);
+            
+            card.gameObject.SetActive(true);
+            
+            card.Connect(data.Unit);
+            unitToCard.Add(data.Unit, card);
+        }
+
+        private void OnUnitDestroyed(UnitDead data)
+        {
+            unitToCard[data.Unit].Die();
+        }
+
+        private UnitCard GetEmptyFor(Unit unit)
+        {
+            if (unit is PlayerUnit)
+            {
+                foreach (var card in playerCards)
+                {
+                    if (!card.AlreadyConnected)
+                        return card;
+                }
+            }
+            
+            if (unit is EnemyUnit)
+            {
+                foreach (var card in enemyCards)
+                {
+                    if (card.AlreadyConnected)
+                        return card;
+                }
+            }
+            
+
+            return null;
         }
 
         private void Select(Unit unit)
@@ -59,8 +104,8 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
 
         private void ConnectCardsToUnits()
         {
-            Connect(_currentScene.PlayerUnitsPull, playerCards);
-            Connect(_currentScene.EnemyUnitsPull, enemyCards);
+            Connect(_currentScene.Units.PlayerUnitsPull, playerCards);
+            Connect(_currentScene.Units.EnemyUnitsPull, enemyCards);
         }
 
         private void LoadCards()
@@ -69,24 +114,24 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
             enemyCards = new List<UnitCard>(enemyHealthBarsContainer.GetComponentsInChildren<UnitCard>());
         }
 
-        private void Connect(Unit[] units, List<UnitCard> bars)
+        private void Connect(Unit[] units, List<UnitCard> cards)
         {
-            if (bars.Count < units.Length)
+            if (cards.Count < units.Length)
             {
                 Debug.LogError("TOO MUCH UNITS");
                 return;
             }
 
-            for (int i = 0; i < bars.Count; i++)
+            for (int i = 0; i < cards.Count; i++)
             {
                 if (i < units.Length)
                 {
-                    bars[i].Connect(units[i]);    
-                    unitToCard.Add(units[i], bars[i]);
+                    cards[i].Connect(units[i]);    
+                    unitToCard.Add(units[i], cards[i]);
                 }
                 else
                 {
-                    bars[i].gameObject.SetActive(false);                    
+                    cards[i].gameObject.SetActive(false);                    
                 }
             }
         }

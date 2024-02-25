@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 110014571241325782}
   - component: {fileID: 504349358634164445}
   - component: {fileID: 9014053678762558229}
-  - component: {fileID: 7789195109834626085}
   - component: {fileID: 791316836589504436}
+  - component: {fileID: 3819244328122795073}
   m_Layer: 0
   m_Name: TheWalkingSkull
   m_TagString: Untagged
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1829771556, guid: 879cd70463324d740b5c5ed25329bbfa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -101,25 +101,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10efbede65074361a1b7a306108fb409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CurrentHealth>k__BackingField: 100
-  <MaximumHealth>k__BackingField: 100
+  <CurrentHealth>k__BackingField: 3
+  <MaximumHealth>k__BackingField: 3
   hitSound: 
   hitColor: {r: 0, g: 0, b: 0, a: 0}
   healSound: 
   healColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!114 &7789195109834626085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6702562839796579227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01a0abdb5a7569641b6233273b93f0f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <UnitName>k__BackingField: Walking Skull
 --- !u!95 &791316836589504436
 Animator:
   serializedVersion: 7
@@ -142,3 +129,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3819244328122795073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6702562839796579227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e66e7fb6ab1e4e6f916d2035b5803d20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <UnitName>k__BackingField: Skull

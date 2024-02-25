@@ -7,6 +7,8 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI.UnitsHUD.UnitCard
 {
     public class UnitCard : MonoBehaviour
     {
+        public bool AlreadyConnected => connectedUnit == null;
+        
         [SerializeField] private TMP_Text unitLabel;
         
         [SerializeField] private Sprite defaultSprite;
@@ -46,5 +48,11 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI.UnitsHUD.UnitCard
         {
             image.sprite = defaultSprite;
         }
+
+        public void Die()
+        {
+            image.sprite = deadSprite;
+        }
+        
     }
 }

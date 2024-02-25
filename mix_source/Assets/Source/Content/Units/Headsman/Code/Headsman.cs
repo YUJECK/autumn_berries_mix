@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using autumn_berries_mix.Grid;
 using autumn_berries_mix.Helpers;
@@ -53,8 +54,14 @@ namespace autumn_berries_mix.Source.Content.Units.Headsman.Code
             }
             else
             {
-                GetAbility<StepMovement>().Move(GetTileToMove(), 2, Master.Get<HeadsmanAnimator>().PlayWalk, Master.Get<HeadsmanAnimator>().StopWalk);
+                GetAbility<StepMovement>().Move(GetTileToMove(), 2, Master.Get<HeadsmanAnimator>().PlayWalk, OnFinished);
             }
+        }
+
+        private void OnFinished()
+        {
+            Master.Get<HeadsmanAnimator>().StopWalk();
+            OnUsedAbility(GetAbility<StepMovement>());
         }
 
         private Vector2Int GetTileToMove()
