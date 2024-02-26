@@ -26,7 +26,7 @@ namespace autumn_berries_mix.Source.Content.Units.WalkingSkull
             _scene = SceneSwitcher.TryGetGameplayScene();
             Master.Add(new SkullAnimator());
         }
-
+        
         protected override void ConfigureAbilities()
         {
             PushAbility(new StepMovement(this, movementData));

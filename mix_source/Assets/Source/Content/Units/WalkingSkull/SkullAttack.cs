@@ -7,10 +7,7 @@ namespace autumn_berries_mix.Source.Content.Units.WalkingSkull
 {
     public sealed class SkullAttack : EnemyAbility
     {
-        public SkullAttack(Unit owner, AbilityData data) : base(owner, data)
-        {
-            
-        }
+        public SkullAttack(Unit owner, AbilityData data) : base(owner, data) { }
 
         public async void Attack(int damage, PlayerUnit unit)
         {

@@ -1,4 +1,5 @@
 using autumn_berries_mix.EC;
+using autumn_berries_mix.Sounds;
 using UnityEngine;
 using Component = autumn_berries_mix.EC.Component;
 
@@ -27,6 +28,7 @@ namespace autumn_berries_mix.Source.Content.Units.WalkingSkull
 
         public void PlayAttack()
         {
+            AudioPlayer.Play("Slash");
             _animator.Play("SkullAttack");
         }
     }

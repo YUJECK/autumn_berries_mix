@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using autumn_berries_mix.Scenes;
+using autumn_berries_mix.Sounds;
 using autumn_berries_mix.Turns;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace autumn_berries_mix.Source.Content.Units.WalkingSkull
     {
         [Header("Configuration")]
         [SerializeField] private Skull prefab;
+        [SerializeField] private string resurrectSound = "SkullResurrected";
         [SerializeField] private int startAfterTurn = 10;
         [SerializeField] private int rate = 2;
         
@@ -51,9 +53,18 @@ namespace autumn_berries_mix.Source.Content.Units.WalkingSkull
         {
             last++;
 
+            if (_graves[last].IsBroken)
+            {
+                while (_graves[last].IsBroken && last < _graves.Length)
+                {
+                    last++;
+                }
+            }
+            
             if (_skulls.Count < _graves.Length)
             {
-                _skulls.Add(SceneSwitcher.CurrentScene.Fabric.Instantiate(prefab, _graves[last].transform.position, Quaternion.identity, _graves[last].transform));
+                AudioPlayer.Play(resurrectSound);
+                _skulls.Add(SceneSwitcher.CurrentScene.Fabric.Instantiate(prefab, _graves[last].transform.position-Vector3.zero, Quaternion.identity, _graves[last].transform));
             }
             else
             {

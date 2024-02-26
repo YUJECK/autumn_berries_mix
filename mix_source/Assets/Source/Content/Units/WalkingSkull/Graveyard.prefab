@@ -45,5 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 3819244328122795073, guid: 0994313793c777545bb162b6b7499da1, type: 3}
+  resurrectSound: SkullResurrected
   startAfterTurn: 10
   rate: 2

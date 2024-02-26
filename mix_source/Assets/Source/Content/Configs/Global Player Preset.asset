@@ -78,3 +78,18 @@ MonoBehaviour:
     <Looped>k__BackingField: 0
     <Volume>k__BackingField: 1
     <Tags>k__BackingField: 
+  - <Name>k__BackingField: GraveBroken
+    <Clip>k__BackingField: {fileID: 8300000, guid: 6cf38b57becb241418fe01dff857ff75, type: 3}
+    <Looped>k__BackingField: 0
+    <Volume>k__BackingField: 1
+    <Tags>k__BackingField: 
+  - <Name>k__BackingField: SkullResurrected
+    <Clip>k__BackingField: {fileID: 8300000, guid: dc89cc9743772e848a31ea83e08f9537, type: 3}
+    <Looped>k__BackingField: 0
+    <Volume>k__BackingField: 1
+    <Tags>k__BackingField: 
+  - <Name>k__BackingField: Slash
+    <Clip>k__BackingField: {fileID: 8300000, guid: 6c7a226fbcddca846be59a064418906c, type: 3}
+    <Looped>k__BackingField: 0
+    <Volume>k__BackingField: 1
+    <Tags>k__BackingField: 
