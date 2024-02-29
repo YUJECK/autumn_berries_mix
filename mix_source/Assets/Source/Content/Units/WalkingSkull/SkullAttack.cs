@@ -15,7 +15,7 @@ namespace autumn_berries_mix.Source.Content.Units.WalkingSkull
          
             Owner.Master.Get<SkullAnimator>().PlayAttack();
 
-            await UniTask.Delay(TimeSpan.FromSeconds(0.45f));
+            await UniTask.Delay(TimeSpan.FromSeconds(1f));
             
             unit.UnitHealth.Hit(damage);
             

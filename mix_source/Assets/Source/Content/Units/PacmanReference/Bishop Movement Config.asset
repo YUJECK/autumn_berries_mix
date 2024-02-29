@@ -17,5 +17,5 @@ MonoBehaviour:
     Description: flies all the way down on the same trajectory
     DefaultIcon: {fileID: 0}
     SelectedIcon: {fileID: 0}
-    speed: 5
+    speed: 3
     damage: 1

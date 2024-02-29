@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using autumn_berries_mix.Grid;
+using autumn_berries_mix.PrefabTags.CodeBase.Scenes;
 using autumn_berries_mix.Scenes;
 using autumn_berries_mix.Sounds;
 using autumn_berries_mix.Turns;
@@ -15,9 +17,14 @@ namespace autumn_berries_mix.Source.Content.Units.WalkingSkull
         [SerializeField] private int startAfterTurn = 10;
         [SerializeField] private int rate = 2;
         
+        //other services
+        private GameplayScene _scene;
+        
+        //graveyard
         private readonly List<Skull> _skulls = new List<Skull>();
         private Grave[] _graves;
 
+        //indexes
         private int last = -1;
         private int turnCounter;
 
@@ -25,14 +32,10 @@ namespace autumn_berries_mix.Source.Content.Units.WalkingSkull
         {
             _graves = GetComponentsInChildren<Grave>();
 
-            SceneSwitcher.TryGetGameplayScene().TurnController.OnTurnSwitched += OnTurnSwitched;
+            _scene = SceneSwitcher.TryGetGameplayScene();
+            _scene.TurnController.OnTurnSwitched += OnTurnSwitched;
         }
-
-        private void OnDisable()
-        {
-            SceneSwitcher.TryGetGameplayScene().TurnController.OnTurnSwitched -= OnTurnSwitched;
-        }
-
+        
         private void OnTurnSwitched(Turn turn)
         {
             if (turn is EnemyTurn)
@@ -52,24 +55,29 @@ namespace autumn_berries_mix.Source.Content.Units.WalkingSkull
         public void ResurrectNext()
         {
             last++;
-
-            if (_graves[last].IsBroken)
-            {
-                while (_graves[last].IsBroken && last < _graves.Length)
-                {
-                    last++;
-                }
-            }
             
             if (_skulls.Count < _graves.Length)
             {
-                AudioPlayer.Play(resurrectSound);
-                _skulls.Add(SceneSwitcher.CurrentScene.Fabric.Instantiate(prefab, _graves[last].transform.position-Vector3.zero, Quaternion.identity, _graves[last].transform));
+                if (_graves[last].IsBroken)
+                {
+                    while (_graves[last].IsBroken && last < _graves.Length)
+                    {
+                        last++;
+                    }
+                }
+                
+                SpawnSkull();
             }
             else
             {
                 SceneSwitcher.TryGetGameplayScene().TurnController.OnTurnSwitched -= OnTurnSwitched;
             }
+        }
+
+        private void SpawnSkull()
+        {
+            AudioPlayer.Play(resurrectSound);
+            _skulls.Add(SceneSwitcher.CurrentScene.Fabric.Instantiate(prefab, _graves[last].transform.position + Vector3.down, Quaternion.identity, _graves[last].transform));
         }
     }
 }

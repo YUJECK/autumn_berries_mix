@@ -39,7 +39,7 @@ namespace autumn_berries_mix.Source.Content.Units.WalkingSkull
             
             if(target == null)
             {
-                GetAbility<StepMovement>().Move(GetStep(), 4, PlayWalk, FinishMove);
+                GetAbility<StepMovement>().Move(GetStep(), 2, PlayWalk, FinishMove);
             }
             else
             {

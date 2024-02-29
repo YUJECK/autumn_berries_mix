@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using autumn_berries_mix.Units;
 using Cysharp.Threading.Tasks;
 
@@ -11,7 +12,7 @@ namespace autumn_berries_mix.Turns
 
         private Action onCompletedCached;
         
-        public override void Start(Action onCompleted)
+        public override async void Start(Action onCompleted)
         {
             CheckCounter();
             
@@ -20,6 +21,9 @@ namespace autumn_berries_mix.Turns
             onCompletedCached = onCompleted;
             
             CurrentScene.Units.EnemyUnitsPull[currentEnemy].OnFinished += OnFinished;
+            
+            await UniTask.Delay(1000);
+            
             CurrentScene.Units.EnemyUnitsPull[currentEnemy].OnUnitTurn();
         }
 

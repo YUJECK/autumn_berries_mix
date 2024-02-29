@@ -55,9 +55,8 @@ namespace autumn_berries_mix
                     return;
                 }
                 
-                await MoveTo(movedPosition);
-                
                 _flipper.FlipToDirection(direction.x);
+                await MoveTo(movedPosition);
 
                 if (unitToHit != null)
                 {

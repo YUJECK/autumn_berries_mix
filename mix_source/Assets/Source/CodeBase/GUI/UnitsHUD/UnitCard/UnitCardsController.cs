@@ -60,6 +60,7 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
         private void OnUnitDestroyed(UnitDead data)
         {
             unitToCard[data.Unit].Die();
+            unitToCard.Remove(data.Unit);
         }
 
         private UnitCard GetEmptyFor(Unit unit)
@@ -82,7 +83,6 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
                 }
             }
             
-
             return null;
         }
 

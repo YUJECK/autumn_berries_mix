@@ -1,14 +1,26 @@
+using System;
 using autumn_berries_mix.Units;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace autumn_berries_mix
 {
+    [RequireComponent(typeof(Image))]
     public class HealthBar : MonoBehaviour
     {
-        [SerializeField] private Image healthBar;
+        //view data
+        private Image _healthBar;
+        private TMP_Text _text;
         
+        //model data
         private UnitHealth connectedHealth;
+
+        private void Awake()
+        {
+            _text = GetComponentInChildren<TMP_Text>();
+            _healthBar = GetComponent<Image>();
+        }
 
         public void Connect(UnitHealth unitHealth)
         {
@@ -23,7 +35,8 @@ namespace autumn_berries_mix
             if(connectedHealth == null)
                 return;
             
-            healthBar.fillAmount = (float)connectedHealth.CurrentHealth / connectedHealth.MaximumHealth;
+            _healthBar.fillAmount = (float)connectedHealth.CurrentHealth / connectedHealth.MaximumHealth;
+            _text.text = $"{connectedHealth.CurrentHealth}/{connectedHealth.MaximumHealth}";
         }
 
         public void Update()

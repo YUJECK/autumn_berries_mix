@@ -26,6 +26,8 @@ namespace autumn_berries_mix.Gameplay
             if (signal.Unit.UnitHealth.CurrentHealth <= 0)
             {
                 signal.Unit.UnitHealth.Die();
+                SignalManager.PushSignal(new UnitDead(signal.Unit));
+                
                 Scene.Fabric.Destroy(signal.Unit.gameObject);
             }
 

@@ -59,7 +59,6 @@ namespace autumn_berries_mix.Source.CodeBase.Gameplay
                     break;
             }
             
-            SignalManager.PushSignal(new UnitDead(unit));
             OnDisappear?.Invoke(unit);
         }
     }
