@@ -148,7 +148,6 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
 
         public void OnEnemyTurn(EnemyTurn turn)
         {
-            Select(turn.CurrentEnemy);
         }
     }
 }

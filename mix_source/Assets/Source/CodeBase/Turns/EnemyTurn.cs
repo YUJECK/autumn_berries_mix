@@ -1,5 +1,4 @@
 using System;
-using System.Threading.Tasks;
 using autumn_berries_mix.Units;
 using Cysharp.Threading.Tasks;
 
@@ -10,47 +9,45 @@ namespace autumn_berries_mix.Turns
         public EnemyUnit CurrentEnemy => CurrentScene.Units.EnemyUnitsPull[currentEnemy];
         private int currentEnemy = 0;
 
-        private Action onCompletedCached;
+        private bool currentEnemyFinished;
         
         public override async void Start(Action onCompleted)
         {
-            CheckCounter();
-            
             Completed = false;
             
-            onCompletedCached = onCompleted;
-            
-            CurrentScene.Units.EnemyUnitsPull[currentEnemy].OnFinished += OnFinished;
-            
-            await UniTask.Delay(1000);
+            for (currentEnemy = 0; currentEnemy < CurrentScene.Units.EnemyUnitsPull.Length; currentEnemy++)
+            {
+                await StartEnemy();
+            }
+
+            currentEnemy = 0;
+
+            Complete();
+            onCompleted?.Invoke();
+        }
+
+        private async UniTask StartEnemy()
+        {
+            currentEnemyFinished = false;
+            CurrentEnemy.OnFinished += OnFinished;
             
             CurrentScene.Units.EnemyUnitsPull[currentEnemy].OnUnitTurn();
-        }
-
-        private void CheckCounter()
-        {
-            if (currentEnemy >= CurrentScene.Units.EnemyUnitsPull.Length)
-                currentEnemy = 0;
-        }
-
-        private async void OnFinished()
-        {
-            CurrentScene.Units.EnemyUnitsPull[currentEnemy].OnFinished -= OnFinished;
-
-            await UniTask.Delay(TimeSpan.FromSeconds(1));
             
-            Complete();
+            while (!currentEnemyFinished)
+            {
+                await UniTask.WaitForEndOfFrame();
+            }
+        }
+
+        private void OnFinished()
+        {
+            currentEnemyFinished = true;
+            CurrentEnemy.OnFinished -= OnFinished;
         }
 
         public override void Complete()
         {
             Completed = true;
-            currentEnemy++;
-
-            if (currentEnemy >= CurrentScene.Units.EnemyUnitsPull.Length)
-                currentEnemy = 0;
-            
-            onCompletedCached?.Invoke();
         }
     }
 }
