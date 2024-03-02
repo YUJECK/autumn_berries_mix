@@ -101,7 +101,6 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
             lastSelected = unitToCard[unit];
         }
 
-
         private void ConnectCardsToUnits()
         {
             Connect(_currentScene.Units.PlayerUnitsPull, playerCards);

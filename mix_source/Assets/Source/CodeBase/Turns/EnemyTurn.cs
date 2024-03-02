@@ -29,6 +29,17 @@ namespace autumn_berries_mix.Turns
         private async UniTask StartEnemy()
         {
             currentEnemyFinished = false;
+            
+            var enemy = CurrentScene.Units.EnemyUnitsPull[currentEnemy];
+
+            if (enemy.UnitHealth.Dead)
+            {
+                while (enemy != null)
+                {
+                    await UniTask.WaitForEndOfFrame();
+                }
+            }
+            
             CurrentEnemy.OnFinished += OnFinished;
             
             CurrentScene.Units.EnemyUnitsPull[currentEnemy].OnUnitTurn();

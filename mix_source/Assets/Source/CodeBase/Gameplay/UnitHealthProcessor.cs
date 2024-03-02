@@ -21,11 +21,11 @@ namespace autumn_berries_mix.Gameplay
             SignalManager.UnsubscribeOnSignal(_subscription);
         }
 
-        public void OnDamaged(UnitDamagedSignal signal)
+        public async void OnDamaged(UnitDamagedSignal signal)
         {
             if (signal.Unit.UnitHealth.CurrentHealth <= 0)
             {
-                signal.Unit.UnitHealth.Die();
+                await signal.Unit.UnitHealth.Die();
                 SignalManager.PushSignal(new UnitDead(signal.Unit));
                 
                 Scene.Fabric.Destroy(signal.Unit.gameObject);

@@ -84,7 +84,8 @@ namespace autumn_berries_mix.Source.Content.Units.Headsman.Code
                 {
                     foreach (var connection in Grid.GetConnections(tiles[tileIndex].Position2Int.x, tiles[tileIndex].Position2Int.y))
                     {
-                        tiles.Add(connection);      
+                        if(connection.Empty || connection.TileStuff is Unit && connection.Walkable)
+                            tiles.Add(connection);      
                     } 
                 }
             }
