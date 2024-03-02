@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using autumn_berries_mix.EC;
 using autumn_berries_mix.Grid;
 using autumn_berries_mix.PrefabTags.CodeBase.Scenes;
 using autumn_berries_mix.Scenes;
@@ -9,7 +10,7 @@ using UnityEngine;
 
 namespace autumn_berries_mix.Source.Content.Units.WalkingSkull
 {
-    public class Graveyard : MonoBehaviour
+    public class Graveyard : Entity
     {
         [Header("Configuration")]
         [SerializeField] private Skull prefab;
@@ -28,8 +29,10 @@ namespace autumn_berries_mix.Source.Content.Units.WalkingSkull
         private int last = -1;
         private int turnCounter;
 
-        private void Start()
+        public override void LoadedToLevel()
         {
+            base.LoadedToLevel();
+            
             _graves = GetComponentsInChildren<Grave>();
 
             _scene = SceneSwitcher.TryGetGameplayScene();

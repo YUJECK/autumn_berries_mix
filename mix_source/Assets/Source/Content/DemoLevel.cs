@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using autumn_berries_mix;
 using autumn_berries_mix.Gameplay;
 using autumn_berries_mix.Grid;
@@ -63,15 +62,15 @@ namespace Source.Content
 
         public override void Dispose()
         {
-            
             AudioPlayer.StopAllNonCrossScene();
-
         }
 
         private void Finish()
         {
+            Debug.Log("Finish");
             Map.FinishLoading();
             InvokeOnConfiguringFinished();
+                
             TurnController.SwitchToNext();
             _tileSelector.Enable();
             
@@ -81,6 +80,7 @@ namespace Source.Content
 
         private void CreateTileSelectorAndProcessors()
         {
+            Debug.Log("CreateTileSelectorAndProcessors");
             _unitSelector = new UnitSelector();
 
             var playerUnitsAbilitiesProcessor = new PlayerUnitsAbilitiesProcessor(this);
@@ -97,6 +97,7 @@ namespace Source.Content
 
         private void CreateTurnController()
         {
+            Debug.Log("Create Turn Controller");
             TurnController = new TurnController(this, new PlayerTurn(), new EnemyTurn());
         }
 

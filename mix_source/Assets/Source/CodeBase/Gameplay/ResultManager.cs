@@ -4,8 +4,9 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.Scenes
 {
     public sealed class ResultManager
     {
-        public void Lose()
+        public async void Lose()
         {
+            await Curtain.Instance().Down();
             SceneSwitcher.SwitchTo(new LoseScene());
         }
 

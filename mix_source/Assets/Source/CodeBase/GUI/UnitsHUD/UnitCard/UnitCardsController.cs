@@ -35,7 +35,6 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
         {
             _currentScene.OnConfiguringFinished -= Initialize;
             
-            
             LoadCards();
             ConnectCardsToUnits();
             

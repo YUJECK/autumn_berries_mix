@@ -107,7 +107,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 72
+        y: 130
         width: 36
         height: 36
       alignment: 7
@@ -128,7 +128,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 36
-        y: 72
+        y: 130
         width: 36
         height: 36
       alignment: 7
@@ -149,7 +149,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 36
+        y: 94
         width: 36
         height: 36
       alignment: 7
@@ -170,7 +170,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 36
-        y: 36
+        y: 94
         width: 36
         height: 36
       alignment: 7
@@ -191,7 +191,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 72
-        y: 36
+        y: 94
         width: 36
         height: 36
       alignment: 7
@@ -212,7 +212,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 58
         width: 36
         height: 36
       alignment: 7
@@ -233,7 +233,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 36
-        y: 0
+        y: 58
         width: 36
         height: 36
       alignment: 7
@@ -254,7 +254,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 72
-        y: 0
+        y: 58
         width: 36
         height: 36
       alignment: 7
@@ -275,7 +275,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 108
-        y: 0
+        y: 58
         width: 36
         height: 36
       alignment: 7
@@ -296,7 +296,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 144
-        y: 0
+        y: 58
         width: 36
         height: 36
       alignment: 7
@@ -317,7 +317,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 180
-        y: 0
+        y: 58
         width: 36
         height: 36
       alignment: 7
@@ -329,6 +329,27 @@ TextureImporter:
       bones: []
       spriteID: f103e451195fb2240a8e4be6c0a80427
       internalID: -1492342274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 22
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aec275d52722ee24b94df18ec24b664f
+      internalID: 107864547
       vertices: []
       indices: 
       edges: []
@@ -347,6 +368,7 @@ TextureImporter:
       Idle_0: 4723107735738678597
       Idle_1: -7385789195546760866
       Idle_10: -1492342274
+      Idle_11: 107864547
       Idle_2: 388736585
       Idle_3: 1969925508
       Idle_4: -1749456786

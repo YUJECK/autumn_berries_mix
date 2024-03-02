@@ -123,15 +123,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: SiberiaHusband
     originalName: 
-    pivot: {x: 1.2592592, y: 0}
+    pivot: {x: 0.49523813, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 27
-      height: 35
+      width: 105
+      height: 34
     spriteID: 5dea124e46973de468adf72d37f92e40
     spriteBone: []
     spriteOutline: []
@@ -155,8 +155,8 @@ ScriptedImporter:
       cellRect:
         x: 2
         y: 0
-        width: 27
-        height: 35
+        width: 105
+        height: 34
       spriteId: 5dea124e46973de468adf72d37f92e40
     linkedCells: []
     parentIndex: -1
@@ -164,4 +164,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 72, y: 36}
+  canvasSize: {x: 108, y: 36}

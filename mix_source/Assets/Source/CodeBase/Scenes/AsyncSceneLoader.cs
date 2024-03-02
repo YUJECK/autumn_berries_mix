@@ -19,7 +19,7 @@ namespace Internal.Codebase.Infrastructure.Services.SceneLoader
                 return;
             }
 
-            var loadSceneOperation = SceneManager.LoadSceneAsync(sceneName);
+            var loadSceneOperation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
             
             while (!loadSceneOperation.isDone)
                 await UniTask.WaitForEndOfFrame();

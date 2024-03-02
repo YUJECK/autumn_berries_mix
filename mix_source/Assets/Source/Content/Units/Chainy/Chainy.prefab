@@ -138,8 +138,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10efbede65074361a1b7a306108fb409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CurrentHealth>k__BackingField: 15
-  <MaximumHealth>k__BackingField: 15
+  <CurrentHealth>k__BackingField: 1
+  <MaximumHealth>k__BackingField: 4
+  deathAnimation: 
+  deathAnimationLenght: 0
   hitSound: ChainyHit
   hitColor: {r: 1, g: 1, b: 1, a: 0.39215687}
   healSound: 

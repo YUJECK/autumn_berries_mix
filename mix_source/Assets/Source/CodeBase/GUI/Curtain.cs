@@ -1,3 +1,5 @@
+using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace autumn_berries_mix
@@ -6,6 +8,7 @@ namespace autumn_berries_mix
     {
         private static Curtain _instance;
         private Animator _animator;
+        private float curtainDownDuration = 0.4f;
 
         private void Awake()
         {
@@ -29,10 +32,12 @@ namespace autumn_berries_mix
         public static Curtain Instance()
             => _instance;
 
-        public void Down()
+        public async UniTask Down()
         {
             gameObject.SetActive(true);
             _animator.Play("CurtainUp");
+
+            await UniTask.Delay(TimeSpan.FromSeconds(curtainDownDuration));
         }
     }
 }

@@ -10,6 +10,7 @@ namespace autumn_berries_mix.Scenes
     {
         public static Scene CurrentScene { get; private set; }
  
+        public static event Action<Scene> OnSceneStartedLoading; //prev
         public static event Action<Scene, Scene> OnSceneLoaded; //prev/new
 
         private static readonly AsyncSceneLoader Loader = new();
@@ -25,6 +26,8 @@ namespace autumn_berries_mix.Scenes
         public static void SwitchTo<TScene>(TScene scene)
             where TScene : Scene
         {
+            OnSceneStartedLoading?.Invoke(CurrentScene);
+            
             CurrentScene?.Dispose();
             CurrentScene = scene;
             
