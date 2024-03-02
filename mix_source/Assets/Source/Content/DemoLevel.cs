@@ -67,7 +67,6 @@ namespace Source.Content
 
         private void Finish()
         {
-            Debug.Log("Finish");
             Map.FinishLoading();
             InvokeOnConfiguringFinished();
                 
@@ -80,7 +79,6 @@ namespace Source.Content
 
         private void CreateTileSelectorAndProcessors()
         {
-            Debug.Log("CreateTileSelectorAndProcessors");
             _unitSelector = new UnitSelector();
 
             var playerUnitsAbilitiesProcessor = new PlayerUnitsAbilitiesProcessor(this);
@@ -97,7 +95,6 @@ namespace Source.Content
 
         private void CreateTurnController()
         {
-            Debug.Log("Create Turn Controller");
             TurnController = new TurnController(this, new PlayerTurn(), new EnemyTurn());
         }
 
