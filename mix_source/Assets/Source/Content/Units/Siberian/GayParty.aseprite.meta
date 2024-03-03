@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 0
+  platformSettingsDirtyTick: 638450648616659334
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: SiberiaHusband
+  - name: GayParty
     originalName: 
-    pivot: {x: 0.49523813, y: 0}
+    pivot: {x: 1.925926, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 105
+      width: 27
       height: 34
-    spriteID: 5dea124e46973de468adf72d37f92e40
+    spriteID: 8a1ffb4ada2918c49b182377b8441a95
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -144,20 +144,20 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -937604668
-    name: SiberiaHusband
+    guid: 36814293
+    name: GayParty
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: SiberiaHusband
+    - name: GayParty
       frameIndex: 0
       cellRect:
         x: 2
         y: 0
-        width: 105
+        width: 27
         height: 34
-      spriteId: 5dea124e46973de468adf72d37f92e40
+      spriteId: 8a1ffb4ada2918c49b182377b8441a95
     linkedCells: []
     parentIndex: -1
   platformSettings: []

@@ -74,6 +74,8 @@ namespace Source.Content
             _tileSelector.Enable();
             
             AudioPlayer.Play("MainTheme");
+            
+            
             AudioPlayer.Play("CrowsAmbient");
         }
 
