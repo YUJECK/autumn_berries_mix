@@ -1,4 +1,5 @@
 using System;
+using autumn_berries_mix.Scenes;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -12,6 +13,7 @@ namespace autumn_berries_mix.Grid.Inputs
         public static event Action OnNodeSelected;
 
         public static float CameraZoomEdit => Input.mouseScrollDelta.y;
+
         public static Vector2 CameraMovement => Inputs.Gameplay.CameraMove.ReadValue<Vector2>();
 
         public static bool TileChosen
@@ -24,6 +26,9 @@ namespace autumn_berries_mix.Grid.Inputs
 
             Inputs.Gameplay.SelectNode.performed += PerformCallback;
         }
+
+        public static Vector3 GetMousePosition
+            => SceneSwitcher.CurrentScene.GetCamera().ScreenToWorldPoint(Input.mousePosition);
 
         private static void PerformCallback(InputAction.CallbackContext context)
             => OnNodeSelected?.Invoke();
