@@ -123,14 +123,14 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Siberian
     originalName: 
-    pivot: {x: 0.8545455, y: 0}
+    pivot: {x: 0.8703704, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 55
+      width: 54
       height: 35
     spriteID: e6e6009ae8e554c48b71344ee39b55ce
     spriteBone: []
@@ -155,7 +155,7 @@ ScriptedImporter:
       cellRect:
         x: 7
         y: 0
-        width: 55
+        width: 54
         height: 35
       spriteId: e6e6009ae8e554c48b71344ee39b55ce
     linkedCells: []
