@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace autumn_berries_mix.Units
 {
@@ -6,6 +7,10 @@ namespace autumn_berries_mix.Units
     public class ChainsawAttackData : AbilityData
     {
         public int Damage;
-        public ChainyAnimator Animator;
+        public ChainyAnimator Animator; 
+       
+        [Header("Overlay Data")]
+        public Sprite rangeCell;
+        public Sprite selectedRangeCell;
     }
 }

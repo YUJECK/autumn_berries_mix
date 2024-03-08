@@ -17,6 +17,6 @@ namespace autumn_berries_mix.Units
         public virtual void OnEnemyUnitPointed(EnemyUnit enemyUnit, bool withClick) {}
         public virtual void OnUnitPointed(Unit unit, bool withClick) {}
         public virtual void OnPlayerUnitPointed(PlayerUnit playerUnit, bool withClick) {}
-        public virtual void OnEntityPointed(Entity tileTileStuff, bool withClick) {}
+        public virtual void OnEntityPointed(Entity entity, bool withClick) {}
     }
 }

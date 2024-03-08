@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using autumn_berries_mix.CallbackSystem.Signals;
 using autumn_berries_mix.EC;
 using autumn_berries_mix.Gameplay.Signals;
@@ -45,6 +46,42 @@ namespace autumn_berries_mix.Grid
         
         public GridTile[] GetConnections(int x, int y)
             => GridData.GetConnections(x, y);
+        
+        public GridTile[] GetConnections(int x, int y, int range)
+        {
+            List<GridTile> result = new();
+            Queue<GridTile> next = new();
+            
+            next.Enqueue(Get(x, y));
+
+            for (int i = 0; i < range; i++)
+            {
+                List<GridTile> onThisTurn = new();
+                
+                while(next.Count > 0)
+                {
+                    var connections = GridData.GetConnections(next.Peek().Position2Int.x, next.Peek().Position2Int.y);
+
+                    foreach (var tile in connections)
+                    {
+                        if (!result.Contains(tile))
+                        {
+                            onThisTurn.Add(tile);
+                            result.Add(tile);        
+                        }
+                    }
+
+                    next.Dequeue();
+                }
+
+                foreach (var tile in onThisTurn)
+                {
+                    next.Enqueue(tile);
+                }
+            }
+            
+            return result.ToArray();
+        }
 
         public TEntity PlaceEntityToEmptyFromPrefab<TEntity>(int x, int y, TEntity prefab)
             where TEntity : Entity

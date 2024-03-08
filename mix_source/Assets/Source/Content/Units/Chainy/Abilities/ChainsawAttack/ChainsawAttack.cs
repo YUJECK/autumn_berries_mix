@@ -1,20 +1,59 @@
-using System.Linq;
+using System.Collections.Generic;
+using autumn_berries_mix.Grid;
 using autumn_berries_mix.Helpers;
-using UnityEngine;
 
 namespace autumn_berries_mix.Units
 {
     public class ChainsawAttack : PlayerAbility
     {
         private readonly ChainsawAttackData _typedData;
+        private readonly StaticTileOverlayData _rangeData;
 
+        private readonly List<GridTile> _attackRange = new();
+        
         public ChainsawAttack(Unit owner, ChainsawAttackData data) : base(owner, data)
         {
             _typedData = data;
+            _rangeData = new StaticTileOverlayData(_typedData.rangeCell, _typedData.selectedRangeCell, "AttackRange");
         }
+
+        public override void OnAbilitySelected()
+        {
+            base.OnAbilitySelected();
+
+            //создаем оверлей
+            CreateOverlay();
+        }
+
+        private void CreateOverlay()
+        {
+            foreach (var tile in Owner.Grid.GetConnections(Owner.Position2Int.x, Owner.Position2Int.y))
+            {
+                if (tile.Empty || tile.TileStuff is Unit)
+                {
+                    tile.Overlay.PushStaticOverlay(_rangeData);
+                    _attackRange.Add(tile);
+                }
+            }
+        }
+
+        public override void OnAbilityDeselected()
+        {
+            base.OnAbilityDeselected();
+            
+            //убираем оверлей и чистим зону атаки
+            foreach (var tile in _attackRange)
+            {
+                tile.Overlay.RemoveStaticOverlay(_rangeData);
+            }
+            
+            _attackRange.Clear();
+        }
+
         public override void OnUnitPointed(Unit unit, bool withClick)
         {
-            if (Owner.Grid.GetConnections(Owner.Position2Int.x, Owner.Position2Int.y).Contains(Owner.Grid.Get(unit.Position2Int.x, unit.Position2Int.y)))
+            //если находится в зоне атаки, то атакуем
+            if (_attackRange.Contains(Owner.Grid.Get(unit.Position2Int)))
             {
                 if (withClick)
                 {

@@ -52,8 +52,6 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -91,7 +89,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &6966971707807615108
 Animator:
-  serializedVersion: 7
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -105,7 +103,6 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -126,6 +123,7 @@ MonoBehaviour:
   <UnitName>k__BackingField: Chainy
   movementConfig: {fileID: 11400000, guid: 02867692851e8584eadb1c1732688f63, type: 2}
   attackConfig: {fileID: 11400000, guid: 21dedcb7b56a20546a7665b21346fe60, type: 2}
+  chainAttackConfig: {fileID: 11400000, guid: 1bc98b9bf6758df48baa34a9fb1e5b56, type: 2}
 --- !u!114 &2256332666690025269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,11 +136,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10efbede65074361a1b7a306108fb409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CurrentHealth>k__BackingField: 1
+  <CurrentHealth>k__BackingField: 4
   <MaximumHealth>k__BackingField: 4
-  deathAnimation: 
-  deathAnimationLenght: 0
+  deathAnimation: ChainyDie
+  deathAnimationLenght: 1
   hitSound: ChainyHit
-  hitColor: {r: 1, g: 1, b: 1, a: 0.39215687}
+  hitColor: {r: 1, g: 0.24056602, b: 0.24056602, a: 0.78431374}
   healSound: 
   healColor: {r: 0.60137516, g: 0.9622642, b: 0.46751517, a: 1}

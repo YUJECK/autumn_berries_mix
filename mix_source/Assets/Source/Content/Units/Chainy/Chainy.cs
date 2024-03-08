@@ -10,6 +10,7 @@ namespace autumn_berries_mix.Units
         [field: Header("")]
         [SerializeField] private MovementAbilityConfig movementConfig;
         [SerializeField] private ChainsawAttackConfig attackConfig;
+        [SerializeField] private ChainAttackConfig chainAttackConfig;
 
         private ChainyAnimator _animator;
         
@@ -27,6 +28,7 @@ namespace autumn_berries_mix.Units
             
             AbilitiesPull.Add(new PlayerMovement(this, movementConfig.Data));
             AbilitiesPull.Add(new ChainsawAttack(this, attackConfig.data));
+            AbilitiesPull.Add(new ChainAttack(this, chainAttackConfig.Data));
         }
         
         protected override void OnUnitAwake()

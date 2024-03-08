@@ -1,5 +1,9 @@
+using System;
+using autumn_berries_mix.CallbackSystem.Signals;
+using autumn_berries_mix.Gameplay.Signals;
 using autumn_berries_mix.Grid.Inputs;
 using Cinemachine;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace autumn_berries_mix
@@ -17,6 +21,13 @@ namespace autumn_berries_mix
         private void Start()
         {
             _virtualCamera = GetComponent<CinemachineVirtualCamera>();
+
+            SignalManager.SubscribeOnSignal<UnitDamagedSignal>(OnUnitHit);
+        }
+
+        private void OnUnitHit(UnitDamagedSignal unit)
+        {
+            Shake(1, 0.1f);
         }
 
         private void Update()
@@ -37,6 +48,17 @@ namespace autumn_berries_mix
 
             cameraCenter.position += new Vector3(InputsHandler.CameraMovement.x, InputsHandler.CameraMovement.y, 0) * (Time.deltaTime * 10);
             cursor.position = InputsHandler.GetMousePosition;
+        }
+
+        public async void Shake(float intensity, float time)
+        {
+            var shake = _virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+
+            shake.m_AmplitudeGain = intensity;
+
+            await UniTask.Delay(TimeSpan.FromSeconds(time));
+            
+            shake.m_AmplitudeGain = 0;
         }
     }
 }
