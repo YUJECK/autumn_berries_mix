@@ -1,9 +1,10 @@
-using autumn_berries_mix.Sounds;
+using autumn_berries_mix.Sounds;    
 using UnityEngine;
+using Component = autumn_berries_mix.EC.Component;
 
 namespace autumn_berries_mix.Units
 {
-    public sealed class ChainyAnimator
+    public sealed class ChainyAnimator : Component
     {
         private const string GrassWalk = "GrassWalk";
         private const string WalkBool = "Walk";
@@ -28,10 +29,14 @@ namespace autumn_berries_mix.Units
             AudioPlayer.Stop(GrassWalk);
         }
 
-        public void PlayAttack()
+        public void PlayChainsawAttack()
         {
             _animator.Play("ChainyChainsawAttack");
             AudioPlayer.Play("Chainsaw");
+        }
+        public void PlayChainAttack()
+        {
+            _animator.Play("ChainyChainAttack");
         }
     }
 }

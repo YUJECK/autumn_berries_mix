@@ -58,7 +58,7 @@ namespace autumn_berries_mix.Units
                 if (withClick)
                 {
                     Owner.Master.Get<EntityFlipper>().FlipTo(unit.transform);
-                    _typedData.Animator.PlayAttack();
+                    Owner.Master.Get<ChainyAnimator>().PlayChainsawAttack();
                     unit.UnitHealth.Hit(_typedData.Damage);                  
                    
                     Owner.OnUsedAbility(this);

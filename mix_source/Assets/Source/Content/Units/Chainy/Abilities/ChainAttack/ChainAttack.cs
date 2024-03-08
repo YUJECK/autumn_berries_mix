@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using autumn_berries_mix.Grid;
+using autumn_berries_mix.Helpers;
 using autumn_berries_mix.Units;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -9,7 +10,9 @@ namespace autumn_berries_mix
 {
     public class ChainAttack : PlayerAbility
     {
-        private readonly ChainAttackData _typedData; 
+        private readonly ChainAttackData _typedData;
+
+        private ChainyAnimator _animator;
         
         private StaticTileOverlayData _overlayData; //оверлей для клеток
         private readonly List<GridTile> _availableArea = new(); //текущий набор тайлов, которые игрок может выбрать для атаки
@@ -18,6 +21,8 @@ namespace autumn_berries_mix
         public ChainAttack(Unit owner, ChainAttackData data) : base(owner, data)
         {
             _typedData = data;
+            _animator = Owner.Master.Get<ChainyAnimator>();
+            
             CreateOverlayData();
         }
 
@@ -41,7 +46,7 @@ namespace autumn_berries_mix
                 {
                     var tile = Owner.Grid.Get(Owner.Position2Int + direction * i);
                     
-                    if (tile.Empty || tile.TileStuff is Unit)
+                    if (tile != null && (tile.Empty || tile.TileStuff is Unit))
                     {
                         line.Add(tile);    
                     }
@@ -107,7 +112,9 @@ namespace autumn_berries_mix
             var line = _lines[ParseToDirection(entity)];
 
             ClearOverlay();
+            Owner.Master.Get<EntityFlipper>().FlipTo(entity.transform);
             
+            _animator.PlayChainAttack();
             foreach (var tile in line)
             {
                 tile.Overlay.PushStaticOverlay(_overlayData);

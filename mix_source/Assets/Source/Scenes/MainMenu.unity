@@ -1469,8 +1469,8 @@ MonoBehaviour:
 
     telegram(ru):'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7f1117a14b054984aa5f8d788550244d, type: 2}
-  m_sharedMaterial: {fileID: 7073145007255127874, guid: 7f1117a14b054984aa5f8d788550244d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a9728255e53b12943a6b27a06256f155, type: 2}
+  m_sharedMaterial: {fileID: 5352046981370642077, guid: a9728255e53b12943a6b27a06256f155, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

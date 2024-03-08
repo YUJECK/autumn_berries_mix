@@ -98,3 +98,8 @@ MonoBehaviour:
     <Looped>k__BackingField: 0
     <Volume>k__BackingField: 1
     <Tags>k__BackingField: 
+  - <Name>k__BackingField: ChainWhip
+    <Clip>k__BackingField: {fileID: 8300000, guid: b4423e97f3146864d9b14bb1ec076a10, type: 3}
+    <Looped>k__BackingField: 0
+    <Volume>k__BackingField: 1
+    <Tags>k__BackingField: 

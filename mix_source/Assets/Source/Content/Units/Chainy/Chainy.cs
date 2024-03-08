@@ -1,4 +1,5 @@
 using autumn_berries_mix.Helpers;
+using autumn_berries_mix.Sounds;
 using UnityEngine;
 
 namespace autumn_berries_mix.Units
@@ -19,6 +20,7 @@ namespace autumn_berries_mix.Units
         protected override void ConfigureComponents()
         {
             Master.Add(new EntityFlipper());
+            Master.Add(new ChainyAnimator(GetComponent<Animator>()));
         }
 
         protected override void ConfigureAbilities()
@@ -34,13 +36,13 @@ namespace autumn_berries_mix.Units
         protected override void OnUnitAwake()
         {
             UnitHealth = GetComponent<UnitHealth>();
-            
-            _animator = new ChainyAnimator(GetComponent<Animator>());
-            
-            movementConfig.Data.Animator = _animator;
-            attackConfig.data.Animator = _animator;
         }
 
+        public void PlayChainWhipAudio()
+        {
+            AudioPlayer.Play("ChainWhip");
+        }
+        
         protected override void OnUpdate()
         {
             UpdateAbilities();

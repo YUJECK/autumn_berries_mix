@@ -7,6 +7,5 @@ namespace autumn_berries_mix.Units
     public sealed class MovementAbilityData : AbilityData
     {
         public TileOverlayPrefab ArrowPrefab;
-        public ChainyAnimator Animator;
     }
 }

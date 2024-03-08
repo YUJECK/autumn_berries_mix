@@ -69,7 +69,7 @@ namespace autumn_berries_mix.Units
 
         private async void Move(Vector2Int to, float speed = 8, Action onStarted = null, Action onFinished = null)
         {
-            _typedData.Animator.PlayWalk();
+            Owner.Master.Get<ChainyAnimator>().PlayWalk();
             Vector2Int startPosition = Owner.Position2Int;
             
             onStarted?.Invoke();
@@ -88,7 +88,7 @@ namespace autumn_berries_mix.Units
             
             DrawMoveArrows();
 
-            _typedData.Animator.StopWalk();
+            Owner.Master.Get<ChainyAnimator>().StopWalk();
             onFinished?.Invoke();
         }
         

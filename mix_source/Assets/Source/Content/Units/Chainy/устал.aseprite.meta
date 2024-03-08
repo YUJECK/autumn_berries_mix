@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9f90924fe4c92b4a887a9d742a1bfd1e
+guid: 672e50703c3b08041a325bbbe1784b30
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Idle
+  - name: "\u0443\u0441\u0442\u0430\u043B"
     originalName: 
-    pivot: {x: 0.7826087, y: 0}
+    pivot: {x: 0.75, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 276
-      height: 174
-    spriteID: 07f72930132a8d4a49af7c9cb5a9883d
+      width: 24
+      height: 28
+    spriteID: 0272739ef3dc2744ead6c6eccd6ee6b6
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -144,24 +144,24 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 161112836
-    name: Idle
+    guid: -806488793
+    name: "\u0443\u0441\u0442\u0430\u043B"
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Idle
+    - name: "\u0443\u0441\u0442\u0430\u043B"
       frameIndex: 0
       cellRect:
         x: 0
         y: 0
-        width: 276
-        height: 174
-      spriteId: 07f72930132a8d4a49af7c9cb5a9883d
+        width: 24
+        height: 28
+      spriteId: 0272739ef3dc2744ead6c6eccd6ee6b6
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 432, y: 180}
+  canvasSize: {x: 36, y: 36}
