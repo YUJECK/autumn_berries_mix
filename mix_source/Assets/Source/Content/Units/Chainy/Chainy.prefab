@@ -124,6 +124,7 @@ MonoBehaviour:
   movementConfig: {fileID: 11400000, guid: 02867692851e8584eadb1c1732688f63, type: 2}
   attackConfig: {fileID: 11400000, guid: 21dedcb7b56a20546a7665b21346fe60, type: 2}
   chainAttackConfig: {fileID: 11400000, guid: 1bc98b9bf6758df48baa34a9fb1e5b56, type: 2}
+  rollConfig: {fileID: 11400000, guid: 3b33f51cfc29c5a4ca442a3f56c4c918, type: 2}
 --- !u!114 &2256332666690025269
 MonoBehaviour:
   m_ObjectHideFlags: 0

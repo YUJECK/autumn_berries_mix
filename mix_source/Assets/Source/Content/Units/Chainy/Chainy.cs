@@ -1,5 +1,6 @@
 using autumn_berries_mix.Helpers;
 using autumn_berries_mix.Sounds;
+using autumn_berries_mix.Units.Abilities.Roll;
 using UnityEngine;
 
 namespace autumn_berries_mix.Units
@@ -12,6 +13,7 @@ namespace autumn_berries_mix.Units
         [SerializeField] private MovementAbilityConfig movementConfig;
         [SerializeField] private ChainsawAttackConfig attackConfig;
         [SerializeField] private ChainAttackConfig chainAttackConfig;
+        [SerializeField] private RollConfig rollConfig;
 
         private ChainyAnimator _animator;
         
@@ -31,6 +33,7 @@ namespace autumn_berries_mix.Units
             AbilitiesPull.Add(new PlayerMovement(this, movementConfig.Data));
             AbilitiesPull.Add(new ChainsawAttack(this, attackConfig.data));
             AbilitiesPull.Add(new ChainAttack(this, chainAttackConfig.Data));
+            AbilitiesPull.Add(new ChainyRoll(this, rollConfig.Data));
         }
         
         protected override void OnUnitAwake()

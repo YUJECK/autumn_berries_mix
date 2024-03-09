@@ -108,6 +108,9 @@ namespace autumn_berries_mix.Grid
 
         public void RemovePrefabOverlay(string key)
         {
+            if(!prefabOverlays.ContainsKey(key))
+                return;
+            
             prefabOverlays[key].Disable();
             
             prefabOverlays.Remove(key);
