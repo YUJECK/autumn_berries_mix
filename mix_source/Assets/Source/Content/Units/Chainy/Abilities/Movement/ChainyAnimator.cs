@@ -34,9 +34,23 @@ namespace autumn_berries_mix.Units
             _animator.Play("ChainyChainsawAttack");
             AudioPlayer.Play("Chainsaw");
         }
+        
         public void PlayChainAttack()
         {
             _animator.Play("ChainyChainAttack");
+        }
+
+        public void PlayRoll()
+        {
+            _animator.Play("ChainyRoll");
+            AudioPlayer.Play("Roll");
+        }
+
+        public void StopRoll()
+        {
+            _animator.Play("ChainyIdle");
+            
+            AudioPlayer.Stop("Roll");
         }
     }
 }

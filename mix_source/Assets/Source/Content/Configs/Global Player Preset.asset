@@ -103,3 +103,8 @@ MonoBehaviour:
     <Looped>k__BackingField: 0
     <Volume>k__BackingField: 1
     <Tags>k__BackingField: 
+  - <Name>k__BackingField: Roll
+    <Clip>k__BackingField: {fileID: 8300000, guid: 14e798bc8d768cf42aade45a4c1ede8e, type: 3}
+    <Looped>k__BackingField: 0
+    <Volume>k__BackingField: 1
+    <Tags>k__BackingField: 

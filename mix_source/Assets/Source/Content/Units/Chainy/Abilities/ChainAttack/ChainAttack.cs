@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using autumn_berries_mix.Grid;
 using autumn_berries_mix.Helpers;
+using autumn_berries_mix.Source.CodeBase.Helpers;
 using autumn_berries_mix.Units;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -14,7 +15,7 @@ namespace autumn_berries_mix
 
         private ChainyAnimator _animator;
         
-        private StaticTileOverlayData _overlayData; //оверлей для клеток
+        private PrefabTileOverlayData _overlayData; //оверлей для клеток
         private readonly List<GridTile> _availableArea = new(); //текущий набор тайлов, которые игрок может выбрать для атаки
         private readonly Dictionary<Vector2Int, List<GridTile>> _lines = new(); //все линии для атаки
         
@@ -29,7 +30,7 @@ namespace autumn_berries_mix
         //создание образца для оверлеев
         private void CreateOverlayData()
         {
-            _overlayData = new StaticTileOverlayData(_typedData.rangeCell, _typedData.selectedRangeCell, "AttackRange");
+            _overlayData = new PrefabTileOverlayData(CommonOverlaysProvider.TileToAttackPrefab, "AttackRange");
         }
 
         public override void OnAbilitySelected()
@@ -58,7 +59,7 @@ namespace autumn_berries_mix
                 //Добавляем линию в зону атаки
                 foreach (var tile in line)
                 {
-                    tile.Overlay.PushStaticOverlay(_overlayData);
+                    tile.Overlay.PushPrefabOverlay(_overlayData);
                     _availableArea.Add(tile);
                 }
                 
@@ -81,7 +82,7 @@ namespace autumn_berries_mix
         {
             foreach (var tile in _availableArea)
             {
-                tile.Overlay.RemoveStaticOverlay(_overlayData);
+                tile.Overlay.RemovePrefabOverlay(_overlayData);
             }
         }
 
@@ -115,9 +116,10 @@ namespace autumn_berries_mix
             Owner.Master.Get<EntityFlipper>().FlipTo(entity.transform);
             
             _animator.PlayChainAttack();
+            
             foreach (var tile in line)
             {
-                tile.Overlay.PushStaticOverlay(_overlayData);
+                tile.Overlay.PushPrefabOverlay(_overlayData);
                 
                 if (!tile.Empty && tile.TileStuff is EnemyUnit enemyUnit)
                 {
@@ -126,8 +128,10 @@ namespace autumn_berries_mix
                 
                 await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
                 
-                tile.Overlay.RemoveStaticOverlay(_overlayData);
+                tile.Overlay.RemovePrefabOverlay(_overlayData);
             }
+            
+            Owner.OnUsedAbility(this);
         }
     }
 }

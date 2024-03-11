@@ -12,10 +12,15 @@ namespace autumn_berries_mix.Units.Abilities.Roll
         private readonly Dictionary<Vector2Int, List<GridTile>> _lines = new();
         private readonly List<GridTile> _availableArea = new();
         private bool _currentlyMoving = false;
+        private readonly ChainyAnimator _animator;
+        private readonly EntityFlipper _flipper;
 
         public ChainyRoll(Unit owner, RollData data) : base(owner, data)
         {
             _typedData = data;
+            
+            _animator = owner.Master.Get<ChainyAnimator>();
+            _flipper = owner.Master.Get<EntityFlipper>();
         }
 
         public override void OnAbilitySelected()
@@ -100,13 +105,21 @@ namespace autumn_berries_mix.Units.Abilities.Roll
         private async void Move(GridTile tile)
         {
             _currentlyMoving = true;
+            
+            _animator.PlayRoll();
+            
             var startPosition = Owner.Position2Int;
             var line = _lines[Direction.GetDirection(Owner.Position2Int, tile.Position2Int)];
 
-            while (Owner.Position3 != line[line.Count-1].transform.position)
+            _flipper.FlipTo(tile.transform);
+            
+            foreach (var target in line)
             {
-                Owner.transform.position = Vector3.MoveTowards(Owner.Position3, line[line.Count-1].transform.position, 5);
-                await UniTask.WaitForFixedUpdate();
+                while (Owner.Position3 != target.transform.position)
+                {
+                    Owner.transform.position = Vector3.MoveTowards(Owner.Position3, target.transform.position, 5 * Time.deltaTime);
+                    await UniTask.WaitForFixedUpdate();
+                }
             }
 
             Owner.Grid.ReplaceEntity(Owner, startPosition, line[line.Count-1].Position2Int);
@@ -114,7 +127,10 @@ namespace autumn_berries_mix.Units.Abilities.Roll
             ClearLinesAndOverlay();
             RegenerateLinesAndOverlay();
             
+            _animator.StopRoll();
             _currentlyMoving = false;
+            
+            Owner.OnUsedAbility(this);
         }
     }
 }

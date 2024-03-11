@@ -6,8 +6,7 @@ namespace autumn_berries_mix.Grid
     {
         private TileOverlayPrefab _instance;
         public PrefabTileOverlay(GridTile owner) : base(owner) { }
-
-
+        
         public override void ApplyData(PrefabTileOverlayData data)
         {
             _instance = CreateInstance(data.Prefab);

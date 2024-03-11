@@ -1,20 +1,22 @@
 using System.Collections.Generic;
 using autumn_berries_mix.Grid;
 using autumn_berries_mix.Helpers;
+using autumn_berries_mix.Source.CodeBase.Helpers;
+using UnityEditor.VersionControl;
 
 namespace autumn_berries_mix.Units
 {
     public class ChainsawAttack : PlayerAbility
     {
         private readonly ChainsawAttackData _typedData;
-        private readonly StaticTileOverlayData _rangeData;
+        private readonly PrefabTileOverlayData _rangeData;
 
         private readonly List<GridTile> _attackRange = new();
         
         public ChainsawAttack(Unit owner, ChainsawAttackData data) : base(owner, data)
         {
             _typedData = data;
-            _rangeData = new StaticTileOverlayData(_typedData.rangeCell, _typedData.selectedRangeCell, "AttackRange");
+            _rangeData = new PrefabTileOverlayData(CommonOverlaysProvider.TileToAttackPrefab, "AttackRange");
         }
 
         public override void OnAbilitySelected()
@@ -31,7 +33,7 @@ namespace autumn_berries_mix.Units
             {
                 if (tile.Empty || tile.TileStuff is Unit)
                 {
-                    tile.Overlay.PushStaticOverlay(_rangeData);
+                    tile.Overlay.PushPrefabOverlay(_rangeData);
                     _attackRange.Add(tile);
                 }
             }
@@ -44,7 +46,7 @@ namespace autumn_berries_mix.Units
             //убираем оверлей и чистим зону атаки
             foreach (var tile in _attackRange)
             {
-                tile.Overlay.RemoveStaticOverlay(_rangeData);
+                tile.Overlay.RemovePrefabOverlay(_rangeData);
             }
             
             _attackRange.Clear();
