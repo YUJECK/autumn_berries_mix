@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data:
     Name: Chain Attack
-    Description: 
+    Description: "Chainy can attack one enemy unit by his chain \nDirections: all\nDamage:
+      2\nRange: 2\nCost: 1"
     DefaultIcon: {fileID: 4723107735738678597, guid: 47c3e6da49b70b148b9ef3c7eb6476e3, type: 3}
     SelectedIcon: {fileID: -7385789195546760866, guid: 47c3e6da49b70b148b9ef3c7eb6476e3, type: 3}
     directions:

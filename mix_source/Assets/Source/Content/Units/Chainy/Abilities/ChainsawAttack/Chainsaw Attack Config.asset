@@ -14,7 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data:
     Name: Chainsaw Attack
-    Description: U can attack one unit in range of one tile
+    Description: 'Chainy can attack one enemy unit with his chainsaw
+
+      Directions:
+      all
+
+      Damage: 1
+
+      Range: 1
+
+      Cost: 1'
     DefaultIcon: {fileID: 4723107735738678597, guid: 94e6293681a1fc548bf677856d651437, type: 3}
     SelectedIcon: {fileID: -7385789195546760866, guid: 94e6293681a1fc548bf677856d651437, type: 3}
     Damage: 1

@@ -185,8 +185,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Enemy Turn
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a9728255e53b12943a6b27a06256f155, type: 2}
+  m_sharedMaterial: {fileID: 5352046981370642077, guid: a9728255e53b12943a6b27a06256f155, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -825,10 +825,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 8654419615725723155}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4499372107584255227
 CanvasRenderer:
@@ -858,7 +858,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: asdasda
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a9728255e53b12943a6b27a06256f155, type: 2}
   m_sharedMaterial: {fileID: 5352046981370642077, guid: a9728255e53b12943a6b27a06256f155, type: 2}
@@ -901,12 +901,12 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 0
+  m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
+  m_enableKerning: 1
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -921,7 +921,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 1.6102751, y: -24.15434, z: 0, w: -33.010918}
+  m_margin: {x: 12.414711, y: 6.802902, z: 12.414734, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1081,6 +1081,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnitCard (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3270664947068477635, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1182,6 +1186,10 @@ PrefabInstance:
     - target: {fileID: 3270664947068477635, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
       propertyPath: m_Name
       value: UnitCard (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3270664947068477635, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1391,6 +1399,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnitCard (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 3270664947068477635, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1599,6 +1611,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnitCard
       objectReference: {fileID: 0}
+    - target: {fileID: 3270664947068477635, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1701,6 +1717,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnitCard (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3270664947068477635, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1802,6 +1822,10 @@ PrefabInstance:
     - target: {fileID: 3270664947068477635, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
       propertyPath: m_Name
       value: UnitCard (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3270664947068477635, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2010,6 +2034,10 @@ PrefabInstance:
     - target: {fileID: 3270664947068477635, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
       propertyPath: m_Name
       value: UnitCard (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3270664947068477635, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2431,6 +2459,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnitCard (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 3270664947068477635, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2634,6 +2666,10 @@ PrefabInstance:
     - target: {fileID: 3270664947068477635, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
       propertyPath: m_Name
       value: UnitCard (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3270664947068477635, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2843,6 +2879,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnitCard (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3270664947068477635, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2944,6 +2984,10 @@ PrefabInstance:
     - target: {fileID: 3270664947068477635, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
       propertyPath: m_Name
       value: UnitCard (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3270664947068477635, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3047,6 +3091,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnitCard (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 3270664947068477635, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3148,6 +3196,10 @@ PrefabInstance:
     - target: {fileID: 3270664947068477635, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
       propertyPath: m_Name
       value: UnitCard (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3270664947068477635, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8787869849050655725, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
       propertyPath: m_fontAsset
@@ -3263,6 +3315,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnitCard (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 3270664947068477635, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3364,6 +3420,10 @@ PrefabInstance:
     - target: {fileID: 3270664947068477635, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
       propertyPath: m_Name
       value: UnitCard (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3270664947068477635, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3467,6 +3527,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnitCard (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3270664947068477635, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3568,6 +3632,10 @@ PrefabInstance:
     - target: {fileID: 3270664947068477635, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
       propertyPath: m_Name
       value: UnitCard (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3270664947068477635, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3671,6 +3739,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnitCard (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3270664947068477635, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3773,6 +3845,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnitCard (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3270664947068477635, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3874,6 +3950,10 @@ PrefabInstance:
     - target: {fileID: 3270664947068477635, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
       propertyPath: m_Name
       value: UnitCard (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3270664947068477635, guid: 68f0d4db9922bba48a7ae2a87934cb08, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
