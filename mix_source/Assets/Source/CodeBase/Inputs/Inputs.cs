@@ -116,6 +116,34 @@ namespace autumn_berries_mix
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""Global"",
+            ""id"": ""72c3ecdc-6c16-4b6e-a883-e1e39c536b43"",
+            ""actions"": [
+                {
+                    ""name"": ""MouseClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""fbb8cf58-e80d-4a69-abec-461bb3b14abd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""9411ea0c-6bcc-4d8b-bb3c-462dd23cdcff"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -124,6 +152,9 @@ namespace autumn_berries_mix
             m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
             m_Gameplay_SelectNode = m_Gameplay.FindAction("SelectNode", throwIfNotFound: true);
             m_Gameplay_CameraMove = m_Gameplay.FindAction("CameraMove", throwIfNotFound: true);
+            // Global
+            m_Global = asset.FindActionMap("Global", throwIfNotFound: true);
+            m_Global_MouseClick = m_Global.FindAction("MouseClick", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -235,10 +266,60 @@ namespace autumn_berries_mix
             }
         }
         public GameplayActions @Gameplay => new GameplayActions(this);
+
+        // Global
+        private readonly InputActionMap m_Global;
+        private List<IGlobalActions> m_GlobalActionsCallbackInterfaces = new List<IGlobalActions>();
+        private readonly InputAction m_Global_MouseClick;
+        public struct GlobalActions
+        {
+            private @InputsMap m_Wrapper;
+            public GlobalActions(@InputsMap wrapper) { m_Wrapper = wrapper; }
+            public InputAction @MouseClick => m_Wrapper.m_Global_MouseClick;
+            public InputActionMap Get() { return m_Wrapper.m_Global; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(GlobalActions set) { return set.Get(); }
+            public void AddCallbacks(IGlobalActions instance)
+            {
+                if (instance == null || m_Wrapper.m_GlobalActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_GlobalActionsCallbackInterfaces.Add(instance);
+                @MouseClick.started += instance.OnMouseClick;
+                @MouseClick.performed += instance.OnMouseClick;
+                @MouseClick.canceled += instance.OnMouseClick;
+            }
+
+            private void UnregisterCallbacks(IGlobalActions instance)
+            {
+                @MouseClick.started -= instance.OnMouseClick;
+                @MouseClick.performed -= instance.OnMouseClick;
+                @MouseClick.canceled -= instance.OnMouseClick;
+            }
+
+            public void RemoveCallbacks(IGlobalActions instance)
+            {
+                if (m_Wrapper.m_GlobalActionsCallbackInterfaces.Remove(instance))
+                    UnregisterCallbacks(instance);
+            }
+
+            public void SetCallbacks(IGlobalActions instance)
+            {
+                foreach (var item in m_Wrapper.m_GlobalActionsCallbackInterfaces)
+                    UnregisterCallbacks(item);
+                m_Wrapper.m_GlobalActionsCallbackInterfaces.Clear();
+                AddCallbacks(instance);
+            }
+        }
+        public GlobalActions @Global => new GlobalActions(this);
         public interface IGameplayActions
         {
             void OnSelectNode(InputAction.CallbackContext context);
             void OnCameraMove(InputAction.CallbackContext context);
+        }
+        public interface IGlobalActions
+        {
+            void OnMouseClick(InputAction.CallbackContext context);
         }
     }
 }

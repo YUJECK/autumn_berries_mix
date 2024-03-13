@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace autumn_berries_mix.Units
 {
@@ -10,5 +11,7 @@ namespace autumn_berries_mix.Units
         [TextArea(3, 32)] public string Description;
         public Sprite DefaultIcon;
         public Sprite SelectedIcon;
+
+        public int Cost = 1;
     }
 }

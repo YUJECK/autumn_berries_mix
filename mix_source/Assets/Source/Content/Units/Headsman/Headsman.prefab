@@ -52,8 +52,6 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -101,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10efbede65074361a1b7a306108fb409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CurrentHealth>k__BackingField: 3
-  <MaximumHealth>k__BackingField: 3
+  <CurrentHealth>k__BackingField: 4
+  <MaximumHealth>k__BackingField: 4
   deathAnimation: 
   deathAnimationLenght: 0
   hitSound: 
@@ -131,7 +129,7 @@ MonoBehaviour:
   range: 2
 --- !u!95 &5967924005819183591
 Animator:
-  serializedVersion: 7
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -145,7 +143,6 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1

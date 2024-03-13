@@ -3,7 +3,7 @@ using autumn_berries_mix.Scenes;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-
+    
 namespace autumn_berries_mix.Grid.Inputs
 {
     public static class InputsHandler
@@ -11,6 +11,8 @@ namespace autumn_berries_mix.Grid.Inputs
         private static readonly InputsMap Inputs;
 
         public static event Action OnNodeSelected;
+        public static event Action OnMouseLeftClickDown;
+        public static event Action OnMouseLeftClickUp;
 
         public static float CameraZoomEdit => Input.mouseScrollDelta.y;
 
@@ -22,15 +24,29 @@ namespace autumn_berries_mix.Grid.Inputs
         static InputsHandler()
         {
             Inputs = new InputsMap();
-            Inputs.Enable();
 
-            Inputs.Gameplay.SelectNode.performed += PerformCallback;
+            Inputs.Gameplay.SelectNode.performed += NodeSelected;
+
+            Inputs.Global.MouseClick.performed += MouseLeftClickDown;
+            Inputs.Global.MouseClick.canceled += MouseLeftClickUp;
+            
+            Inputs.Enable();
+        }
+
+        private static void MouseLeftClickUp(InputAction.CallbackContext obj)
+        {
+            OnMouseLeftClickUp?.Invoke();
+        }
+
+        private static void MouseLeftClickDown(InputAction.CallbackContext obj)
+        {
+            OnMouseLeftClickDown?.Invoke();
         }
 
         public static Vector3 GetMousePosition
             => SceneSwitcher.CurrentScene.GetCamera().ScreenToWorldPoint(Input.mousePosition);
 
-        private static void PerformCallback(InputAction.CallbackContext context)
+        private static void NodeSelected(InputAction.CallbackContext context) 
             => OnNodeSelected?.Invoke();
     }
 }

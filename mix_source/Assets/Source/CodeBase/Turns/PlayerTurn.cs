@@ -12,9 +12,9 @@ namespace autumn_berries_mix.Turns
         
         private int currentUsed;
 
-        private void OnUnitUsedAbility(UnitAbility unit)
+        private void OnUnitUsedAbility(UnitAbility ability)
         {
-            currentUsed++;
+            currentUsed += ability.Data.Cost;
         }
 
         public override async void Start(Action onCompleted)

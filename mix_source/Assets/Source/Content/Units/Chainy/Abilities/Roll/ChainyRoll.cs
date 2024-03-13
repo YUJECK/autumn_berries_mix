@@ -51,7 +51,7 @@ namespace autumn_berries_mix.Units.Abilities.Roll
                 }
 
                 //Если линия не закончена, то для атаки она недоступна
-                if (line.Count != _typedData.range) continue;
+                if (line.Count != _typedData.range || !line[line.Count-1].Empty) continue;
                 
                 //Добавляем линию в зону атаки
                 foreach (var tile in line)
