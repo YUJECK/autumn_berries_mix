@@ -4,7 +4,7 @@ using Component = autumn_berries_mix.EC.Component;
 
 namespace autumn_berries_mix.Units
 {
-    public sealed class ChainyAnimator : Component
+    public sealed class ChainyAnimator : PlayerUnitAnimator
     {
         private const string GrassWalk = "GrassWalk";
         private const string WalkBool = "Walk";
@@ -17,13 +17,13 @@ namespace autumn_berries_mix.Units
             _animator = animator;
         }
 
-        public void PlayWalk()
+        public override void PlayWalk()
         {
             _animator.SetBool(Walk, true);
             AudioPlayer.Play(GrassWalk);
         }
 
-        public void StopWalk()
+        public override void StopWalk()
         {
             _animator.SetBool(Walk, false);
             AudioPlayer.Stop(GrassWalk);

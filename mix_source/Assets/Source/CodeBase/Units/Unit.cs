@@ -1,5 +1,7 @@
 using System;
+using autumn_berries_mix.CallbackSystem.Signals;
 using autumn_berries_mix.EC;
+using autumn_berries_mix.Gameplay.Signals;
 using UnityEngine;
 
 namespace autumn_berries_mix.Units
@@ -50,6 +52,7 @@ namespace autumn_berries_mix.Units
         public virtual void OnUsedAbility(UnitAbility ability)
         {
             UsedAbility?.Invoke(ability);
+            SignalManager.PushSignal(new UnitAbilityUsed(this, ability));
         }
     }
 }

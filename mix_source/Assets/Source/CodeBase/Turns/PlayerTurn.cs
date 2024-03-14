@@ -8,13 +8,14 @@ namespace autumn_berries_mix.Turns
 {
     public class PlayerTurn : Turn
     {
-        private int actionsRange = 2;
+        public int CurrentUsed { get; private set; }
+        public int Awaible => ActionsRange - CurrentUsed;
         
-        private int currentUsed;
-
+        private const int ActionsRange = 2;
+        
         private void OnUnitUsedAbility(UnitAbility ability)
         {
-            currentUsed += ability.Data.Cost;
+            CurrentUsed += ability.Data.Cost;
         }
 
         public override async void Start(Action onCompleted)
@@ -22,7 +23,7 @@ namespace autumn_berries_mix.Turns
             SubscribeOnAbilitiesCallbacks();
             Completed = false;
             
-            while (currentUsed < actionsRange && !Completed)
+            while (CurrentUsed < ActionsRange && !Completed)
             {
                 await UniTask.WaitForEndOfFrame();
             }
@@ -35,7 +36,7 @@ namespace autumn_berries_mix.Turns
         {    
             UnsubscribeOnAbilitiesCallbacks();
             
-            currentUsed = 0;
+            CurrentUsed = 0;
             Completed = true;
         }
 

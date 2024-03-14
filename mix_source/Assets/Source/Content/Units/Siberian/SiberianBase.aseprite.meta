@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 0
+  platformSettingsDirtyTick: 638460472119670383
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,7 +121,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Siberian
+  - name: SiberianBase
     originalName: 
     pivot: {x: 0.8703704, y: 0}
     alignment: 9
@@ -132,7 +132,7 @@ ScriptedImporter:
       y: 4
       width: 54
       height: 35
-    spriteID: e6e6009ae8e554c48b71344ee39b55ce
+    spriteID: aa3761183ca192c42b2736b5c8b6b9c4
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -144,23 +144,47 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 960285545
-    name: Siberian
+    guid: 309017256
+    name: SiberianBase
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Siberian
+    - name: SiberianBase
       frameIndex: 0
       cellRect:
         x: 7
         y: 0
         width: 54
         height: 35
-      spriteId: e6e6009ae8e554c48b71344ee39b55ce
+      spriteId: aa3761183ca192c42b2736b5c8b6b9c4
     linkedCells: []
     parentIndex: -1
-  platformSettings: []
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 

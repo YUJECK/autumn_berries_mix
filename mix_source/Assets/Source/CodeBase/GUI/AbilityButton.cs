@@ -1,3 +1,6 @@
+using System;
+using autumn_berries_mix.Scenes;
+using autumn_berries_mix.Turns;
 using autumn_berries_mix.Units;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,18 +17,37 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
         private Button _button;
         private UnitAbilitiesGUIController _controller;
 
+        private Turn _currentTurn;
+
         private void Start()
         {
             _button = GetComponent<Button>();
             _abilityIcon = GetComponent<Image>();
             
             _button.onClick.AddListener(SelectAbility);
+            
+            SceneSwitcher.OnSceneLoaded += OnLoaded;
+
             Disable();
+        }
+
+        private void OnLoaded(Scene scene, Scene scene1)
+        {
+            _currentTurn = SceneSwitcher.TryGetGameplayScene().TurnController.CurrentTurn;
+            SceneSwitcher.TryGetGameplayScene().TurnController.OnTurnSwitched += OnTurnSwitched;
+
+            SceneSwitcher.OnSceneLoaded -= OnLoaded;
+        }
+
+        private void OnTurnSwitched(Turn turn)
+        {
+            _currentTurn = turn; 
         }
 
         public void Disable()
         {
-            gameObject.SetActive(false);   
+            gameObject.SetActive(false);
+            CurrentAbility = null;
         }
 
         public void Enable()
@@ -45,8 +67,11 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
 
         public void SelectAbility()
         {
-            _controller.SelectAbility(CurrentAbility, this);
-            _abilityIcon.sprite = CurrentAbility.Data.SelectedIcon;
+            if (_currentTurn is PlayerTurn playerTurn && playerTurn.Awaible >= CurrentAbility.Data.Cost)
+            {
+                _controller.SelectAbility(CurrentAbility, this);
+                _abilityIcon.sprite = CurrentAbility.Data.SelectedIcon;    
+            }
         }
 
         public void DeselectAbility()

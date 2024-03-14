@@ -79,14 +79,20 @@ namespace autumn_berries_mix.Units.Abilities.Roll
 
         private void ClearLinesAndOverlay()
         {
+            ClearOverlay();
+            
+            _lines.Clear();
+            _availableArea.Clear();
+        }
+
+        private void ClearOverlay()
+        {
             foreach (var tile in _availableArea)
             {
                 tile.Overlay.RemovePrefabOverlay("RollDirections");
             }
-            _lines.Clear();
-            _availableArea.Clear();
         }
-        
+
         public override void OnTilePointed(GridTile tile, bool withClick)
         {
             base.OnTilePointed(tile, withClick);
@@ -104,6 +110,7 @@ namespace autumn_berries_mix.Units.Abilities.Roll
 
         private async void Move(GridTile tile)
         {
+            ClearOverlay();
             _currentlyMoving = true;
             
             _animator.PlayRoll();

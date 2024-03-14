@@ -21,7 +21,7 @@ namespace autumn_berries_mix
             
             onStarted?.Invoke();
             
-            _flipper?.FlipToDirection(to.x - startPosition.x);
+            _flipper?.FlipAtDirection(to.x - startPosition.x);
             
             while (Owner.transform.position != new Vector3(to.x, to.y, 0))
             {

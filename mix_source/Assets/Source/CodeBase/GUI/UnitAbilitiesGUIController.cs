@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using autumn_berries_mix.CallbackSystem.Signals;
+using autumn_berries_mix.Gameplay.Signals;
 using autumn_berries_mix.Sounds;
 using autumn_berries_mix.Units;
 using TMPro;
@@ -8,7 +10,7 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
 {
     public sealed class UnitAbilitiesGUIController : MonoBehaviour
     {
-        [SerializeField] private TMP_Text _infoText;
+        [SerializeField] private TMP_Text infoText;
         
         private readonly List<AbilityButton> _buttons = new();
         private AbilityButton lastSelectedButton;
@@ -18,6 +20,13 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
         private void Start()
         {
             _buttons.AddRange(GetComponentsInChildren<AbilityButton>());
+            SignalManager.SubscribeOnSignal<UnitDead>(OnUnitDead);
+        }
+
+        private void OnUnitDead(UnitDead unit)
+        {
+            if(unit.Unit == current)
+                DisableAll();
         }
 
         public void OnUnitSelected(PlayerUnit unit)
@@ -38,7 +47,7 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
         {
             if (ability == null || current == null)
             {
-                _infoText.text = "";
+                infoText.text = "";
                 return;
             }
             
@@ -53,7 +62,7 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
                 playerAbility.OnAbilitySelected();
             }
 
-            _infoText.text = ability.Data.Description;
+            infoText.text = ability.Data.Description;
             
             lastSelectedButton = abilityButton;
             AudioPlayer.Play("TileLocked");
@@ -75,10 +84,17 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
                 return;
             }
             
-            for(int i = 0; i < current.NonTypedAbilitiesPull.Length; i++)
+            for(int i = 0; i < _buttons.Count; i++)
             {
-                _buttons[i].UpdateAbilityData(current.NonTypedAbilitiesPull[i], this);
-                _buttons[i].Enable();
+                if (i < current.NonTypedAbilitiesPull.Length)
+                {
+                    _buttons[i].UpdateAbilityData(current.NonTypedAbilitiesPull[i], this);
+                    _buttons[i].Enable();    
+                }
+                else
+                {
+                    _buttons[i].Disable();
+                }
             }
 
             if (current is PlayerUnit playerUnit && playerUnit.SelectedAbility != null)

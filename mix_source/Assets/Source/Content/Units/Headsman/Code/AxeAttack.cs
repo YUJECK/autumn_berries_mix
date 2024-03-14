@@ -28,7 +28,7 @@ namespace autumn_berries_mix.Source.Content.Units.Headsman.Code
         {
             Vector2Int direction = unit.Position2Int - Owner.Position2Int;
             
-            Owner.Master.Get<EntityFlipper>().FlipToDirection(direction.x);
+            Owner.Master.Get<EntityFlipper>().FlipAtDirection(direction.x);
 
             await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
             

@@ -15,7 +15,7 @@ namespace autumn_berries_mix.Helpers
             _spriteRenderer = Owner.GetComponent<SpriteRenderer>();
         }
         
-        public void FlipToDirection(float x)
+        public void FlipAtDirection(float x)
         {
             if(x > 0)
                 FlipToRight();

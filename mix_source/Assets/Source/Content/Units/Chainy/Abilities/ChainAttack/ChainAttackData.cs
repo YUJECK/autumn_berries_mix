@@ -11,9 +11,5 @@ namespace autumn_berries_mix
         [Header("Ability Configuration")]
         public List<Vector2Int> directions;
         public int range;
-        
-        [Header("Overlay Data")]
-        public Sprite rangeCell;
-        public Sprite selectedRangeCell;
     }
 }

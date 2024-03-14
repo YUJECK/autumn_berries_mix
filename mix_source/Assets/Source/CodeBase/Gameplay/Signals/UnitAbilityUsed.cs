@@ -2,9 +2,15 @@ using autumn_berries_mix.Units;
 
 namespace autumn_berries_mix.Gameplay.Signals
 {
-    public class UnitAbilityUsed
+    public class UnitAbilityUsed : Signal
     {
-        public Unit User;
-        public UnitAbility Used;
+        public readonly Unit User;
+        public readonly UnitAbility Used;
+
+        public UnitAbilityUsed(Unit user, UnitAbility used)
+        {
+            User = user;
+            Used = used;
+        }
     }
 }

@@ -22,7 +22,7 @@ namespace autumn_berries_mix.Units
         protected override void ConfigureComponents()
         {
             Master.Add(new EntityFlipper());
-            Master.Add(new ChainyAnimator(GetComponent<Animator>()));
+            Master.Add<PlayerUnitAnimator>(new ChainyAnimator(GetComponent<Animator>()));
         }
 
         protected override void ConfigureAbilities()
@@ -30,7 +30,7 @@ namespace autumn_berries_mix.Units
             movementConfig = Instantiate(movementConfig);
             attackConfig = Instantiate(attackConfig);
             
-            AbilitiesPull.Add(new PlayerMovement(this, movementConfig.Data));
+            AbilitiesPull.Add(new PlayerUnitStepMovement(this, movementConfig.Data));
             AbilitiesPull.Add(new ChainsawAttack(this, attackConfig.data));
             AbilitiesPull.Add(new ChainAttack(this, chainAttackConfig.Data));
             AbilitiesPull.Add(new ChainyRoll(this, rollConfig.Data));

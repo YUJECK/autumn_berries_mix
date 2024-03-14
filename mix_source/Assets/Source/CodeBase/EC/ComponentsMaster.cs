@@ -22,7 +22,19 @@ namespace autumn_berries_mix.EC
         public TComponent Get<TComponent>()
             where TComponent : Component
         {
-            return _components[typeof(TComponent)] as TComponent;
+            if(_components.ContainsKey(typeof(TComponent)))
+                return _components[typeof(TComponent)] as TComponent;
+
+            else
+            {
+                foreach (var component in _components)
+                {
+                    if (component.Value is TComponent)
+                        return component.Value as TComponent;
+                }
+            }
+            
+            return null;
         }
 
         public TClass FindByBaseClass<TClass>()

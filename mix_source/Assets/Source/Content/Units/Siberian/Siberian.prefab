@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3498967656548299929}
   - component: {fileID: 6525542329393030113}
   - component: {fileID: 8904203810070830090}
+  - component: {fileID: 6662287992961082482}
+  - component: {fileID: 5057683134086289233}
   m_Layer: 0
   m_Name: Siberian
   m_TagString: Untagged
@@ -50,8 +52,6 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -89,7 +89,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &8904203810070830090
 Animator:
-  serializedVersion: 7
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -103,9 +103,42 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6662287992961082482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2452149597722844969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10efbede65074361a1b7a306108fb409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <CurrentHealth>k__BackingField: 8
+  <MaximumHealth>k__BackingField: 8
+  deathAnimation: 
+  deathAnimationLenght: 0
+  hitSound: 
+  hitColor: {r: 0.9433962, g: 0.10234961, b: 0.10234961, a: 0.2901961}
+  healSound: 
+  healColor: {r: 0.17174888, g: 1, b: 0, a: 0.29803923}
+--- !u!114 &5057683134086289233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2452149597722844969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5fdd3fa52e1e804f9652f2a8e3e83a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <UnitName>k__BackingField: Siberian
+  movement: {fileID: 11400000, guid: 1cbacf16b5265da4889b02679b391d80, type: 2}
