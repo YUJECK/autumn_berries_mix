@@ -108,3 +108,13 @@ MonoBehaviour:
     <Looped>k__BackingField: 0
     <Volume>k__BackingField: 1
     <Tags>k__BackingField: 
+  - <Name>k__BackingField: HammerAttack
+    <Clip>k__BackingField: {fileID: 8300000, guid: 1d8bb7396d663cb4fb4789fdaf3cdad5, type: 3}
+    <Looped>k__BackingField: 0
+    <Volume>k__BackingField: 1
+    <Tags>k__BackingField: 
+  - <Name>k__BackingField: GargoyleBroken
+    <Clip>k__BackingField: {fileID: 8300000, guid: 6cf38b57becb241418fe01dff857ff75, type: 3}
+    <Looped>k__BackingField: 0
+    <Volume>k__BackingField: 1
+    <Tags>k__BackingField: 

@@ -67,7 +67,7 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
 
         public void SelectAbility()
         {
-            if (_currentTurn is PlayerTurn playerTurn && playerTurn.Awaible >= CurrentAbility.Data.Cost)
+            if (_currentTurn is PlayerTurn playerTurn && playerTurn.Available >= CurrentAbility.Data.Cost)
             {
                 _controller.SelectAbility(CurrentAbility, this);
                 _abilityIcon.sprite = CurrentAbility.Data.SelectedIcon;    
@@ -76,7 +76,8 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
 
         public void DeselectAbility()
         {
-            _abilityIcon.sprite = CurrentAbility.Data.DefaultIcon;
+            if(CurrentAbility != null)
+                _abilityIcon.sprite = CurrentAbility.Data.DefaultIcon;
         }
     }
 }

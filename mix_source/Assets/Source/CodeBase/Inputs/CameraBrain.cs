@@ -23,6 +23,12 @@ namespace autumn_berries_mix
             _virtualCamera = GetComponent<CinemachineVirtualCamera>();
 
             SignalManager.SubscribeOnSignal<UnitDamagedSignal>(OnUnitHit);
+            SignalManager.SubscribeOnSignal<SomethingBroken>(OnSomethingBroken);
+        }
+
+        private void OnSomethingBroken(SomethingBroken obj)
+        {
+            Shake(1.3f, 0.1f);
         }
 
         private void OnUnitHit(UnitDamagedSignal unit)

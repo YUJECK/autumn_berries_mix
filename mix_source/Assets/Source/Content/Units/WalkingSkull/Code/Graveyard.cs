@@ -52,29 +52,33 @@ namespace autumn_berries_mix.Source.Content.Units.WalkingSkull
 
         private bool CanResurrect()
         {
-            return turnCounter > startAfterTurn && turnCounter % rate == 0;
+            return turnCounter > startAfterTurn && turnCounter % rate == 0 && _skulls.Count < _graves.Length;
         }
 
         public void ResurrectNext()
         {
             last++;
-            
-            if (_skulls.Count < _graves.Length)
-            {
-                if (_graves[last].IsBroken)
-                {
-                    while (_graves[last].IsBroken && last < _graves.Length)
-                    {
-                        last++;
-                    }
-                }
-                
-                SpawnSkull();
-            }
-            else
+
+            if (_skulls.Count >= _graves.Length)
             {
                 SceneSwitcher.TryGetGameplayScene().TurnController.OnTurnSwitched -= OnTurnSwitched;
+                return;
             }
+
+            if (_graves[last].IsBroken)
+            {
+                while (last < _graves.Length-1 && _graves[last].IsBroken)
+                {
+                    last++;
+                }
+                if (_graves[last].IsBroken)
+                {
+                    SceneSwitcher.TryGetGameplayScene().TurnController.OnTurnSwitched -= OnTurnSwitched;
+                    return;
+                }
+            }
+            
+            SpawnSkull();
         }
 
         private void SpawnSkull()

@@ -1,7 +1,7 @@
 using autumn_berries_mix.Grid;
 using UnityEngine;
 
-namespace autumn_berries_mix.Source.CodeBase.Helpers
+namespace autumn_berries_mix.Helpers
 {
     public static class CommonOverlaysProvider
     {

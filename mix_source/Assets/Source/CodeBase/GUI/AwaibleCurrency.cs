@@ -35,13 +35,13 @@ namespace autumn_berries_mix.Source.CodeBase.GUI
         {
             if (ability.Used is PlayerAbility)
             {
-                _counter.text = currentTurn.Awaible.ToString();
+                _counter.text = currentTurn.Available.ToString();
             }
         }
 
         public void OnPlayerTurn(PlayerTurn turn)
         {
-            _counter.text = currentTurn.Awaible.ToString();
+            _counter.text = currentTurn.Available.ToString();
             currentTurn = turn;
         }
 

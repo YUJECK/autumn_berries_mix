@@ -1,4 +1,5 @@
 using autumn_berries_mix.EC;
+using autumn_berries_mix.Sounds;
 using UnityEngine;
 
 namespace autumn_berries_mix
@@ -22,6 +23,16 @@ namespace autumn_berries_mix
         public override void StopWalk()
         {
             _animator.Play("SiberianIdle");
+        }
+
+        public void PlayHammerAttack()
+        {
+            _animator.Play("SiberianAttack");
+        }
+
+        public void PlayPush()
+        {
+            _animator.Play("SiberianAttack");
         }
     }
 }

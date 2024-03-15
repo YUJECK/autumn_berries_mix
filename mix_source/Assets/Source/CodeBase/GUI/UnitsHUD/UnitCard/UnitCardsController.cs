@@ -91,7 +91,7 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
             {
                 lastSelected.Deselect();
             }
-            if (unit == null)
+            if (unit == null || !unitToCard.ContainsKey(unit))
             {
                 return;
             }

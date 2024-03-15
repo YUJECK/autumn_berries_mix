@@ -1,7 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using autumn_berries_mix.EC;
 using autumn_berries_mix.Grid;
 using autumn_berries_mix.Helpers;
 using autumn_berries_mix.Units;
@@ -10,7 +7,7 @@ using UnityEngine;
 
 namespace autumn_berries_mix
 {
-    public class SiberianHammer : PlayerAbility 
+    public class SiberianPush : PlayerAbility
     {
         private readonly SiberianAnimator _animator;
         private readonly EntityFlipper _flipper;
@@ -21,10 +18,10 @@ namespace autumn_berries_mix
             new Vector2Int(-1, 0),
             new Vector2Int(0, -1),
             new Vector2Int(0, 1) };
-
+        
         private readonly List<GridTile> availableArea = new List<GridTile>();
 
-        public SiberianHammer(Unit owner, AbilityData data) : base(owner, data)
+        public SiberianPush(Unit owner, AbilityData data) : base(owner, data)
         {
             _animator = owner.Master.Get<SiberianAnimator>();
             _flipper = owner.Master.Get<EntityFlipper>();
@@ -32,7 +29,6 @@ namespace autumn_berries_mix
             _attackAreaOverlay = new PrefabTileOverlayData(CommonOverlaysProvider.TileToAttackPrefab, "HammerAttackArea");
         }
 
-        //callbacks
         public override void OnAbilitySelected()
         {
             base.OnAbilitySelected();
@@ -50,56 +46,46 @@ namespace autumn_berries_mix
         public override void OnEnemyUnitPointed(EnemyUnit enemyUnit, bool withClick)
         {
             base.OnEnemyUnitPointed(enemyUnit, withClick);
-
+            
             if (withClick && availableArea.Contains(Owner.Grid.Get(enemyUnit.Position2Int)))
             {
                 Attack(enemyUnit);
             }
         }
 
-        public override void OnEntityPointed(Entity entity, bool withClick)
-        {
-            base.OnEntityPointed(entity, withClick);
-            
-            if (withClick && entity is IBreakable breakable && !breakable.IsBroken && availableArea.Contains(Owner.Grid.Get(entity.Position2Int)))
-            {
-                _flipper.FlipTo(entity.transform);
-                Attack(breakable);
-            }
-        }
-        
-        //logic
-
-        private async void Attack(IBreakable breakable)
-        {
-            ClearOverlay();
-            _animator.PlayHammerAttack();
-            
-            await UniTask.Delay(TimeSpan.FromSeconds(0.5));
-            
-            breakable.Break();
-            
-            await UniTask.Delay(TimeSpan.FromSeconds(0.5));
-            
-            Owner.OnUsedAbility(this);
-            DrawOverlay();
-        }
-
+        //main logic
         private async void Attack(EnemyUnit enemyUnit)
         {
-            ClearOverlay();
+            Vector2Int direction = enemyUnit.Position2Int - Owner.Position2Int;
+            Vector2Int startPosition = enemyUnit.Position2Int;
             
-            _flipper.FlipTo(enemyUnit.transform);
-            _animator.PlayHammerAttack();
+            GridTile toTile = Owner.Grid.Get(enemyUnit.Position2Int + direction);
             
-            await UniTask.Delay(TimeSpan.FromSeconds(0.5));
+            _flipper.FlipTo(enemyUnit.transform); //flip unit at walk direction
             
-            enemyUnit.UnitHealth.Hit(2);
-            
-            await UniTask.Delay(TimeSpan.FromSeconds(0.5));
-            
-            Owner.OnUsedAbility(this);
-            DrawOverlay();
+            if (toTile.Empty && toTile.Walkable)
+            {
+                _animator.PlayPush();
+
+                await UniTask.Delay(200);
+                
+                enemyUnit.UnitHealth.Hit(2);
+
+                while (enemyUnit.transform.position != new Vector3(toTile.Position2Int.x, toTile.Position2Int.y, 0))
+                {
+                    enemyUnit.transform.position = Vector3.MoveTowards(enemyUnit.Position3,
+                        new Vector3(toTile.Position2Int.x, toTile.Position2Int.y, 0), 6 * Time.deltaTime);
+
+                    await UniTask.WaitForFixedUpdate();
+                }
+
+                Owner.Grid.ReplaceEntity(enemyUnit, startPosition, enemyUnit.Position2Int); //update unit position in grid
+                Owner.OnUsedAbility(this);
+            }
+            else
+            {
+                enemyUnit.UnitHealth.Hit(4);
+            }
         }
 
         //helpers

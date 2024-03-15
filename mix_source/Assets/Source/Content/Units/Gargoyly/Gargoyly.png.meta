@@ -3,7 +3,7 @@ guid: 4779ed03b6bff0644aaf5d40da7e3f1a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 13
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -101,7 +101,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 36
         width: 36
         height: 36
       alignment: 7
@@ -122,7 +122,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 36
-        y: 0
+        y: 36
         width: 36
         height: 36
       alignment: 7
@@ -143,7 +143,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 72
-        y: 0
+        y: 36
         width: 36
         height: 36
       alignment: 7
@@ -164,7 +164,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 108
-        y: 0
+        y: 36
         width: 36
         height: 36
       alignment: 7
@@ -176,6 +176,27 @@ TextureImporter:
       bones: []
       spriteID: f342aea32fd79b9449f984359f599738
       internalID: 1823347964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gargoyly_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aeb22af3ea076b44398d35c16fd7579e
+      internalID: -907044491
       vertices: []
       indices: 
       edges: []
@@ -195,6 +216,8 @@ TextureImporter:
       Gargoyly_1: -820491625
       Gargoyly_2: 1247104430
       Gargoyly_3: 1823347964
+      Gargoyly_4: -907044491
+      Gargoyly_5: -1085162160
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

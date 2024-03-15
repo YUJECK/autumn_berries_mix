@@ -1,17 +1,15 @@
 using System;
-using System.Threading.Tasks;
 using autumn_berries_mix.Units;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
 
 namespace autumn_berries_mix.Turns
 {
     public class PlayerTurn : Turn
     {
         public int CurrentUsed { get; private set; }
-        public int Awaible => ActionsRange - CurrentUsed;
+        public int Available => ActionsRange - CurrentUsed;
         
-        private const int ActionsRange = 2;
+        private const int ActionsRange = 3;
         
         private void OnUnitUsedAbility(UnitAbility ability)
         {

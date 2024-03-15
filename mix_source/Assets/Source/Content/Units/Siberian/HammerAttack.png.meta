@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d0271a112338ee642a3a6099cab9ddde
+guid: 70e0c0d0d580fc84286599778335f603
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,127 +97,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GargoyleSide_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 36
-        width: 36
-        height: 36
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b3b2396aa658a2547999f96ea7c27bbe
-      internalID: -470804684
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GargoyleSide_1
-      rect:
-        serializedVersion: 2
-        x: 36
-        y: 36
-        width: 36
-        height: 36
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 663d736d2a1d2c8409be808c25953625
-      internalID: 1662770766
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GargoyleSide_2
-      rect:
-        serializedVersion: 2
-        x: 72
-        y: 36
-        width: 36
-        height: 36
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 812beadb7c4812045b4e22406fde6f30
-      internalID: -869853960
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GargoyleSide_3
-      rect:
-        serializedVersion: 2
-        x: 108
-        y: 36
-        width: 36
-        height: 36
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 42f0662fc34d27b4c99194da03734c4b
-      internalID: -1184145036
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GargoyleSide_4
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 36
-        width: 36
-        height: 36
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 16fd84f9ed7bf5c4a812cb0495a3e72d
-      internalID: 1064133792
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GargoyleSide_5
+      name: HammerAbility
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 36
         height: 36
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: dcb0c38aea37c544a8189763402e9b08
-      internalID: 331604697
+      spriteID: 54d7a982679db8140800000000000000
+      internalID: 4723107735738678597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HammerAbilitySelected
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 0
+        width: 36
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e596485bbd7608990800000000000000
+      internalID: -7385789195546760866
       vertices: []
       indices: 
       edges: []
@@ -233,12 +149,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      GargoyleSide_0: -470804684
-      GargoyleSide_1: 1662770766
-      GargoyleSide_2: -869853960
-      GargoyleSide_3: -1184145036
-      GargoyleSide_4: 1064133792
-      GargoyleSide_5: 331604697
+      HammerAbility: 4723107735738678597
+      HammerAbilitySelected: -7385789195546760866
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

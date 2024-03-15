@@ -7,13 +7,18 @@ using UnityEngine;
 
 namespace autumn_berries_mix.Source.Content.Units.Gargoyly.Code
 { 
-    public sealed class Gargoyle : Entity
+    public sealed class Gargoyle : Entity, IBreakable
     {
+        [Header("Base settings")]
         public Vector2Int direction;
         public int damage;
 
-        private SignalSubscription _subscription;
+        [Header("OnBroken")] public string gargoyleBrokenAnimation;
         
+        public bool IsBroken { get; private set; }
+
+        private SignalSubscription _subscription;
+
         protected override void ConfigureComponents()
         {
             _subscription = SignalManager.SubscribeOnSignal<UnitMovedSignal>(OnMoved);
@@ -26,7 +31,7 @@ namespace autumn_berries_mix.Source.Content.Units.Gargoyly.Code
 
         private void OnMoved(UnitMovedSignal signal)
         {
-            if (signal.Unit is PlayerUnit && signal.Unit.Position2Int == Position2Int + direction)
+            if (!IsBroken && signal.Unit is PlayerUnit && signal.Unit.Position2Int == Position2Int + direction)
             {
                 signal.Unit.UnitHealth.Hit(damage);
                 GetComponent<Animator>().Play("GargoylyAttack");
@@ -36,6 +41,18 @@ namespace autumn_berries_mix.Source.Content.Units.Gargoyly.Code
         public void PlayAttackSound()
         {
             AudioPlayer.Play("GargoyleBite");
+        }
+
+        public void Break()
+        {
+            if(IsBroken) return;
+            
+            IsBroken = true;
+            
+            GetComponent<Animator>().Play(gargoyleBrokenAnimation);
+            
+            SignalManager.PushSignal(new SomethingBroken(this, this));
+            AudioPlayer.Play("GargoyleBroken");
         }
     }
 }

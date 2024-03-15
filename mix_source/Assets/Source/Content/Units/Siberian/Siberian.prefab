@@ -142,3 +142,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <UnitName>k__BackingField: Siberian
   movement: {fileID: 11400000, guid: 1cbacf16b5265da4889b02679b391d80, type: 2}
+  hammerAttack:
+    Name: SiberianHammer
+    Description: 
+    DefaultIcon: {fileID: 4723107735738678597, guid: 70e0c0d0d580fc84286599778335f603, type: 3}
+    SelectedIcon: {fileID: -7385789195546760866, guid: 70e0c0d0d580fc84286599778335f603, type: 3}
+    Cost: 1
+    <Damage>k__BackingField: 2

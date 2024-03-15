@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10efbede65074361a1b7a306108fb409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CurrentHealth>k__BackingField: 4
-  <MaximumHealth>k__BackingField: 4
+  <CurrentHealth>k__BackingField: 6
+  <MaximumHealth>k__BackingField: 6
   deathAnimation: 
   deathAnimationLenght: 0
   hitSound: 
@@ -125,6 +125,7 @@ MonoBehaviour:
     Description: 
     DefaultIcon: {fileID: 0}
     SelectedIcon: {fileID: 0}
+    Cost: 0
   axeConfig: {fileID: 11400000, guid: 6dbb36603dfb19d4a87b8a6ef5464d87, type: 2}
   range: 2
 --- !u!95 &5967924005819183591
