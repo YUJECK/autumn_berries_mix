@@ -54,11 +54,11 @@ namespace autumn_berries_mix.Source.Content.Units.Headsman.Code
             }
             else
             {
-                GetAbility<StepMovement>().Move(GetTileToMove(), 2, Master.Get<HeadsmanAnimator>().PlayWalk, OnFinished);
+                GetAbility<StepMovement>().Move(GetTileToMove(), 2, Master.Get<HeadsmanAnimator>().PlayWalk, OnMoveFinished);
             }
         }
 
-        private void OnFinished()
+        private void OnMoveFinished()
         {
             Master.Get<HeadsmanAnimator>().StopWalk();
             OnUsedAbility(GetAbility<StepMovement>());

@@ -22,7 +22,7 @@ namespace Internal.Codebase.Infrastructure.Services.SceneLoader
             var loadSceneOperation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
             
             while (!loadSceneOperation.isDone)
-                await UniTask.WaitForEndOfFrame();
+                await UniTask.WaitForFixedUpdate();
             
             onSceneLoadedCallback?.Invoke();
         }

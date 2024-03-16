@@ -23,7 +23,7 @@ namespace autumn_berries_mix.Turns
             
             while (CurrentUsed < ActionsRange && !Completed)
             {
-                await UniTask.WaitForEndOfFrame();
+                await UniTask.WaitForFixedUpdate();
             }
             
             Complete();

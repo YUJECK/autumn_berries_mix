@@ -36,7 +36,7 @@ namespace autumn_berries_mix.Turns
             {
                 while (enemy != null)
                 {
-                    await UniTask.WaitForEndOfFrame();
+                    await UniTask.WaitForFixedUpdate();
                 }
             }
             
@@ -46,7 +46,7 @@ namespace autumn_berries_mix.Turns
             
             while (!currentEnemyFinished)
             {
-                await UniTask.WaitForEndOfFrame();
+                await UniTask.WaitForFixedUpdate();
             }
         }
 

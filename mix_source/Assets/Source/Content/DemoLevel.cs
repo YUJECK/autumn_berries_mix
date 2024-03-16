@@ -19,7 +19,7 @@ namespace Source.Content
         public override GameGrid GameGrid => Map.Grid;
         public override GameObjectFabric Fabric { get; protected set; } = new GameObjectFabric();
 
-        public GameplayMap Map { get; protected set; }
+        public GameplayMap Map { get; private set; }
         
         private TileSelector _tileSelector;
         private GameplayResources _resources;
