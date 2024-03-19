@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c8822b9854893cb428a0825b4f9e68eb
+guid: fb674dc051984d34284e5b8cc13af0a8
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,18 +121,58 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: destructive_crab_logo
+  - name: Knight_Frame_0
     originalName: 
-    pivot: {x: 0.52527076, y: -0.11067194}
+    pivot: {x: 0.47058824, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 34
+      width: 17
+      height: 23
+    spriteID: 7f3bb01e9def62b48b65a2ce2460fdec
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 34}
+  - name: Knight_Frame_1
+    originalName: 
+    pivot: {x: 0.4375, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 29
+      y: 34
+      width: 16
+      height: 21
+    spriteID: 989b314c54222fc4b9ce61aa1c5c4912
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 29, y: 34}
+  - name: Knight_Frame_2
+    originalName: 
+    pivot: {x: 0.6315789, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 554
-      height: 253
-    spriteID: 3bd9493afcea18d4abcd78747ffc6803
+      width: 19
+      height: 22
+    spriteID: 6d621eae5c40a5e4fac23f4dc2ed591a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -141,27 +181,71 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: Knight_Frame_3
+    originalName: 
+    pivot: {x: 0.73684216, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 31
+      y: 4
+      width: 19
+      height: 20
+    spriteID: 8c4b45869d89a5b4c91017cb32534598
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 31, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1451112911
-    name: destructive_crab_logo
+    guid: 122679483
+    name: Knight
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: destructive_crab_logo
+    - name: Knight_Frame_0
       frameIndex: 0
       cellRect:
-        x: 39
-        y: 28
-        width: 554
-        height: 253
-      spriteId: 3bd9493afcea18d4abcd78747ffc6803
+        x: 10
+        y: 0
+        width: 17
+        height: 23
+      spriteId: 7f3bb01e9def62b48b65a2ce2460fdec
+    - name: Knight_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 11
+        y: 0
+        width: 16
+        height: 21
+      spriteId: 989b314c54222fc4b9ce61aa1c5c4912
+    - name: Knight_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 6
+        y: 0
+        width: 19
+        height: 22
+      spriteId: 6d621eae5c40a5e4fac23f4dc2ed591a
+    - name: Knight_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 4
+        y: 0
+        width: 19
+        height: 20
+      spriteId: 8c4b45869d89a5b4c91017cb32534598
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 660, y: 317}
+  canvasSize: {x: 36, y: 24}

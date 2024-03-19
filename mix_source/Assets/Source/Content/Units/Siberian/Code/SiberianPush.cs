@@ -67,9 +67,9 @@ namespace autumn_berries_mix
             {
                 _animator.PlayPush();
 
-                await UniTask.Delay(200);
+                await UniTask.Delay(500);
                 
-                enemyUnit.UnitHealth.Hit(2);
+                enemyUnit.UnitHealth.Hit(1);
 
                 while (enemyUnit.transform.position != new Vector3(toTile.Position2Int.x, toTile.Position2Int.y, 0))
                 {
@@ -84,7 +84,30 @@ namespace autumn_berries_mix
             }
             else
             {
-                enemyUnit.UnitHealth.Hit(4);
+                _animator.PlayPush();
+
+                await UniTask.Delay(500);
+
+                Vector3 releasePosition = enemyUnit.transform.position + new Vector3(direction.x / 2, direction.y / 2);
+                Vector3 newStartPosition = enemyUnit.transform.position;
+                
+                while (enemyUnit.transform.position != releasePosition)
+                {
+                    enemyUnit.transform.position = Vector3.MoveTowards(enemyUnit.Position3,releasePosition, 4 * Time.deltaTime);
+
+                    await UniTask.WaitForFixedUpdate();
+                }
+                
+                while (enemyUnit.transform.position != newStartPosition)
+                {
+                    enemyUnit.transform.position = Vector3.MoveTowards(enemyUnit.Position3,newStartPosition, 4 * Time.deltaTime);
+
+                    await UniTask.WaitForFixedUpdate();
+                }
+                
+                enemyUnit.UnitHealth.Hit(enemyUnit.UnitHealth.CurrentHealth);
+                
+                Owner.OnUsedAbility(this);
             }
         }
 
@@ -109,7 +132,7 @@ namespace autumn_berries_mix
             {
                 var tile = Owner.Grid.Get(Owner.Position2Int + direction);
                 
-                if(tile != null)
+                if(tile != null && tile.Walkable && tile.Empty || tile.TileStuff is Unit)
                     availableArea.Add(tile);
             }
         }

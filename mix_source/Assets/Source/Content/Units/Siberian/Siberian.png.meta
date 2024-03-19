@@ -3,7 +3,7 @@ guid: 2b5b6a021e7ede648a4f7d239a2fd57b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 13
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -101,7 +101,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 108
+        y: 144
         width: 36
         height: 36
       alignment: 7
@@ -122,7 +122,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 36
-        y: 108
+        y: 144
         width: 36
         height: 36
       alignment: 7
@@ -143,7 +143,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 72
+        y: 108
         width: 36
         height: 36
       alignment: 7
@@ -164,7 +164,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 36
-        y: 72
+        y: 108
         width: 36
         height: 36
       alignment: 7
@@ -185,7 +185,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 72
-        y: 72
+        y: 108
         width: 36
         height: 36
       alignment: 7
@@ -206,7 +206,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 108
-        y: 72
+        y: 108
         width: 36
         height: 36
       alignment: 7
@@ -227,7 +227,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 36
+        y: 72
         width: 36
         height: 36
       alignment: 7
@@ -248,7 +248,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 36
-        y: 36
+        y: 72
         width: 36
         height: 36
       alignment: 7
@@ -269,7 +269,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 72
-        y: 36
+        y: 72
         width: 36
         height: 36
       alignment: 7
@@ -290,7 +290,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 108
-        y: 36
+        y: 72
         width: 36
         height: 36
       alignment: 7
@@ -307,22 +307,232 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Siberian_10
+      name: Siberian_18
       rect:
         serializedVersion: 2
-        x: 144
-        y: 36
-        width: 57
-        height: 37
-      alignment: 9
-      pivot: {x: 0.33333334, y: 0}
+        x: 0
+        y: 0
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69752a468f61b254fbc27c62f5d5b1c4
-      internalID: -476206462
+      spriteID: 01bd4d78eb37b4349bd0858491a7a6a3
+      internalID: 82986490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Siberian_19
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 0
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c1d4aa9a59d43048b9b513e8daba9d5
+      internalID: 1493763346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Siberian_20
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efad08a7ff73bb549abc51feffce2bfe
+      internalID: 1424609411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Siberian_10
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 72
+        width: 72
+        height: 36
+      alignment: 9
+      pivot: {x: 0.2638889, y: -0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a166db3c0c13cbf4c9cd0ea3ad25c7f0
+      internalID: -610985820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Siberian_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 36
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 588b2d74e34174246b3d9edf8d0a3d7f
+      internalID: -1906817831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Siberian_13
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 36
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98056f248b9f8604aaf2300204240917
+      internalID: -938053977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Siberian_14
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 36
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba16609038f411a4fa60b783f9502432
+      internalID: -2098006040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Siberian_15
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 36
+        width: 72
+        height: 36
+      alignment: 9
+      pivot: {x: 0.25, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63bf5b514afa53c4b9e517b136019d2b
+      internalID: 1627577046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Siberian_21
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 0
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd152f108f0badd4d836827e5eb526e4
+      internalID: 698184452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Siberian_22
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8911e719bc7fbfe409b2192c213e9949
+      internalID: -829011575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Siberian_23
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 0
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea4bb17a604d1294aa967b6eb3014951
+      internalID: 1251265481
       vertices: []
       indices: 
       edges: []
@@ -340,8 +550,21 @@ TextureImporter:
     nameFileIdTable:
       Siberian_0: -1460454435
       Siberian_1: -621685515
-      Siberian_10: -476206462
+      Siberian_10: -610985820
+      Siberian_11: -706390643
+      Siberian_12: -1906817831
+      Siberian_13: -938053977
+      Siberian_14: -2098006040
+      Siberian_15: 1627577046
+      Siberian_16: 709344353
+      Siberian_17: 429472746
+      Siberian_18: 82986490
+      Siberian_19: 1493763346
       Siberian_2: 890758026
+      Siberian_20: 1424609411
+      Siberian_21: 698184452
+      Siberian_22: -829011575
+      Siberian_23: 1251265481
       Siberian_3: -1435641897
       Siberian_4: -386793131
       Siberian_5: 1080002625

@@ -10,6 +10,7 @@ namespace autumn_berries_mix
     {
         [SerializeField] private MovementAbilityConfig movement;
         [SerializeField] private SiberianHammerAttackData hammerAttack;
+        [SerializeField] private SiberianHammerAttackData pushAttack;
         
         public override UnitHealth UnitHealth { get; protected set; }
 
@@ -34,7 +35,7 @@ namespace autumn_berries_mix
             
             AbilitiesPull.Add(new PlayerUnitStepMovement(this, movement.Data));
             AbilitiesPull.Add(new SiberianHammer(this, hammerAttack));
-            AbilitiesPull.Add(new SiberianPush(this, hammerAttack));
+            AbilitiesPull.Add(new SiberianPush(this, pushAttack));
         }
     }
 }

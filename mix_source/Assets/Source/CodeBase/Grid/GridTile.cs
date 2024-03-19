@@ -22,6 +22,9 @@ namespace autumn_berries_mix.Grid
 
         public virtual void OnPointed()
         {
+            if(Overlay == null)
+                Overlay = new TileOverlayController(this);
+            
             Overlay.OnPointed();
         }
 

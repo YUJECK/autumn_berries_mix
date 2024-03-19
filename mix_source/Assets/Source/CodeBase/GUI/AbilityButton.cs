@@ -64,20 +64,33 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
             _abilityIcon.sprite = connectedAbility.Data.DefaultIcon;
             gameObject.name = connectedAbility.Data.Name;
         }
-
+        
         public void SelectAbility()
         {
             if (_currentTurn is PlayerTurn playerTurn && playerTurn.Available >= CurrentAbility.Data.Cost)
             {
                 _controller.SelectAbility(CurrentAbility, this);
                 _abilityIcon.sprite = CurrentAbility.Data.SelectedIcon;    
+                
+                CurrentAbility.Owner.UsedAbility += OnUsedAbility;
+            }
+        }
+
+        private void OnUsedAbility(UnitAbility ability)
+        {
+            if (CurrentAbility is PlayerAbility playerAbility && ability == CurrentAbility && _currentTurn is PlayerTurn playerTurn && CurrentAbility.Data.Cost > playerTurn.Available)
+            {
+                DeselectAbility();
+                playerAbility.OnAbilityDeselected();
             }
         }
 
         public void DeselectAbility()
         {
-            if(CurrentAbility != null)
+            if (CurrentAbility != null)
+            {
                 _abilityIcon.sprite = CurrentAbility.Data.DefaultIcon;
+            }
         }
     }
 }

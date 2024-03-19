@@ -20,7 +20,17 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
         private void Start()
         {
             _buttons.AddRange(GetComponentsInChildren<AbilityButton>());
+                
             SignalManager.SubscribeOnSignal<UnitDead>(OnUnitDead);
+            SignalManager.SubscribeOnSignal<UnitAbilityUsed>(OnAbilityUsed);
+        }
+
+        private void OnAbilityUsed(UnitAbilityUsed signal)
+        {
+            if(signal.User is PlayerUnit)
+            {
+                lastSelectedButton.SelectAbility();
+            }
         }
 
         private void OnUnitDead(UnitDead unit)
@@ -51,7 +61,7 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
                 return;
             }
             
-            if(lastSelectedButton != null)  
+            if(lastSelectedButton != null)      
                 lastSelectedButton.DeselectAbility();
             
             if (current is PlayerUnit playerUnit && ability is PlayerAbility playerAbility)

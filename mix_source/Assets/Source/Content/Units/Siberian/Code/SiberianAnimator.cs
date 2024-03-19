@@ -32,7 +32,7 @@ namespace autumn_berries_mix
 
         public void PlayPush()
         {
-            _animator.Play("SiberianAttack");
+            _animator.Play("SiberianHammerPush");
         }
     }
 }

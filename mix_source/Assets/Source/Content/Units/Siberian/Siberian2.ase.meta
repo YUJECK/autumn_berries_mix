@@ -123,15 +123,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Siberian2
     originalName: 
-    pivot: {x: 0.5691489, y: -0.3301887}
+    pivot: {x: 0.4976744, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 188
-      height: 106
+      width: 215
+      height: 177
     spriteID: b6198c9a7faef2943829b56d1eb29c35
     spriteBone: []
     spriteOutline: []
@@ -154,9 +154,9 @@ ScriptedImporter:
       frameIndex: 0
       cellRect:
         x: 1
-        y: 35
-        width: 188
-        height: 106
+        y: 0
+        width: 215
+        height: 177
       spriteId: b6198c9a7faef2943829b56d1eb29c35
     linkedCells: []
     parentIndex: -1
@@ -164,4 +164,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 216, y: 144}
+  canvasSize: {x: 216, y: 180}
