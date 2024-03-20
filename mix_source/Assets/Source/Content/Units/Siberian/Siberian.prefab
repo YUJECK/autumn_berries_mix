@@ -124,7 +124,7 @@ MonoBehaviour:
   <MaximumHealth>k__BackingField: 4
   deathAnimation: SiberianDeath
   deathAnimationLenght: 1
-  hitSound: 
+  hitSound: SiberianHit
   hitColor: {r: 0.9433962, g: 0.10234961, b: 0.10234961, a: 0.2901961}
   healSound: 
   healColor: {r: 0.17174888, g: 1, b: 0, a: 0.29803923}

@@ -118,3 +118,8 @@ MonoBehaviour:
     <Looped>k__BackingField: 0
     <Volume>k__BackingField: 1
     <Tags>k__BackingField: 
+  - <Name>k__BackingField: SiberianHit
+    <Clip>k__BackingField: {fileID: 8300000, guid: 83f2156830bc9e643815cd32b9ec398d, type: 3}
+    <Looped>k__BackingField: 0
+    <Volume>k__BackingField: 1
+    <Tags>k__BackingField: 

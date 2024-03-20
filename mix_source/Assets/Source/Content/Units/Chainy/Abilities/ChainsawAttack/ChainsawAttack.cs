@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using autumn_berries_mix.Grid;
 using autumn_berries_mix.Helpers;
+using Cysharp.Threading.Tasks;
 
 namespace autumn_berries_mix.Units
 {
@@ -42,25 +43,37 @@ namespace autumn_berries_mix.Units
             base.OnAbilityDeselected();
             
             //убираем оверлей и чистим зону атаки
+            ClearArea();
+        }
+
+        private void ClearArea()
+        {
             foreach (var tile in _attackRange)
             {
                 tile.Overlay.RemovePrefabOverlay(_rangeData);
             }
-            
+
             _attackRange.Clear();
         }
 
-        public override void OnUnitPointed(Unit unit, bool withClick)
+        public override async void OnUnitPointed(Unit unit, bool withClick)
         {
             //если находится в зоне атаки, то атакуем
             if (_attackRange.Contains(Owner.Grid.Get(unit.Position2Int)))
             {
                 if (withClick)
                 {
+                    ClearArea();
+                    
                     Owner.Master.Get<EntityFlipper>().FlipTo(unit.transform);
                     Owner.Master.Get<ChainyAnimator>().PlayChainsawAttack();
-                    unit.UnitHealth.Hit(_typedData.Damage);                  
-                   
+
+                    await UniTask.Delay(100);
+                    
+                    unit.UnitHealth.Hit(_typedData.Damage);
+                    
+                    await UniTask.Delay(400);
+                    
                     Owner.OnUsedAbility(this);
                 }
             }    

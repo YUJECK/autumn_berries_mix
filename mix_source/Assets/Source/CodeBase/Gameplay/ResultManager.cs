@@ -10,8 +10,9 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.Scenes
             SceneSwitcher.SwitchTo(new LoseScene());
         }
 
-        public void Win()
+        public async void Win()
         {
+            await Curtain.Instance().Down();
             SceneSwitcher.SwitchTo(new WinScene());
         }
     }

@@ -21,7 +21,7 @@ namespace autumn_berries_mix.Grid.BasicProcessor
             borderData = new StaticTileOverlayData(_resources.borderSprite, _resources.borderSprite, "Selected Cell Border", Vector2.zero, 0);
             lockedBorderData = new StaticTileOverlayData(_resources.lockedBorderSprite, _resources.lockedBorderSprite, "Selected Cell Locked Border", Vector2.zero, 0);
         }
-
+        
         public override void Disable()
         {
             base.Disable();
@@ -51,7 +51,7 @@ namespace autumn_berries_mix.Grid.BasicProcessor
                 _prev.Overlay.RemoveStaticOverlay(borderData);
             }
             
-            if (tile != null && tile != _prevLocked)
+            if (tile != _prevLocked)
             {
                 tile.Overlay.PushStaticOverlay(borderData);
                 _prev = tile;

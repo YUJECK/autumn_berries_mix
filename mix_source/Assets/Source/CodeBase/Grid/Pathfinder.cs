@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using autumn_berries_mix.Grid;
+using autumn_berries_mix.Units;
 using UnityEngine;
 
 namespace autumn_berries_mix
@@ -9,6 +10,8 @@ namespace autumn_berries_mix
     {
         private GameGrid _grid;
 
+        private Vector2Int _currentTarget;
+        
         public Pathfinder(GameGrid grid)
         {
             _grid = grid;
@@ -70,14 +73,18 @@ namespace autumn_berries_mix
         }
         
         private int Heuristic(PathNode first, PathNode second) => Mathf.Abs(first.X - second.X) + Mathf.Abs(first.Y - second.Y);
-        private bool CheckPointCollider(Vector2Int position)
+        private bool CheckPointCollider(Vector2Int position, bool player, bool enemy)
         {
-            if (_grid.Get(position.x, position.y).Walkable && _grid.Get(position.x, position.y).Empty || _grid.IsPlayerUnit(position.x, position.y))
+            var tile = _grid.Get(position.x, position.y);
+            
+            if(tile.Walkable && 
+               (tile.Empty || (player && tile.TileStuff is PlayerUnit) || (enemy && tile.TileStuff is EnemyUnit) || position == _currentTarget))
                 return true;
 
             return false;
         }
-        private List<PathNode> GetNeighbourPoints(PathNode pathNode, List<PathNode> ignoredPoints)
+        
+        private List<PathNode> GetNeighbourPoints(PathNode pathNode, List<PathNode> ignoredPoints, bool player, bool enemy)
         {
             List<PathNode> neighbourPoints = new List<PathNode>();
 
@@ -87,7 +94,7 @@ namespace autumn_berries_mix
             {
                 var node = new PathNode(nextPoint.Position2Int.x, nextPoint.Position2Int.y);
                 
-                if (CheckPointCollider(nextPoint.Position2Int) && !ignoredPoints.Contains(node))
+                if (CheckPointCollider(nextPoint.Position2Int, player, enemy) && !ignoredPoints.Contains(node))
                 {
                     neighbourPoints.Add(node);
                 }
@@ -96,8 +103,9 @@ namespace autumn_berries_mix
             return neighbourPoints;
         }
         
-        public List<Vector2Int> FindPath(Vector2 start, Vector2 end)
+        public List<Vector2Int> FindPath(Vector2 start, Vector2 end, bool includePlayerUnits = false, bool includeEnemyUnits = false)
         {
+            _currentTarget = new Vector2Int((int)end.x, (int)end.y);
             List<PathNode> nextPoints = new List<PathNode>();
 
             List<PathNode> visitedPoints = new List<PathNode>();
@@ -112,7 +120,7 @@ namespace autumn_berries_mix
                 if (currentPathNode.X == endPathNode.X && currentPathNode.Y == endPathNode.Y)
                     return RestorePath(currentPathNode);
 
-                List<PathNode> neighbourPoints = GetNeighbourPoints(currentPathNode, visitedPoints);
+                List<PathNode> neighbourPoints = GetNeighbourPoints(currentPathNode, visitedPoints, includePlayerUnits, includeEnemyUnits);
 
                 foreach (PathNode point in neighbourPoints)
                 {

@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data:
     Name: Chain Attack
-    Description: "Chainy can attack one enemy unit by his chain \nDirections: all\nDamage:
-      2\nRange: 2\nCost: 1"
+    Description: 'Damage: 2
+
+      Range: 2
+
+      Cost: 2'
     DefaultIcon: {fileID: 4723107735738678597, guid: 47c3e6da49b70b148b9ef3c7eb6476e3, type: 3}
     SelectedIcon: {fileID: -7385789195546760866, guid: 47c3e6da49b70b148b9ef3c7eb6476e3, type: 3}
     Cost: 2
@@ -29,5 +32,3 @@ MonoBehaviour:
     - {x: -1, y: -1}
     - {x: 1, y: 1}
     range: 2
-    rangeCell: {fileID: 21300000, guid: fc0c2e13cf66381438aac69f10aca781, type: 3}
-    selectedRangeCell: {fileID: 21300000, guid: fc0c2e13cf66381438aac69f10aca781, type: 3}

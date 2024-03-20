@@ -15,6 +15,7 @@ namespace autumn_berries_mix.Source.Content.Units.Headsman.Code
     {
         [SerializeField] private AbilityData movementConfig;
         [SerializeField] private AxeAttackConfig axeConfig;
+        [SerializeField] private Vector2Int[] directions;
         
         public int range = 2;
         private GameplayScene _scene;
@@ -72,32 +73,42 @@ namespace autumn_berries_mix.Source.Content.Units.Headsman.Code
 
         private PlayerUnit CheckArea()
         {
-            List<GridTile> tiles = new List<GridTile>();
+            List<GridTile> availableArea = new List<GridTile>();
             
-            tiles.Add(Grid.Get(Position2Int));
-
-            for (int i = 0; i < range; i++)
+            foreach (var direction in directions)
             {
-                int startCount = tiles.Count;
+                List<GridTile> line = new List<GridTile>();
                 
-                for(int tileIndex = 0; tileIndex < startCount; tileIndex++)
+                //Проверяем всю линию
+                for (int i = 1; i <= 2; i++)
                 {
-                    foreach (var connection in Grid.GetConnections(tiles[tileIndex].Position2Int.x, tiles[tileIndex].Position2Int.y))
+                    var tile = Grid.Get(Position2Int + direction * i);
+                    
+                    if (tile != null && (tile.Empty && i == 1) || tile.TileStuff is Unit)
                     {
-                        if(connection.Empty || connection.TileStuff is Unit && connection.Walkable)
-                            tiles.Add(connection);      
-                    } 
+                        line.Add(tile);    
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                if (line.Count != 2) continue;
+                
+                //Добавляем линию в зону атаки
+                foreach (var tile in line)
+                {
+                    availableArea.Add(tile);
                 }
             }
-            
-            while (tiles.Count > 0)
+
+            foreach (var tile in availableArea)
             {
-                if (tiles[0].TileStuff is PlayerUnit playerUnit)
+                if (tile.TileStuff is PlayerUnit playerUnit)
                     return playerUnit;
-
-                tiles.RemoveAt(0);
             }
-
+            
             return null;
         }
     }

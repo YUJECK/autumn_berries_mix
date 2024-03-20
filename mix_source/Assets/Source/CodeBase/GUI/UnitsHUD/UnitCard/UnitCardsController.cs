@@ -58,6 +58,9 @@ namespace autumn_berries_mix.PrefabTags.CodeBase.GUI
 
         private void OnUnitDestroyed(UnitDead data)
         {
+            if(data.Unit == null)
+                return;
+            
             unitToCard[data.Unit].Die();
             unitToCard.Remove(data.Unit);
         }

@@ -3,7 +3,7 @@ guid: 39c3c91aa409afa42b9278ec2f5833b2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 13
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -101,7 +101,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 96
+        y: 144
         width: 48
         height: 48
       alignment: 7
@@ -122,7 +122,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 96
+        y: 144
         width: 48
         height: 48
       alignment: 7
@@ -143,7 +143,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 48
+        y: 96
         width: 48
         height: 48
       alignment: 7
@@ -164,7 +164,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 48
+        y: 96
         width: 48
         height: 48
       alignment: 7
@@ -185,7 +185,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 48
+        y: 96
         width: 48
         height: 48
       alignment: 7
@@ -206,7 +206,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 48
         width: 48
         height: 48
       alignment: 7
@@ -227,7 +227,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 0
+        y: 48
         width: 48
         height: 48
       alignment: 7
@@ -248,7 +248,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 0
+        y: 48
         width: 48
         height: 48
       alignment: 7
@@ -269,7 +269,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 144
-        y: 0
+        y: 48
         width: 48
         height: 48
       alignment: 7
@@ -290,7 +290,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 0
+        y: 48
         width: 48
         height: 48
       alignment: 7
@@ -311,7 +311,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 240
-        y: 0
+        y: 48
         width: 48
         height: 48
       alignment: 7
@@ -332,7 +332,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 288
-        y: 0
+        y: 48
         width: 48
         height: 48
       alignment: 7
@@ -353,7 +353,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 336
-        y: 0
+        y: 48
         width: 48
         height: 48
       alignment: 7
@@ -374,7 +374,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 384
-        y: 0
+        y: 48
         width: 48
         height: 48
       alignment: 7
@@ -386,6 +386,69 @@ TextureImporter:
       bones: []
       spriteID: d8802f386a90b924cb67c787dc6c52c9
       internalID: 1190370750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Headsman_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 48
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d3cd96201bc40144a916d8d90921682
+      internalID: 549864053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Headsman_15
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 48
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba1f3309cf838a4449aec1f770bbd54d
+      internalID: 641215680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Headsman_16
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 48
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83df71679712f9a4196cc90db86ae7b3
+      internalID: 1112806535
       vertices: []
       indices: 
       edges: []
@@ -407,6 +470,9 @@ TextureImporter:
       Headsman_11: 2041915258
       Headsman_12: 1042320169
       Headsman_13: 1190370750
+      Headsman_14: 549864053
+      Headsman_15: 641215680
+      Headsman_16: 1112806535
       Headsman_2: -1832054256
       Headsman_3: 908692918
       Headsman_4: 578258415

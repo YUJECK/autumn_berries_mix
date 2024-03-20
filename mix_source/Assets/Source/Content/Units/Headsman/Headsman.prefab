@@ -101,10 +101,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <CurrentHealth>k__BackingField: 6
   <MaximumHealth>k__BackingField: 6
-  deathAnimation: 
-  deathAnimationLenght: 0
+  deathAnimation: HeadsmanDeath
+  deathAnimationLenght: 1
   hitSound: 
-  hitColor: {r: 1, g: 1, b: 1, a: 0.4392157}
+  hitColor: {r: 1, g: 0, b: 0, a: 0.4392157}
   healSound: 
   healColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &967009859122903616
@@ -127,6 +127,15 @@ MonoBehaviour:
     SelectedIcon: {fileID: 0}
     Cost: 0
   axeConfig: {fileID: 11400000, guid: 6dbb36603dfb19d4a87b8a6ef5464d87, type: 2}
+  directions:
+  - {x: 1, y: 0}
+  - {x: -1, y: 0}
+  - {x: 0, y: 1}
+  - {x: 0, y: -1}
+  - {x: 1, y: 1}
+  - {x: 1, y: -1}
+  - {x: -1, y: 1}
+  - {x: -1, y: -1}
   range: 2
 --- !u!95 &5967924005819183591
 Animator:
