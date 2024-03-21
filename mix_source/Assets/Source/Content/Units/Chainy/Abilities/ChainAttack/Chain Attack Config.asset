@@ -14,11 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data:
     Name: Chain Attack
-    Description: 'Damage: 2
+    Description: 'TWO COST
 
-      Range: 2
-
-      Cost: 2'
+      TWO DAMAGES'
     DefaultIcon: {fileID: 4723107735738678597, guid: 47c3e6da49b70b148b9ef3c7eb6476e3, type: 3}
     SelectedIcon: {fileID: -7385789195546760866, guid: 47c3e6da49b70b148b9ef3c7eb6476e3, type: 3}
     Cost: 2

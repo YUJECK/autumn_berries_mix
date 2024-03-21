@@ -82,7 +82,6 @@ namespace autumn_berries_mix
             await UniTask.Delay(TimeSpan.FromSeconds(0.5));
             
             Owner.OnUsedAbility(this);
-            DrawOverlay();
         }
 
         private async void Attack(EnemyUnit enemyUnit)

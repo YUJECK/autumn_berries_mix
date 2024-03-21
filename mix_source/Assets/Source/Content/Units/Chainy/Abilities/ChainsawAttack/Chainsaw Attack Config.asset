@@ -14,11 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data:
     Name: Chainsaw Attack
-    Description: 'Damage: 1
+    Description: 'ONE COST
 
-      Range: 1
-
-      Cost: 1'
+      ONE DAMAGE'
     DefaultIcon: {fileID: 4723107735738678597, guid: 94e6293681a1fc548bf677856d651437, type: 3}
     SelectedIcon: {fileID: -7385789195546760866, guid: 94e6293681a1fc548bf677856d651437, type: 3}
     Cost: 1

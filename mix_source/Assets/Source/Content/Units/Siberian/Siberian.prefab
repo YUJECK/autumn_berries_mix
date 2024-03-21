@@ -144,14 +144,23 @@ MonoBehaviour:
   movement: {fileID: 11400000, guid: 1cbacf16b5265da4889b02679b391d80, type: 2}
   hammerAttack:
     Name: SiberianHammer
-    Description: 
+    Description: 'ONE COST
+
+      ONE DAMAGE
+
+      You can destroy GRAVES and GARGOYLES'
     DefaultIcon: {fileID: 4723107735738678597, guid: 70e0c0d0d580fc84286599778335f603, type: 3}
     SelectedIcon: {fileID: -7385789195546760866, guid: 70e0c0d0d580fc84286599778335f603, type: 3}
     Cost: 1
     <Damage>k__BackingField: 2
   pushAttack:
     Name: 
-    Description: 
+    Description: 'TWO COST
+
+      Pushes enemy on one cell away(ONE DAMAGE)
+
+      If
+      there is no empty cell - the enemy will die'
     DefaultIcon: {fileID: 4723107735738678597, guid: ee9b5bb12c5db664a8f0fe94cf8d34e8, type: 3}
     SelectedIcon: {fileID: -7385789195546760866, guid: ee9b5bb12c5db664a8f0fe94cf8d34e8, type: 3}
     Cost: 2

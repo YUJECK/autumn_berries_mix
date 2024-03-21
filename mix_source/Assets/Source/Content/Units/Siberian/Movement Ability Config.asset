@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data:
     Name: StepMovement
-    Description: 
+    Description: ONE COST
     DefaultIcon: {fileID: -1252049722, guid: 49c7c2ddb09606a4988de52582ae7fe0, type: 3}
     SelectedIcon: {fileID: -1733419498, guid: 49c7c2ddb09606a4988de52582ae7fe0, type: 3}
     Cost: 1

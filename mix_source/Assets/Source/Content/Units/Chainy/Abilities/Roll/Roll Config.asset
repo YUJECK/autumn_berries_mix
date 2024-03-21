@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data:
     Name: Roll
-    Description: 
+    Description: "TWO COST \n"
     DefaultIcon: {fileID: 4723107735738678597, guid: 4b33e9f86dac54b47a6ebb4570154d94, type: 3}
     SelectedIcon: {fileID: -7385789195546760866, guid: 4b33e9f86dac54b47a6ebb4570154d94, type: 3}
     Cost: 2
